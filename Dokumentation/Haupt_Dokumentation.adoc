@@ -1,0 +1,66 @@
+Dokumentation
+=============
+Version 1.0, 19.09.2016
+:toc:
+
+== Tools
+
+=== Entwicklung
+link:https://www.visualstudio.com/[Visual Studio 2015]
+link:https://www.jetbrains.com/resharper/[ReSharper]
+link:https://www.xamarin.com/[Xamarin]
+link:https://www.xamarin.com/studio[Xamarin Studio]
+
+=== Dokumentation
+link:http://asciidocfx.com/[AsciiDocFX]
+link:http://de.plantuml.com/[PlantUML]
+link:http://www.graphviz.org/[GraphViz]
+
+== Framework
+
+=== C#
+Wir werden C#6 verwenden. Das Projekt wird als Xamarin-Applikation umgesetzt.
+
+==== Xamarin
+Damit die Applikation auf mobilen Geräten installiert werden kann, wird das Xamarin-Framework verwendet.
+
+== Datenstruktur
+
+=== Aufbau des Projektordner
+Die Dateien werden in verschiedene Ordner (Namespaces) unterteilt. Diese werden nach Verwendungszweck unterteilt.
+Das Testprojekt testet lediglich die Logik-Komponente (.core). Die Plattformspezifischen Projekte enthalten nur GUI-Relevanten Code!
+
+
+[tree]
+--
+Project Root
+|-- PrettySecureCloud.sln
+|-- PrettySecureCloud
+|   |-- PrettySecureCloud.Core.csproj
+|   |   `-- Modules
+|   |      `-- ExampleModule.cs
+|   |--PrettySecureCloud.Test.csproj
+|   |   `-- Modules
+|   |      `-- ExampleModuleTest.cs
+|   |-- PrettySecureCloud.Android.csproj
+|   `-- PrettySecureCloud.iOS.csproj
+`-- Dokumentation
+--
+
+== VCS-Server
+=== link:https://github.com/PascalHonegger/PrettySecureCloud[Client]
+C#-Xamarin-Client. Verantwortlich für die Darstellung und das Verwalten der Daten.
+
+=== link:https://github.com/PascalHonegger/PrettySecureCloud_Server[Server]
+C#-WCF-Server. Verantwortlich für das Login und speichern der Keys (Dienste-Login). Wird von beiden Teams verwendet!
+
+== Scrum
+=== link:https://tree.taiga.io/project/starlordthecoder-cloud-project/backlog[Taiga]
+Unsere Scrum-Stories werden auf Taiga verwaltet.
+
+== Anforderungen
+
+* Verschlüsseln
+** Daten können verschlüsselt gespeichert werden
+* Entschlüsseln
+** Verschlüsselte Daten können entschlüsselt werden
