@@ -13,7 +13,7 @@ namespace PrettySecureCloud
         public App()
         {
             // The root page of your application
-            MainPage = new HomePage();
+            MainPage = new MasterPage();
         }
 
         protected override void OnStart()
