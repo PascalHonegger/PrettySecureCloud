@@ -1,7 +1,46 @@
 Dokumentation
 =============
-Version 1.0, 19.09.2016
+Version 1.1, 26.09.2016
 :toc:
+
+== Anforderungen
+
+* Verschlüsseln
+** Daten können verschlüsselt gespeichert werden
+* Entschlüsseln
+** Verschlüsselte Daten können entschlüsselt werden
+* Applikation ist über ein Login gesichert
+
+=== Teamübergreifend
+Die verschlüsselten Dateien der beiden Teams müssen vom jeweils anderen Team entschlüsselt werden können.
+Daher wird ein zentraler link::http://prettysecurecloud.azurewebsites.net/LoginService.svc[Login-Server] verwendet, welcher die verschlüsslungs-Keys und Dienste verwaltet.
+Der Aufbau ist wie folgt:
+
+[uml]
+--
+hide members
+
+frame Client {
+    node "C# Mobile Client" as Csharp
+    node "Java Desktop Client" as Java
+}
+
+frame Server {
+    node Datenbank as DB
+    node "Login Server" as Login
+}
+
+cloud "Cloud Dienst" as Cloud
+
+Csharp --> Login
+Java --> Login
+
+Csharp -up-> Cloud
+Java -up-> Cloud
+
+Login --> DB
+
+--
 
 == Tools
 
@@ -57,10 +96,3 @@ C#-WCF-Server. Verantwortlich für das Login und speichern der Keys (Dienste-Log
 == Scrum
 === link:https://tree.taiga.io/project/starlordthecoder-cloud-project/backlog[Taiga]
 Unsere Scrum-Stories werden auf Taiga verwaltet.
-
-== Anforderungen
-
-* Verschlüsseln
-** Daten können verschlüsselt gespeichert werden
-* Entschlüsseln
-** Verschlüsselte Daten können entschlüsselt werden
