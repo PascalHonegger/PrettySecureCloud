@@ -4,6 +4,6 @@ namespace PrettySecureCloud.Theme
 {
     public static class Colors
     {
-        public static Color LoginGreen = Color.FromHex("77D065");
+        public static Color LogoBlue = Color.FromHex("009AC0");
     }
 }
