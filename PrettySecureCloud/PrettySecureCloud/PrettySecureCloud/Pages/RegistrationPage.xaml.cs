@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-
 using Xamarin.Forms;
 
-namespace PrettySecureCloud
+namespace PrettySecureCloud.Pages
 {
 	public partial class RegistrationPage : ContentPage
 	{

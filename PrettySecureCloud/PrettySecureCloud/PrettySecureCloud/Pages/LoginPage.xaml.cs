@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using PrettySecureCloud.LoginService;
+using PrettySecureCloud.Service_References.LoginService;
 using Xamarin.Forms;
 
-namespace PrettySecureCloud
+namespace PrettySecureCloud.Pages
 {
 	public partial class LoginPage : ContentPage
 	{
@@ -14,7 +13,7 @@ namespace PrettySecureCloud
 
 		void OnLoginClicked(object sender, EventArgs e)
 		{
-			var service = new LoginService.LoginServiceClient(LoginServiceClient.EndpointConfiguration.BasicHttpBinding_ILoginService);
+			var service = new LoginServiceClient(LoginServiceClient.EndpointConfiguration.BasicHttpBinding_ILoginService);
 		    DisplayAlert("Fähler", "Da hetts di gnoh!", "Ja muesch ahneh");
 		}
 
