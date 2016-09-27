@@ -4,9 +4,10 @@
              x:Class="PrettySecureCloud.Pages.LoginPage">
 	<StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
 		<Image Source="prettySecureCloudIcon.png" x:Name="Bild" Aspect="AspectFit" />
-		<Entry x:Name="usernameEntry" Placeholder="Benutzername/E-Mail" Text="{Binding Username}" Completed="OnComplete"/>
-		<Entry x:Name="passwordEntry" Placeholder="Passwort" Text="{Binding Password}" IsPassword="true" Completed="OnComplete" />
-		<Button x:Name="login" Text="Anmelden" TextColor="White" BackgroundColor="{x:Static theme:Colors.LogoBlue}" Clicked="OnLoginClicked" IsEnabled="false"/>
+		<Label Text="Pretty Secure Cloud" VerticalTextAlignment="Center"/>
+		<Entry x:Name="UsernameEntry" Placeholder="Benutzername/E-Mail" Text="{Binding Username}" Completed="OnComplete"/>
+		<Entry x:Name="PasswordEntry" Placeholder="Passwort" Text="{Binding Password}" IsPassword="true" Completed="OnComplete" />
+		<Button x:Name="Login" Text="Anmelden" TextColor="White" BackgroundColor="Transparent" Clicked="OnLoginClicked" IsEnabled="false"/>
 		<Button Text="Registrieren" TextColor="Blue" BackgroundColor="Transparent" Clicked="OnRegistrationClicked" />
 	</StackLayout>
 </ContentPage>

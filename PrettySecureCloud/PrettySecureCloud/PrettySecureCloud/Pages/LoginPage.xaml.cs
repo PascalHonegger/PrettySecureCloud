@@ -1,7 +1,7 @@
 ﻿using System;
 using PrettySecureCloud.Service_References.LoginService;
 using Xamarin.Forms;
-
+using PrettySecureCloud.Theme;
 namespace PrettySecureCloud.Pages
 {
 	public partial class LoginPage : ContentPage
@@ -27,7 +27,15 @@ namespace PrettySecureCloud.Pages
 		{
 			Entry entry = (Entry)sender;
 			entry.PlaceholderColor = !string.IsNullOrEmpty(entry.Text) ? Color.Default : Color.Red;
-			login.IsEnabled = !string.IsNullOrEmpty(usernameEntry.Text) && !string.IsNullOrEmpty(passwordEntry.Text);
+			if (!string.IsNullOrEmpty(UsernameEntry.Text) && !string.IsNullOrEmpty(PasswordEntry.Text))
+			{
+				Login.IsEnabled = true;
+				Login.BackgroundColor = Colors.LogoBlue;
+			}
+			else {
+				Login.IsEnabled = false;
+				Login.BackgroundColor = Color.Transparent;
+			}
 		}
 
 	}
