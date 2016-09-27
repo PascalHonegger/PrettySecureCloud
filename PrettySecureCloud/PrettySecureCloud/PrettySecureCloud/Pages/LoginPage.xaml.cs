@@ -19,8 +19,9 @@ namespace PrettySecureCloud
 
 		void OnRegistrationClicked(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			Navigation.PushModalAsync(new NavigationPage(new RegistrationPage()));
+
 		}
-			
+
 	}
 }
