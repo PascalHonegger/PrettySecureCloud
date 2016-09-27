@@ -3,10 +3,10 @@
              xmlns:theme="clr-namespace:PrettySecureCloud.Theme;assembly=PrettySecureCloud"
              x:Class="PrettySecureCloud.Pages.LoginPage">
 	<StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
-		<Image Source="prettySecureCloudIcon.png" x:Name="Bild" Aspect="AspectFit" />
-		<Entry Placeholder="Benutzername/E-Mail" Text="{Binding Username}" />
-		<Entry Placeholder="Passwort" Text="{Binding Password}" IsPassword="true" />
-		<Button Text="Anmelden" TextColor="White" BackgroundColor="{x:Static theme:Colors.LogoBlue}" Clicked="OnLoginClicked" />
+		<Image Source="icon.png" x:Name="Bild" Aspect="AspectFill" />
+		<Entry x:Name="usernameEntry" Placeholder="Benutzername/E-Mail" Text="{Binding Username}" Completed="OnComplete"/>
+		<Entry x:Name="passwordEntry" Placeholder="Passwort" Text="{Binding Password}" IsPassword="true" Completed="OnComplete" />
+		<Button x:Name="login" Text="Anmelden" TextColor="White" BackgroundColor="#77D065" Clicked="OnLoginClicked" IsEnabled="false"/>
 		<Button Text="Registrieren" TextColor="Blue" BackgroundColor="Transparent" Clicked="OnRegistrationClicked" />
 	</StackLayout>
 </ContentPage>

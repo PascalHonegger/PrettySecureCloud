@@ -23,5 +23,12 @@ namespace PrettySecureCloud.Pages
 
 		}
 
+		void OnComplete(object sender, EventArgs e)
+		{
+			Entry entry = (Entry)sender;
+			entry.PlaceholderColor = !string.IsNullOrEmpty(entry.Text) ? Color.Default : Color.Red;
+			login.IsEnabled = !string.IsNullOrEmpty(usernameEntry.Text) && !string.IsNullOrEmpty(passwordEntry.Text);
+		}
+
 	}
 }
