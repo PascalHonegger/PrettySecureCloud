@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PrettySecureCloud.LoginPage">
 	<StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
 		<Image Source="icon.png" x:Name="Bild" Aspect="AspectFill" />
-		<Entry Placeholder="Benutzername/E-Mail" Text="{Binding Username}" />
-		<Entry Placeholder="Passwort" Text="{Binding Password}" IsPassword="true" />
-		<Button Text="Anmelden" TextColor="White" BackgroundColor="#77D065" Clicked="OnLoginClicked" />
+		<Entry x:Name="usernameEntry" Placeholder="Benutzername/E-Mail" Text="{Binding Username}" Completed="OnComplete"/>
+		<Entry x:Name="passwordEntry" Placeholder="Passwort" Text="{Binding Password}" IsPassword="true" Completed="OnComplete" />
+		<Button x:Name="login" Text="Anmelden" TextColor="White" BackgroundColor="#77D065" Clicked="OnLoginClicked" IsEnabled="false"/>
 		<Button Text="Registrieren" TextColor="Blue" BackgroundColor="Transparent" Clicked="OnRegistrationClicked" />
 	</StackLayout>
 </ContentPage>
