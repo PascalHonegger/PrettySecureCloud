@@ -20,7 +20,7 @@ namespace PrettySecureCloud.Pages
 				DisplayAlert(result.Username, "Da hetts di gnoh!", "Ja muesch ahneh");
 			};
 			service.LoginAsync("Random user", "123");
-		}
+        }
 
 		private void OnRegistrationClicked(object sender, EventArgs e)
 		{
