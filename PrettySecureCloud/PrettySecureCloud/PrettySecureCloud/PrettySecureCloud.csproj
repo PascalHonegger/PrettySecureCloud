@@ -59,7 +59,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
     <None Include="Service References\LoginService\LoginService.wsdl" />
