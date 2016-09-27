@@ -22,8 +22,8 @@ namespace PrettySecureCloud.Pages
 
             switch (item.Title)
             {
-                case "Kamera":
-                    Detail = new NavigationPage(new HomePage());
+                case "Home":
+                    Detail = new MasterPage();
                     break;
                 default:
                     await DisplayAlert("Fehler", "Fehler beim Laden der Seite", "OK");
