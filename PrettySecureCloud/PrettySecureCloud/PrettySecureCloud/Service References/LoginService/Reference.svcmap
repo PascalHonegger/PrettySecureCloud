@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="47822197-50dc-45a0-acfc-ebe22cfbb45c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://prettysecurecloud.azurewebsites.net/LoginService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="LoginService.disco" MetadataType="Disco" ID="ac449653-9cb4-4f71-8f9d-2ade20f46abb" SourceId="1" SourceUrl="https://prettysecurecloud.azurewebsites.net/LoginService.svc?disco" />
+    <MetadataFile FileName="LoginService.xsd" MetadataType="Schema" ID="a5a0e2c1-df46-46c1-8ffc-c62a3dfdfee1" SourceId="1" SourceUrl="https://prettysecurecloud.azurewebsites.net/LoginService.svc?xsd=xsd0" />
+    <MetadataFile FileName="LoginService.wsdl" MetadataType="Wsdl" ID="f4d8067b-5e3d-4a4e-98e0-ea01678d5ad0" SourceId="1" SourceUrl="https://prettysecurecloud.azurewebsites.net/LoginService.svc?wsdl" />
+    <MetadataFile FileName="LoginService1.xsd" MetadataType="Schema" ID="a6f9c501-f219-414c-bbc3-b67a2d1535a5" SourceId="1" SourceUrl="https://prettysecurecloud.azurewebsites.net/LoginService.svc?xsd=xsd2" />
+    <MetadataFile FileName="LoginService2.xsd" MetadataType="Schema" ID="376c4d2c-42d1-4bd4-b5ab-fa4f33d96106" SourceId="1" SourceUrl="https://prettysecurecloud.azurewebsites.net/LoginService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
