@@ -64,22 +64,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
-    <None Include="Service References\LoginService\LoginService.wsdl" />
-    <None Include="Service References\LoginService\LoginService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\LoginService\LoginService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\LoginService\LoginService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\LoginService\PrettySecureCloud.LoginService.ServiceType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LoginService\PrettySecureCloud.LoginService.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">
@@ -132,6 +116,13 @@
     <None Include="Service References\LoginService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\LoginService\LoginService1.wsdl" />
+    <None Include="Service References\LoginService\PrettySecureCloud.LoginService.ServiceType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LoginService\PrettySecureCloud.LoginService.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\LoginService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

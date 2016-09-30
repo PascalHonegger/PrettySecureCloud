@@ -20,13 +20,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://prettysecurecloud.azurewebsites.net/LoginService.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://prettysecurecloud.azurewebsites.net/LoginService.svc?singleWsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="LoginService.xsd" MetadataType="Schema" ID="5c5fe510-f159-48da-9b89-02a8cb0fdcad" SourceId="1" SourceUrl="https://prettysecurecloud.azurewebsites.net/LoginService.svc?xsd=xsd0" />
-    <MetadataFile FileName="LoginService.wsdl" MetadataType="Wsdl" ID="691c7c34-b771-4238-aa90-0b0f8e8cd7e0" SourceId="1" SourceUrl="https://prettysecurecloud.azurewebsites.net/LoginService.svc?wsdl" />
-    <MetadataFile FileName="LoginService1.xsd" MetadataType="Schema" ID="720a6db0-c809-49e5-9efb-e0a569c1105d" SourceId="1" SourceUrl="https://prettysecurecloud.azurewebsites.net/LoginService.svc?xsd=xsd2" />
-    <MetadataFile FileName="LoginService2.xsd" MetadataType="Schema" ID="2162d3d0-67c4-410f-bdb0-f9f573b30147" SourceId="1" SourceUrl="https://prettysecurecloud.azurewebsites.net/LoginService.svc?xsd=xsd1" />
+    <MetadataFile FileName="LoginService1.wsdl" MetadataType="Wsdl" ID="5f72ec4b-6bdf-481c-9219-77f8e8558d09" SourceId="1" SourceUrl="https://prettysecurecloud.azurewebsites.net/LoginService.svc?singleWsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

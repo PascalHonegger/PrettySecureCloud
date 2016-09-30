@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ServiceModel;
 using PrettySecureCloud.LoginService;
 using PrettySecureCloud.Theme;
 using Xamarin.Forms;
@@ -17,9 +18,27 @@ namespace PrettySecureCloud.Pages
 			var service = new LoginServiceClient(LoginServiceClient.EndpointConfiguration.BasicHttpsBinding_ILoginService);
 			service.LoginCompleted += (o, args) =>
 			{
-				var result = args.Result;
-				DisplayAlert(result.Username, "Da hetts di gnoh!", "Ja muesch ahneh");
+				Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+				{
+					if (args.Error != null)
+					{
+						try
+						{
+							throw args.Error;
+						}
+						catch (FaultException fault)
+						{
+							DisplayAlert("Failure", fault.Message, "Ok");
+						}
+					}
+					else
+					{
+						var result = args.Result;
+						DisplayAlert(result.Username, "Da hetts di gnoh!", "Ja muesch ahneh");
+					}
+				});
 			};
+
 			service.LoginAsync("Random user", "123");
 		}
 

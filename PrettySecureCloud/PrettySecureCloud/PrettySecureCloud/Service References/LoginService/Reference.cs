@@ -122,11 +122,26 @@ namespace PrettySecureCloud.LoginService {
     [System.Runtime.Serialization.DataContractAttribute(Name="CloudService", Namespace="http://schemas.datacontract.org/2004/07/PrettySecureCloud")]
     public partial class CloudService : object, System.ComponentModel.INotifyPropertyChanged {
         
+        private int IdField;
+        
         private string LoginTokenField;
         
         private string NameField;
         
         private PrettySecureCloud.LoginService.ServiceType TypeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string LoginToken {
@@ -247,7 +262,7 @@ namespace PrettySecureCloud.LoginService {
         bool EndUsernameUnique(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ILoginService/EmailUnique", ReplyAction="http://tempuri.org/ILoginService/EmailUniqueResponse")]
-        System.IAsyncResult BeginEmailUnique(string username, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginEmailUnique(string mail, System.AsyncCallback callback, object asyncState);
         
         bool EndEmailUnique(System.IAsyncResult result);
         
@@ -505,8 +520,8 @@ namespace PrettySecureCloud.LoginService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult PrettySecureCloud.LoginService.ILoginService.BeginEmailUnique(string username, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginEmailUnique(username, callback, asyncState);
+        System.IAsyncResult PrettySecureCloud.LoginService.ILoginService.BeginEmailUnique(string mail, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginEmailUnique(mail, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -515,8 +530,8 @@ namespace PrettySecureCloud.LoginService {
         }
         
         private System.IAsyncResult OnBeginEmailUnique(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string username = ((string)(inValues[0]));
-            return ((PrettySecureCloud.LoginService.ILoginService)(this)).BeginEmailUnique(username, callback, asyncState);
+            string mail = ((string)(inValues[0]));
+            return ((PrettySecureCloud.LoginService.ILoginService)(this)).BeginEmailUnique(mail, callback, asyncState);
         }
         
         private object[] OnEndEmailUnique(System.IAsyncResult result) {
@@ -532,11 +547,11 @@ namespace PrettySecureCloud.LoginService {
             }
         }
         
-        public void EmailUniqueAsync(string username) {
-            this.EmailUniqueAsync(username, null);
+        public void EmailUniqueAsync(string mail) {
+            this.EmailUniqueAsync(mail, null);
         }
         
-        public void EmailUniqueAsync(string username, object userState) {
+        public void EmailUniqueAsync(string mail, object userState) {
             if ((this.onBeginEmailUniqueDelegate == null)) {
                 this.onBeginEmailUniqueDelegate = new BeginOperationDelegate(this.OnBeginEmailUnique);
             }
@@ -547,7 +562,7 @@ namespace PrettySecureCloud.LoginService {
                 this.onEmailUniqueCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnEmailUniqueCompleted);
             }
             base.InvokeAsync(this.onBeginEmailUniqueDelegate, new object[] {
-                        username}, this.onEndEmailUniqueDelegate, this.onEmailUniqueCompletedDelegate, userState);
+                        mail}, this.onEndEmailUniqueDelegate, this.onEmailUniqueCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -852,9 +867,9 @@ namespace PrettySecureCloud.LoginService {
                 return _result;
             }
             
-            public System.IAsyncResult BeginEmailUnique(string username, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult BeginEmailUnique(string mail, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
-                _args[0] = username;
+                _args[0] = mail;
                 System.IAsyncResult _result = base.BeginInvoke("EmailUnique", _args, callback, asyncState);
                 return _result;
             }
