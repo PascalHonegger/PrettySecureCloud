@@ -5,20 +5,20 @@
              x:Class="PrettySecureCloud.Pages.NavPage"
              Icon="burger.png"
              Title=" ">
-  <StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand">
-    <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand">
-      <Image x:Name="Logo" Source="banner.png" Aspect="AspectFill" HeightRequest="150"/>
-    </StackLayout>
+	<StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand">
+		<StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand">
+			<Image x:Name="Logo" Source="banner.png" Aspect="AspectFill" HeightRequest="150" />
+		</StackLayout>
 
-    <StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand" Padding="20, 10, 20, 20">
-      <ListView x:Name="NavListView"
-                HasUnevenRows="True">
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <ImageCell ImageSource="{Binding Image}" Text="{Binding Title}" />
-          </DataTemplate>
-        </ListView.ItemTemplate>
-      </ListView>
-    </StackLayout>
-  </StackLayout>
+		<StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand" Padding="20, 10, 20, 20">
+			<ListView x:Name="NavListView"
+			          HasUnevenRows="True">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ImageCell ImageSource="{Binding Image}" Text="{Binding Title}" />
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</StackLayout>
 </ContentPage>

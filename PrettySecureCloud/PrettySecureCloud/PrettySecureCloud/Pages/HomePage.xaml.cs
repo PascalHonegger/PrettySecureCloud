@@ -1,12 +1,10 @@
-﻿using Xamarin.Forms;
-
-namespace PrettySecureCloud.Pages
+﻿namespace PrettySecureCloud.Pages
 {
-    public partial class HomePage : ContentPage
-    {
-        public HomePage()
-        {
-            InitializeComponent();
-        }
-    }
+	public partial class HomePage
+	{
+		public HomePage()
+		{
+			InitializeComponent();
+		}
+	}
 }

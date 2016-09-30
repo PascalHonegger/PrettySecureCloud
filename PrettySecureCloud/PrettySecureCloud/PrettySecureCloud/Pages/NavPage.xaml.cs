@@ -4,22 +4,22 @@ using Xamarin.Forms;
 
 namespace PrettySecureCloud.Pages
 {
-    public partial class NavPage : ContentPage
-    {
-        public ListView ListView => NavListView;
+	public partial class NavPage
+	{
+		public NavPage()
+		{
+			InitializeComponent();
 
-        public NavPage()
-        {
-            InitializeComponent();
+			NavListView.ItemsSource = new List<Startscreen>
+			{
+				new Startscreen
+				{
+					Title = "Home",
+					Image = "home.png"
+				}
+			};
+		}
 
-            NavListView.ItemsSource = new List<Startscreen>
-            {
-                new Startscreen
-                {
-                    Title = "Home",
-                    Image = "home.png"
-                }
-            };
-        }
-    }
+		public ListView ListView => NavListView;
+	}
 }

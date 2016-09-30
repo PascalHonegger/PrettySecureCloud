@@ -1,18 +1,16 @@
 ﻿using System;
-using Xamarin.Forms;
 
 namespace PrettySecureCloud.Pages
 {
-	public partial class RegistrationPage : ContentPage
+	public partial class RegistrationPage
 	{
 		public RegistrationPage()
 		{
 			InitializeComponent();
 		}
 
-		void OnRegistrationClicked(object sender, EventArgs e)
+		private void OnRegistrationClicked(object sender, EventArgs e)
 		{
-
 		}
 	}
 }
