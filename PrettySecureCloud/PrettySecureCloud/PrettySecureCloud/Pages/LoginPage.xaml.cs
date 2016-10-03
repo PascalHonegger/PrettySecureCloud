@@ -15,22 +15,12 @@ namespace PrettySecureCloud.Pages
 
 			BindingContext = _viewModel = new LoginViewModel();
 
-			MessagingCenter.Subscribe<LoginViewModel, MessageData>(this, MessageData.DisplayAlert, (sender, message) =>
-			{
-				if (string.IsNullOrEmpty(message.Accept))
-					DisplayAlert(message.Title, message.Content, message.Cancel);
-				else
-					DisplayAlert(message.Title, message.Content, message.Accept, message.Cancel);
-			}, _viewModel);
-
-			MessagingCenter.Subscribe<LoginViewModel, Page>(this, ViewModelBase.NavigationPushView,
-				(sender, page) => { Navigation.PushModalAsync(page); }, _viewModel);
+			Subscribe<LoginViewModel>();
 		}
 
 		~LoginPage()
 		{
-			MessagingCenter.Unsubscribe<LoginViewModel, MessageData>(this, MessageData.DisplayAlert);
-			MessagingCenter.Unsubscribe<LoginViewModel, Page>(this, ViewModelBase.NavigationPushView);
+			Unsubscribe<LoginViewModel>();
 		}
 
 		private void OnComplete(object sender, EventArgs e)

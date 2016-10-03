@@ -36,9 +36,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Infrastructure\CustomPage.cs" />
     <Compile Include="Infrastructure\MessageData.cs" />
     <Compile Include="Infrastructure\ViewModelBase.cs" />
     <Compile Include="Login\LoginViewModel.cs" />
+    <Compile Include="Login\RegisterViewModel.cs" />
     <Compile Include="Model\Base.cs" />
     <Compile Include="Model\Startscreen.cs" />
     <Compile Include="Pages\HomePage.xaml.cs">

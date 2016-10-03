@@ -1,16 +1,24 @@
 ﻿using System;
+using PrettySecureCloud.Login;
 
 namespace PrettySecureCloud.Pages
 {
 	public partial class RegistrationPage
 	{
+		private RegisterViewModel _viewModel;
+
 		public RegistrationPage()
 		{
 			InitializeComponent();
+
+			BindingContext = _viewModel = new RegisterViewModel();
+
+			Subscribe<RegisterViewModel>();
 		}
 
-		private void OnRegistrationClicked(object sender, EventArgs e)
+		~RegistrationPage()
 		{
+			Unsubscribe<RegisterViewModel>();
 		}
 	}
 }
