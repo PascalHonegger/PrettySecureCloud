@@ -20,7 +20,7 @@ namespace PrettySecureCloud.Login
 			RegisterCommand = new Command(Register);
 		}
 
-		private bool CanLogin()
+		public bool CanLogin()
 		{
 			//TODO 
 			// var entry = (Entry)sender;
