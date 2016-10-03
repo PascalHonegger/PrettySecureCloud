@@ -1,66 +1,42 @@
 ﻿using System;
-using System.ServiceModel;
-using PrettySecureCloud.LoginService;
-using PrettySecureCloud.Theme;
+using PrettySecureCloud.Infrastructure;
+using PrettySecureCloud.Login;
 using Xamarin.Forms;
 
 namespace PrettySecureCloud.Pages
 {
 	public partial class LoginPage
 	{
+		private readonly LoginViewModel _viewModel;
+
 		public LoginPage()
 		{
 			InitializeComponent();
-		}
 
-		private void OnLoginClicked(object sender, EventArgs e)
-		{
-			var service = new LoginServiceClient(LoginServiceClient.EndpointConfiguration.BasicHttpsBinding_ILoginService);
-			service.LoginCompleted += (o, args) =>
+			BindingContext = _viewModel = new LoginViewModel();
+
+			MessagingCenter.Subscribe<LoginViewModel, MessageData>(this, MessageData.DisplayAlert, (sender, message) =>
 			{
-				Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-				{
-					if (args.Error != null)
-					{
-						try
-						{
-							throw args.Error;
-						}
-						catch (FaultException fault)
-						{
-							DisplayAlert("Failure", fault.Message, "Ok");
-						}
-					}
-					else
-					{
-						var result = args.Result;
-						DisplayAlert(result.Username, "Da hetts di gnoh!", "Ja muesch ahneh");
-					}
-				});
-			};
+				if (string.IsNullOrEmpty(message.Accept))
+					DisplayAlert(message.Title, message.Content, message.Cancel);
+				else
+					DisplayAlert(message.Title, message.Content, message.Accept, message.Cancel);
+			}, _viewModel);
 
-			service.LoginAsync("Random user", "123");
+			MessagingCenter.Subscribe<LoginViewModel, Page>(this, ViewModelBase.NavigationPushView,
+				(sender, page) => { Navigation.PushModalAsync(page); }, _viewModel);
 		}
 
-		private void OnRegistrationClicked(object sender, EventArgs e)
+		~LoginPage()
 		{
-			Navigation.PushModalAsync(new NavigationPage(new RegistrationPage()));
+			MessagingCenter.Unsubscribe<LoginViewModel, MessageData>(this, MessageData.DisplayAlert);
+			MessagingCenter.Unsubscribe<LoginViewModel, Page>(this, ViewModelBase.NavigationPushView);
 		}
 
 		private void OnComplete(object sender, EventArgs e)
 		{
-			var entry = (Entry) sender;
-			entry.PlaceholderColor = !string.IsNullOrEmpty(entry.Text) ? Color.Default : Color.Red;
-			if (!string.IsNullOrEmpty(UsernameEntry.Text) && !string.IsNullOrEmpty(PasswordEntry.Text))
-			{
-				Login.IsEnabled = true;
-				Login.BackgroundColor = Colors.LogoBlue;
-			}
-			else
-			{
-				Login.IsEnabled = false;
-				Login.BackgroundColor = Color.Transparent;
-			}
+			if (_viewModel.LoginCommand.CanExecute(null))
+				_viewModel.LoginCommand.Execute(null);
 		}
 	}
 }
