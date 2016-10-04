@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ServiceModel;
+using System.Text.RegularExpressions;
 using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 
@@ -7,10 +9,10 @@ namespace PrettySecureCloud.Login
 {
 	public class RegisterViewModel : ViewModelBase
 	{
-		private string _email;
-		private string _password1;
-		private string _password2;
-		private string _username;
+		private string _email = "";
+		private string _password1 = "";
+		private string _password2 = "";
+		private string _username = "";
 
 		public RegisterViewModel()
 		{
@@ -96,8 +98,20 @@ namespace PrettySecureCloud.Login
 
 		private bool CanRegister()
 		{
-			return !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password1) &&
-			       Equals(Password1, Password2);
+			return IsInputValid();
+		}
+
+		private bool IsInputValid()
+		{
+			var EmailRegex =
+				@"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+				@"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
+
+			var isUsernameValid = Username.Length > 3 && Username.Length < 20;
+			var regex = new Regex(EmailRegex);
+			var isEmailValid = regex.IsMatch(Email);
+			var isPasswordValid = Equals(Password1, Password2) && Password1.Length > 8;
+			return isPasswordValid && isUsernameValid && isEmailValid;
 		}
 	}
 }
