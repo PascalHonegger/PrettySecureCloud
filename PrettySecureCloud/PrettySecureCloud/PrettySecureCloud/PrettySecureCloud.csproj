@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Encryption\IAES.cs" />
     <Compile Include="Infrastructure\EventsHelper.cs" />
     <Compile Include="Encryption\AES.cs" />
     <Compile Include="Infrastructure\MessageData.cs" />

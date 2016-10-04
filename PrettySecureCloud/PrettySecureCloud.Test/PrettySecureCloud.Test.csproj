@@ -102,6 +102,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Encryption\aesTest.cs" />
     <Compile Include="Infrastructure\IntegrationTestBase.cs" />
     <Compile Include="Infrastructure\UnitTestBase.cs" />
     <Compile Include="Login\LoginViewModelTest.cs" />
@@ -115,6 +116,11 @@
       <Project>{42e84d6b-6424-4f7c-bcd4-4a3f095f7052}</Project>
       <Name>PrettySecureCloud</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestData\Test.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
