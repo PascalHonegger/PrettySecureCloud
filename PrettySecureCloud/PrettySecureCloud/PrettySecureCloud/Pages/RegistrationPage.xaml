@@ -2,7 +2,6 @@
 
 <NavigationPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:theme="clr-namespace:PrettySecureCloud.Theme;assembly=PrettySecureCloud"
-             xmlns:infrastructure="clr-namespace:PrettySecureCloud.Infrastructure;assembly=PrettySecureCloud"
              x:Class="PrettySecureCloud.Pages.RegistrationPage" >
 	<Grid>
 		<StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
