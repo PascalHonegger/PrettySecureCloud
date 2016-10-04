@@ -36,9 +36,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Encryption\IAES.cs" />
+    <Compile Include="Encryption\IByteEncryptor.cs" />
     <Compile Include="Infrastructure\EventsHelper.cs" />
-    <Compile Include="Encryption\AES.cs" />
+    <Compile Include="Encryption\AesEncryptor.cs" />
     <Compile Include="Infrastructure\MessageData.cs" />
     <Compile Include="Infrastructure\Session.cs" />
     <Compile Include="Infrastructure\ViewModelBase.cs" />

@@ -1,17 +1,16 @@
-﻿using System.Text;
-using PCLCrypto;
+﻿using PCLCrypto;
 
 namespace PrettySecureCloud.Encryption
 {
-	public class AES : IAES
+	public class AesEncryptor : IByteEncryptor
 	{
-		/// <summary>    
-		/// Encrypts given bytes using symmetric alogrithm AES    
-		/// </summary>    
-		/// <param name="data">data to encrypt</param>    
-		///^<param name="key">key to encryptr</param>  
-		/// <returns></returns>  
-		public byte[] EncryptAes(byte[] data, byte[] key)
+		/// <summary>
+		/// Encrypts given bytes using a symmetric alogrithm
+		/// </summary>
+		/// <param name="data">data to encrypt</param>
+		///^<param name="key">key to encryptr</param>
+		/// <returns>Encrypted data</returns> 
+		public byte[] Encrypt(byte[] data, byte[] key)
 		{
 			ISymmetricKeyAlgorithmProvider aes = WinRTCrypto.SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithm.AesCbcPkcs7);
 			ICryptographicKey symetricKey = aes.CreateSymmetricKey(key);
@@ -19,15 +18,14 @@ namespace PrettySecureCloud.Encryption
 			return bytes;
 		}
 
-		/// <summary>    
-		/// Decrypts given bytes using symmetric alogrithm AES    
-		/// </summary>    
-		/// <param name="data">data to decrypt</param>    
-		///<param name="key">key to decrypt</param>  
-		/// <returns></returns>    
-		public byte[] DecryptAes(byte[] data, byte[] key)
+		/// <summary>
+		/// Decrypts given bytes using a symmetric alogrithm
+		/// </summary>
+		/// <param name="data">data to decrypt</param>
+		///<param name="key">key to decrypt</param>
+		/// <returns>Decrypted data</returns>
+		public byte[] Decrypt(byte[] data, byte[] key)
 		{
-
 			ISymmetricKeyAlgorithmProvider aes = WinRTCrypto.SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithm.AesCbcPkcs7);
 			ICryptographicKey symetricKey = aes.CreateSymmetricKey(key);
 			var bytes = WinRTCrypto.CryptographicEngine.Decrypt(symetricKey, data);
