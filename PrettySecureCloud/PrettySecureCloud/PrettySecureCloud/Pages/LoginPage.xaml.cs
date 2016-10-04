@@ -1,7 +1,5 @@
 ﻿using System;
-using PrettySecureCloud.Infrastructure;
 using PrettySecureCloud.Login;
-using Xamarin.Forms;
 
 namespace PrettySecureCloud.Pages
 {

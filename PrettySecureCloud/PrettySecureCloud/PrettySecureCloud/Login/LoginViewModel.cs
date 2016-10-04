@@ -8,7 +8,6 @@ namespace PrettySecureCloud.Login
 {
 	public class LoginViewModel : ViewModelBase
 	{
-		private LoginServiceClient _service;
 		private string _username;
 		private string _password;
 		public Command LoginCommand { get; }
@@ -54,15 +53,18 @@ namespace PrettySecureCloud.Login
 
 		private void Login()
 		{
-			_service = new LoginServiceClient(LoginServiceClient.EndpointConfiguration.BasicHttpsBinding_ILoginService);
-			_service.LoginCompleted += LoginCompleted;
+			Service.LoginCompleted += LoginCompleted;
 
-			_service.LoginAsync(Username, Password);
+			Workers++;
+
+			Service.LoginAsync(Username, Password);
 		}
 
 		private void LoginCompleted(object sender, LoginCompletedEventArgs args)
 		{
-			_service.LoginCompleted -= LoginCompleted;
+			Workers--;
+
+			Service.LoginCompleted -= LoginCompleted;
 			Device.BeginInvokeOnMainThread(() =>
 			{
 				if (args.Error != null)

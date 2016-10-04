@@ -5,7 +5,7 @@ namespace PrettySecureCloud.Pages
 {
 	public partial class RegistrationPage
 	{
-		private RegisterViewModel _viewModel;
+		private readonly RegisterViewModel _viewModel;
 
 		public RegistrationPage()
 		{
@@ -19,6 +19,14 @@ namespace PrettySecureCloud.Pages
 		~RegistrationPage()
 		{
 			Unsubscribe<RegisterViewModel>();
+		}
+
+		private void Entry_OnCompleted(object sender, EventArgs e)
+		{
+			if (_viewModel.RegisterCommand.CanExecute(null))
+			{
+				_viewModel.RegisterCommand.Execute(null);
+			}
 		}
 	}
 }
