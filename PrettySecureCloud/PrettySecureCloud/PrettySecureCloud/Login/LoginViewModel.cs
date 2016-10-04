@@ -88,7 +88,7 @@ namespace PrettySecureCloud.Login
 
 		private void Register()
 		{
-			PushView(this, new NavigationPage(new RegistrationPage()));
+			PushView(this, new RegistrationPage());
 		}
 	}
 }
