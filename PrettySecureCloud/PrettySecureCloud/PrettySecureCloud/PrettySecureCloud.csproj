@@ -38,6 +38,7 @@
     <Compile Include="App.cs" />
     <Compile Include="Infrastructure\EventsHelper.cs" />
     <Compile Include="Infrastructure\MessageData.cs" />
+    <Compile Include="Infrastructure\Session.cs" />
     <Compile Include="Infrastructure\ViewModelBase.cs" />
     <Compile Include="Login\LoginViewModel.cs" />
     <Compile Include="Login\RegisterViewModel.cs" />

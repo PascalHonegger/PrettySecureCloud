@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ServiceModel;
 using System.Text.RegularExpressions;
 using PrettySecureCloud.Infrastructure;
@@ -103,12 +102,11 @@ namespace PrettySecureCloud.Login
 
 		private bool IsInputValid()
 		{
-			var EmailRegex =
-				@"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
-				@"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
+			const string emailRegex = @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+			                          @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
 
 			var isUsernameValid = Username.Length > 3 && Username.Length < 20;
-			var regex = new Regex(EmailRegex);
+			var regex = new Regex(emailRegex);
 			var isEmailValid = regex.IsMatch(Email);
 			var isPasswordValid = Equals(Password1, Password2) && Password1.Length > 8;
 			return isPasswordValid && isUsernameValid && isEmailValid;

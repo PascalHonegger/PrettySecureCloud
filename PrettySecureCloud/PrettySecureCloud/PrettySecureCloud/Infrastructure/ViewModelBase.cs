@@ -8,9 +8,17 @@ namespace PrettySecureCloud.Infrastructure
 	public abstract class ViewModelBase : INotifyPropertyChanged
 	{
 		public const string NavigationPushView = "Naviagion.PushView";
+		public const string NavigationPushViewModal = "Naviagion.PushViewModal";
 
-		protected static readonly LoginServiceClient Service = new LoginServiceClient(LoginServiceClient.EndpointConfiguration.BasicHttpsBinding_ILoginService);
+		protected static LoginServiceClient Service
+			=> _service ??
+			   (_service = new LoginServiceClient(LoginServiceClient.EndpointConfiguration.BasicHttpsBinding_ILoginService));
+
+		protected static Session CurrentSession => _session ?? (_session = new Session());
+
 		private int _workers;
+		private static LoginServiceClient _service;
+		private static Session _session;
 
 		protected static void DisplayAlert<T>(T instance, MessageData message) where T : class
 		{
@@ -22,6 +30,11 @@ namespace PrettySecureCloud.Infrastructure
 			MessagingCenter.Send(instance, NavigationPushView, page);
 		}
 
+		protected static void PushViewModal<T>(T instance, Page page) where T : class
+		{
+			MessagingCenter.Send(instance, NavigationPushViewModal, page);
+		}
+
 		public bool IsFree => !IsBusy;
 
 		public bool IsBusy => Workers > 0;
@@ -31,7 +44,7 @@ namespace PrettySecureCloud.Infrastructure
 			get { return _workers; }
 			set
 			{
-				if(Equals(_workers, value)) return;
+				if (Equals(_workers, value)) return;
 				_workers = value;
 				OnPropertyChanged();
 				OnPropertyChanged(nameof(IsBusy));

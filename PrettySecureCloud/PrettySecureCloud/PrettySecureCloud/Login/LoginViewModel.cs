@@ -81,7 +81,8 @@ namespace PrettySecureCloud.Login
 				else
 				{
 					var result = args.Result;
-					DisplayAlert(this, new MessageData(result.Username, "Da hetts di gnoh!", "Ja muesch ahneh"));
+					CurrentSession.CurrentUser = result;
+					PushViewModal(this, new MasterPage());
 				}
 			});
 		}
