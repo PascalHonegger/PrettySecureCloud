@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Linq;
+using Xamarin.Forms;
 
 namespace PrettySecureCloud.Infrastructure
 {
@@ -15,7 +16,10 @@ namespace PrettySecureCloud.Infrastructure
 			});
 
 			MessagingCenter.Subscribe<TViewModel, Page>(instance, ViewModelBase.NavigationPushView,
-				(sender, page) => { instance.Navigation.PushModalAsync(page); });
+				async (sender, page) =>
+				{
+					await instance.Navigation.PushAsync(page);
+				});
 		}
 
 		public static void Unsubscribe<TViewModel, TView>(this TView instance) where TView : Page where TViewModel : class

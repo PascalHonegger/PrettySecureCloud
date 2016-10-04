@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Infrastructure\CustomPage.cs" />
+    <Compile Include="Infrastructure\EventsHelper.cs" />
     <Compile Include="Infrastructure\MessageData.cs" />
     <Compile Include="Infrastructure\ViewModelBase.cs" />
     <Compile Include="Login\LoginViewModel.cs" />
