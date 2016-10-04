@@ -14,6 +14,9 @@ namespace PrettySecureCloud.Pages
 
 			BindingContext = _viewModel = new LoginViewModel();
 
+			_viewModel.LoginCommand.ChangeCanExecute();
+			_viewModel.RegisterCommand.ChangeCanExecute();
+
 			this.Subscribe<LoginViewModel, LoginPage>();
 		}
 
