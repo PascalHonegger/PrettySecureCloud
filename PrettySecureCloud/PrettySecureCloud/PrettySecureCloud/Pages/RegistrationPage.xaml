@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 
-<infrastructure:CustomPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+<NavigationPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:theme="clr-namespace:PrettySecureCloud.Theme;assembly=PrettySecureCloud"
              xmlns:infrastructure="clr-namespace:PrettySecureCloud.Infrastructure;assembly=PrettySecureCloud"
              x:Class="PrettySecureCloud.Pages.RegistrationPage" >
@@ -12,6 +12,6 @@
 			<Entry Placeholder="Passwort wiederholen" Text="{Binding Password2}" IsPassword="true" Completed="Entry_OnCompleted" IsEnabled="{Binding IsFree}"/>
 			<Button Text="Registrieren" TextColor="White" BackgroundColor="{x:Static theme:Colors.LogoBlue}" Command="{Binding RegisterCommand}" IsEnabled="{Binding IsFree}"/>
 		</StackLayout>
-		<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+		<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center" />
 	</Grid>
-</infrastructure:CustomPage>
+</NavigationPage>

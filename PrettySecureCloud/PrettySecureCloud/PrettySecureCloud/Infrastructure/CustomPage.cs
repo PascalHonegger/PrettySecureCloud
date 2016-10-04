@@ -2,26 +2,26 @@
 
 namespace PrettySecureCloud.Infrastructure
 {
-	public class CustomPage : ContentPage
+	public static class EventsHelper
 	{
-		protected void Subscribe<T>() where T : class
+		public static void Subscribe<TViewModel, TView>(this TView instance) where TView : Page where TViewModel : class
 		{
-			MessagingCenter.Subscribe<T, MessageData>(this, MessageData.DisplayAlert, (sender, message) =>
+			MessagingCenter.Subscribe<TViewModel, MessageData>(instance, MessageData.DisplayAlert, (sender, message) =>
 			{
 				if (string.IsNullOrEmpty(message.Accept))
-					DisplayAlert(message.Title, message.Content, message.Cancel);
+					instance.DisplayAlert(message.Title, message.Content, message.Cancel);
 				else
-					DisplayAlert(message.Title, message.Content, message.Accept, message.Cancel);
+					instance.DisplayAlert(message.Title, message.Content, message.Accept, message.Cancel);
 			});
 
-			MessagingCenter.Subscribe<T, Page>(this, ViewModelBase.NavigationPushView,
-				(sender, page) => { Navigation.PushModalAsync(page); });
+			MessagingCenter.Subscribe<TViewModel, Page>(instance, ViewModelBase.NavigationPushView,
+				(sender, page) => { instance.Navigation.PushModalAsync(page); });
 		}
 
-		protected void Unsubscribe<T>() where T : class
+		public static void Unsubscribe<TViewModel, TView>(this TView instance) where TView : Page where TViewModel : class
 		{
-			MessagingCenter.Unsubscribe<T, MessageData>(this, MessageData.DisplayAlert);
-			MessagingCenter.Unsubscribe<T, Page>(this, ViewModelBase.NavigationPushView);
+			MessagingCenter.Unsubscribe<TViewModel, MessageData>(instance, MessageData.DisplayAlert);
+			MessagingCenter.Unsubscribe<TViewModel, Page>(instance, ViewModelBase.NavigationPushView);
 		}
 	}
 }

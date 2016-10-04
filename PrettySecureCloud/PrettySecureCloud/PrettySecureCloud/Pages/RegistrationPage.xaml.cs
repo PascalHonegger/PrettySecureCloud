@@ -1,4 +1,5 @@
 ﻿using System;
+using PrettySecureCloud.Infrastructure;
 using PrettySecureCloud.Login;
 
 namespace PrettySecureCloud.Pages
@@ -13,12 +14,12 @@ namespace PrettySecureCloud.Pages
 
 			BindingContext = _viewModel = new RegisterViewModel();
 
-			Subscribe<RegisterViewModel>();
+			this.Subscribe<RegisterViewModel, RegistrationPage>();
 		}
 
 		~RegistrationPage()
 		{
-			Unsubscribe<RegisterViewModel>();
+			this.Unsubscribe<RegisterViewModel, RegistrationPage>();
 		}
 
 		private void Entry_OnCompleted(object sender, EventArgs e)
