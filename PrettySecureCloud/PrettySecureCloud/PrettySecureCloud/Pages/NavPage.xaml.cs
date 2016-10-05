@@ -10,16 +10,7 @@ namespace PrettySecureCloud.Pages
 		{
 			InitializeComponent();
 
-			NavListView.ItemsSource = new List<Startscreen>
-			{
-				new Startscreen
-				{
-					Title = "Dienste",
-					Image = "home.png"
-				}
-			};
+			BindingContext = new NavPageViewModel();
 		}
-
-		public ListView ListView => NavListView;
 	}
 }

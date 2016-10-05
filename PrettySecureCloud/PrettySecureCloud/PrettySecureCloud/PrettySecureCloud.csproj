@@ -45,8 +45,7 @@
     <Compile Include="Infrastructure\ViewModelBase.cs" />
     <Compile Include="Login\LoginViewModel.cs" />
     <Compile Include="Login\RegisterViewModel.cs" />
-    <Compile Include="Model\Base.cs" />
-    <Compile Include="Model\Startscreen.cs" />
+    <Compile Include="Pages\NavigationItem.cs" />
     <Compile Include="CloudServices\ServiceChooser.xaml.cs">
       <DependentUpon>ServiceChooser.xaml</DependentUpon>
     </Compile>
@@ -56,6 +55,11 @@
     <Compile Include="Pages\NavPage.xaml.cs">
       <DependentUpon>NavPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\NavPageViewModel.cs" />
+    <Compile Include="Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\LoginService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -164,7 +168,12 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

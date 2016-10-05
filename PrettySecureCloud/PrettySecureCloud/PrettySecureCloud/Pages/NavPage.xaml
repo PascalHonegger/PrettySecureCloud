@@ -4,21 +4,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PrettySecureCloud.Pages.NavPage"
              Icon="burger.png"
-             Title=" ">
+             Title="Navigation">
 	<StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand">
-		<StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand">
-			<Image x:Name="Logo" Source="banner.png" Aspect="AspectFill" HeightRequest="150" />
-		</StackLayout>
+		<Image Source="banner.png" Aspect="AspectFill" HeightRequest="150" HorizontalOptions="FillAndExpand"/>
 
-		<StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand" Padding="20, 10, 20, 20">
-			<ListView x:Name="NavListView"
-			          HasUnevenRows="True">
-				<ListView.ItemTemplate>
-					<DataTemplate>
-						<ImageCell ImageSource="{Binding Image}" Text="{Binding Title}" />
-					</DataTemplate>
-				</ListView.ItemTemplate>
-			</ListView>
-		</StackLayout>
+		<ListView ItemsSource="{Binding AvailablePages}" SelectedItem="{Binding SelectedPage}" HasUnevenRows="True" VerticalOptions="FillAndExpand" Margin="20, 10, 20, 20">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ImageCell ImageSource="{Binding Image}" Text="{Binding Title}" Detail="{Binding Description}"/>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
 	</StackLayout>
 </ContentPage>
