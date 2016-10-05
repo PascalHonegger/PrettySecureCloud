@@ -14,20 +14,31 @@ namespace PrettySecureCloud.LoginService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/PrettySecureCloud")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/PrettySecureCloud.Model")]
     public partial class User : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private byte[] EncryptionKeyField;
         
         private int IdField;
         
         private string MailField;
         
-        private string PrivateKeyField;
-        
-        private string PublicKeyField;
-        
         private System.Collections.Generic.List<PrettySecureCloud.LoginService.CloudService> ServicesField;
         
         private string UsernameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] EncryptionKey {
+            get {
+                return this.EncryptionKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EncryptionKeyField, value) != true)) {
+                    this.EncryptionKeyField = value;
+                    this.RaisePropertyChanged("EncryptionKey");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int Id {
@@ -51,32 +62,6 @@ namespace PrettySecureCloud.LoginService {
                 if ((object.ReferenceEquals(this.MailField, value) != true)) {
                     this.MailField = value;
                     this.RaisePropertyChanged("Mail");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PrivateKey {
-            get {
-                return this.PrivateKeyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PrivateKeyField, value) != true)) {
-                    this.PrivateKeyField = value;
-                    this.RaisePropertyChanged("PrivateKey");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PublicKey {
-            get {
-                return this.PublicKeyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PublicKeyField, value) != true)) {
-                    this.PublicKeyField = value;
-                    this.RaisePropertyChanged("PublicKey");
                 }
             }
         }
@@ -119,7 +104,7 @@ namespace PrettySecureCloud.LoginService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CloudService", Namespace="http://schemas.datacontract.org/2004/07/PrettySecureCloud")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CloudService", Namespace="http://schemas.datacontract.org/2004/07/PrettySecureCloud.Model")]
     public partial class CloudService : object, System.ComponentModel.INotifyPropertyChanged {
         
         private int IdField;
@@ -194,14 +179,29 @@ namespace PrettySecureCloud.LoginService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceType", Namespace="http://schemas.datacontract.org/2004/07/PrettySecureCloud")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceType", Namespace="http://schemas.datacontract.org/2004/07/PrettySecureCloud.Model")]
     public partial class ServiceType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int IdField;
         
         private string KeyField;
         
         private string NameField;
         
         private string SecretField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string Key {
@@ -276,10 +276,25 @@ namespace PrettySecureCloud.LoginService {
         
         PrettySecureCloud.LoginService.User EndLogin(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ILoginService/Update", ReplyAction="http://tempuri.org/ILoginService/UpdateResponse")]
-        System.IAsyncResult BeginUpdate(PrettySecureCloud.LoginService.User newUserData, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ILoginService/ChangePassword", ReplyAction="http://tempuri.org/ILoginService/ChangePasswordResponse")]
+        System.IAsyncResult BeginChangePassword(int userId, string currentPassword, string newPassword, System.AsyncCallback callback, object asyncState);
         
-        void EndUpdate(System.IAsyncResult result);
+        void EndChangePassword(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ILoginService/AddService", ReplyAction="http://tempuri.org/ILoginService/AddServiceResponse")]
+        System.IAsyncResult BeginAddService(int userId, PrettySecureCloud.LoginService.ServiceType type, string name, string loginToken, System.AsyncCallback callback, object asyncState);
+        
+        PrettySecureCloud.LoginService.CloudService EndAddService(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ILoginService/UpdateService", ReplyAction="http://tempuri.org/ILoginService/UpdateServiceResponse")]
+        System.IAsyncResult BeginUpdateService(int userId, int serviceId, string newName, string newLoginToken, System.AsyncCallback callback, object asyncState);
+        
+        void EndUpdateService(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ILoginService/RemoveService", ReplyAction="http://tempuri.org/ILoginService/RemoveServiceResponse")]
+        System.IAsyncResult BeginRemoveService(int userId, int serviceId, System.AsyncCallback callback, object asyncState);
+        
+        void EndRemoveService(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ILoginService/LoadAllServices", ReplyAction="http://tempuri.org/ILoginService/LoadAllServicesResponse")]
         System.IAsyncResult BeginLoadAllServices(System.AsyncCallback callback, object asyncState);
@@ -350,6 +365,25 @@ namespace PrettySecureCloud.LoginService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class AddServiceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public AddServiceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public PrettySecureCloud.LoginService.CloudService Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((PrettySecureCloud.LoginService.CloudService)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class LoadAllServicesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -395,11 +429,29 @@ namespace PrettySecureCloud.LoginService {
         
         private System.Threading.SendOrPostCallback onLoginCompletedDelegate;
         
-        private BeginOperationDelegate onBeginUpdateDelegate;
+        private BeginOperationDelegate onBeginChangePasswordDelegate;
         
-        private EndOperationDelegate onEndUpdateDelegate;
+        private EndOperationDelegate onEndChangePasswordDelegate;
         
-        private System.Threading.SendOrPostCallback onUpdateCompletedDelegate;
+        private System.Threading.SendOrPostCallback onChangePasswordCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginAddServiceDelegate;
+        
+        private EndOperationDelegate onEndAddServiceDelegate;
+        
+        private System.Threading.SendOrPostCallback onAddServiceCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginUpdateServiceDelegate;
+        
+        private EndOperationDelegate onEndUpdateServiceDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdateServiceCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginRemoveServiceDelegate;
+        
+        private EndOperationDelegate onEndRemoveServiceDelegate;
+        
+        private System.Threading.SendOrPostCallback onRemoveServiceCompletedDelegate;
         
         private BeginOperationDelegate onBeginLoadAllServicesDelegate;
         
@@ -465,7 +517,13 @@ namespace PrettySecureCloud.LoginService {
         
         public event System.EventHandler<LoginCompletedEventArgs> LoginCompleted;
         
-        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdateCompleted;
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> ChangePasswordCompleted;
+        
+        public event System.EventHandler<AddServiceCompletedEventArgs> AddServiceCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdateServiceCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> RemoveServiceCompleted;
         
         public event System.EventHandler<LoadAllServicesCompletedEventArgs> LoadAllServicesCompleted;
         
@@ -663,48 +721,202 @@ namespace PrettySecureCloud.LoginService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult PrettySecureCloud.LoginService.ILoginService.BeginUpdate(PrettySecureCloud.LoginService.User newUserData, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginUpdate(newUserData, callback, asyncState);
+        System.IAsyncResult PrettySecureCloud.LoginService.ILoginService.BeginChangePassword(int userId, string currentPassword, string newPassword, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginChangePassword(userId, currentPassword, newPassword, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        void PrettySecureCloud.LoginService.ILoginService.EndUpdate(System.IAsyncResult result) {
-            base.Channel.EndUpdate(result);
+        void PrettySecureCloud.LoginService.ILoginService.EndChangePassword(System.IAsyncResult result) {
+            base.Channel.EndChangePassword(result);
         }
         
-        private System.IAsyncResult OnBeginUpdate(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            PrettySecureCloud.LoginService.User newUserData = ((PrettySecureCloud.LoginService.User)(inValues[0]));
-            return ((PrettySecureCloud.LoginService.ILoginService)(this)).BeginUpdate(newUserData, callback, asyncState);
+        private System.IAsyncResult OnBeginChangePassword(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int userId = ((int)(inValues[0]));
+            string currentPassword = ((string)(inValues[1]));
+            string newPassword = ((string)(inValues[2]));
+            return ((PrettySecureCloud.LoginService.ILoginService)(this)).BeginChangePassword(userId, currentPassword, newPassword, callback, asyncState);
         }
         
-        private object[] OnEndUpdate(System.IAsyncResult result) {
-            ((PrettySecureCloud.LoginService.ILoginService)(this)).EndUpdate(result);
+        private object[] OnEndChangePassword(System.IAsyncResult result) {
+            ((PrettySecureCloud.LoginService.ILoginService)(this)).EndChangePassword(result);
             return null;
         }
         
-        private void OnUpdateCompleted(object state) {
-            if ((this.UpdateCompleted != null)) {
+        private void OnChangePasswordCompleted(object state) {
+            if ((this.ChangePasswordCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.UpdateCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+                this.ChangePasswordCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void UpdateAsync(PrettySecureCloud.LoginService.User newUserData) {
-            this.UpdateAsync(newUserData, null);
+        public void ChangePasswordAsync(int userId, string currentPassword, string newPassword) {
+            this.ChangePasswordAsync(userId, currentPassword, newPassword, null);
         }
         
-        public void UpdateAsync(PrettySecureCloud.LoginService.User newUserData, object userState) {
-            if ((this.onBeginUpdateDelegate == null)) {
-                this.onBeginUpdateDelegate = new BeginOperationDelegate(this.OnBeginUpdate);
+        public void ChangePasswordAsync(int userId, string currentPassword, string newPassword, object userState) {
+            if ((this.onBeginChangePasswordDelegate == null)) {
+                this.onBeginChangePasswordDelegate = new BeginOperationDelegate(this.OnBeginChangePassword);
             }
-            if ((this.onEndUpdateDelegate == null)) {
-                this.onEndUpdateDelegate = new EndOperationDelegate(this.OnEndUpdate);
+            if ((this.onEndChangePasswordDelegate == null)) {
+                this.onEndChangePasswordDelegate = new EndOperationDelegate(this.OnEndChangePassword);
             }
-            if ((this.onUpdateCompletedDelegate == null)) {
-                this.onUpdateCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateCompleted);
+            if ((this.onChangePasswordCompletedDelegate == null)) {
+                this.onChangePasswordCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnChangePasswordCompleted);
             }
-            base.InvokeAsync(this.onBeginUpdateDelegate, new object[] {
-                        newUserData}, this.onEndUpdateDelegate, this.onUpdateCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginChangePasswordDelegate, new object[] {
+                        userId,
+                        currentPassword,
+                        newPassword}, this.onEndChangePasswordDelegate, this.onChangePasswordCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult PrettySecureCloud.LoginService.ILoginService.BeginAddService(int userId, PrettySecureCloud.LoginService.ServiceType type, string name, string loginToken, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginAddService(userId, type, name, loginToken, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PrettySecureCloud.LoginService.CloudService PrettySecureCloud.LoginService.ILoginService.EndAddService(System.IAsyncResult result) {
+            return base.Channel.EndAddService(result);
+        }
+        
+        private System.IAsyncResult OnBeginAddService(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int userId = ((int)(inValues[0]));
+            PrettySecureCloud.LoginService.ServiceType type = ((PrettySecureCloud.LoginService.ServiceType)(inValues[1]));
+            string name = ((string)(inValues[2]));
+            string loginToken = ((string)(inValues[3]));
+            return ((PrettySecureCloud.LoginService.ILoginService)(this)).BeginAddService(userId, type, name, loginToken, callback, asyncState);
+        }
+        
+        private object[] OnEndAddService(System.IAsyncResult result) {
+            PrettySecureCloud.LoginService.CloudService retVal = ((PrettySecureCloud.LoginService.ILoginService)(this)).EndAddService(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnAddServiceCompleted(object state) {
+            if ((this.AddServiceCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.AddServiceCompleted(this, new AddServiceCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void AddServiceAsync(int userId, PrettySecureCloud.LoginService.ServiceType type, string name, string loginToken) {
+            this.AddServiceAsync(userId, type, name, loginToken, null);
+        }
+        
+        public void AddServiceAsync(int userId, PrettySecureCloud.LoginService.ServiceType type, string name, string loginToken, object userState) {
+            if ((this.onBeginAddServiceDelegate == null)) {
+                this.onBeginAddServiceDelegate = new BeginOperationDelegate(this.OnBeginAddService);
+            }
+            if ((this.onEndAddServiceDelegate == null)) {
+                this.onEndAddServiceDelegate = new EndOperationDelegate(this.OnEndAddService);
+            }
+            if ((this.onAddServiceCompletedDelegate == null)) {
+                this.onAddServiceCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAddServiceCompleted);
+            }
+            base.InvokeAsync(this.onBeginAddServiceDelegate, new object[] {
+                        userId,
+                        type,
+                        name,
+                        loginToken}, this.onEndAddServiceDelegate, this.onAddServiceCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult PrettySecureCloud.LoginService.ILoginService.BeginUpdateService(int userId, int serviceId, string newName, string newLoginToken, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdateService(userId, serviceId, newName, newLoginToken, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void PrettySecureCloud.LoginService.ILoginService.EndUpdateService(System.IAsyncResult result) {
+            base.Channel.EndUpdateService(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdateService(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int userId = ((int)(inValues[0]));
+            int serviceId = ((int)(inValues[1]));
+            string newName = ((string)(inValues[2]));
+            string newLoginToken = ((string)(inValues[3]));
+            return ((PrettySecureCloud.LoginService.ILoginService)(this)).BeginUpdateService(userId, serviceId, newName, newLoginToken, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdateService(System.IAsyncResult result) {
+            ((PrettySecureCloud.LoginService.ILoginService)(this)).EndUpdateService(result);
+            return null;
+        }
+        
+        private void OnUpdateServiceCompleted(object state) {
+            if ((this.UpdateServiceCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdateServiceCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdateServiceAsync(int userId, int serviceId, string newName, string newLoginToken) {
+            this.UpdateServiceAsync(userId, serviceId, newName, newLoginToken, null);
+        }
+        
+        public void UpdateServiceAsync(int userId, int serviceId, string newName, string newLoginToken, object userState) {
+            if ((this.onBeginUpdateServiceDelegate == null)) {
+                this.onBeginUpdateServiceDelegate = new BeginOperationDelegate(this.OnBeginUpdateService);
+            }
+            if ((this.onEndUpdateServiceDelegate == null)) {
+                this.onEndUpdateServiceDelegate = new EndOperationDelegate(this.OnEndUpdateService);
+            }
+            if ((this.onUpdateServiceCompletedDelegate == null)) {
+                this.onUpdateServiceCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateServiceCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdateServiceDelegate, new object[] {
+                        userId,
+                        serviceId,
+                        newName,
+                        newLoginToken}, this.onEndUpdateServiceDelegate, this.onUpdateServiceCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult PrettySecureCloud.LoginService.ILoginService.BeginRemoveService(int userId, int serviceId, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginRemoveService(userId, serviceId, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void PrettySecureCloud.LoginService.ILoginService.EndRemoveService(System.IAsyncResult result) {
+            base.Channel.EndRemoveService(result);
+        }
+        
+        private System.IAsyncResult OnBeginRemoveService(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int userId = ((int)(inValues[0]));
+            int serviceId = ((int)(inValues[1]));
+            return ((PrettySecureCloud.LoginService.ILoginService)(this)).BeginRemoveService(userId, serviceId, callback, asyncState);
+        }
+        
+        private object[] OnEndRemoveService(System.IAsyncResult result) {
+            ((PrettySecureCloud.LoginService.ILoginService)(this)).EndRemoveService(result);
+            return null;
+        }
+        
+        private void OnRemoveServiceCompleted(object state) {
+            if ((this.RemoveServiceCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.RemoveServiceCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void RemoveServiceAsync(int userId, int serviceId) {
+            this.RemoveServiceAsync(userId, serviceId, null);
+        }
+        
+        public void RemoveServiceAsync(int userId, int serviceId, object userState) {
+            if ((this.onBeginRemoveServiceDelegate == null)) {
+                this.onBeginRemoveServiceDelegate = new BeginOperationDelegate(this.OnBeginRemoveService);
+            }
+            if ((this.onEndRemoveServiceDelegate == null)) {
+                this.onEndRemoveServiceDelegate = new EndOperationDelegate(this.OnEndRemoveService);
+            }
+            if ((this.onRemoveServiceCompletedDelegate == null)) {
+                this.onRemoveServiceCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnRemoveServiceCompleted);
+            }
+            base.InvokeAsync(this.onBeginRemoveServiceDelegate, new object[] {
+                        userId,
+                        serviceId}, this.onEndRemoveServiceDelegate, this.onRemoveServiceCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -908,16 +1120,62 @@ namespace PrettySecureCloud.LoginService {
                 return _result;
             }
             
-            public System.IAsyncResult BeginUpdate(PrettySecureCloud.LoginService.User newUserData, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[1];
-                _args[0] = newUserData;
-                System.IAsyncResult _result = base.BeginInvoke("Update", _args, callback, asyncState);
+            public System.IAsyncResult BeginChangePassword(int userId, string currentPassword, string newPassword, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[3];
+                _args[0] = userId;
+                _args[1] = currentPassword;
+                _args[2] = newPassword;
+                System.IAsyncResult _result = base.BeginInvoke("ChangePassword", _args, callback, asyncState);
                 return _result;
             }
             
-            public void EndUpdate(System.IAsyncResult result) {
+            public void EndChangePassword(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                base.EndInvoke("Update", _args, result);
+                base.EndInvoke("ChangePassword", _args, result);
+            }
+            
+            public System.IAsyncResult BeginAddService(int userId, PrettySecureCloud.LoginService.ServiceType type, string name, string loginToken, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[4];
+                _args[0] = userId;
+                _args[1] = type;
+                _args[2] = name;
+                _args[3] = loginToken;
+                System.IAsyncResult _result = base.BeginInvoke("AddService", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public PrettySecureCloud.LoginService.CloudService EndAddService(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                PrettySecureCloud.LoginService.CloudService _result = ((PrettySecureCloud.LoginService.CloudService)(base.EndInvoke("AddService", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginUpdateService(int userId, int serviceId, string newName, string newLoginToken, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[4];
+                _args[0] = userId;
+                _args[1] = serviceId;
+                _args[2] = newName;
+                _args[3] = newLoginToken;
+                System.IAsyncResult _result = base.BeginInvoke("UpdateService", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndUpdateService(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("UpdateService", _args, result);
+            }
+            
+            public System.IAsyncResult BeginRemoveService(int userId, int serviceId, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = userId;
+                _args[1] = serviceId;
+                System.IAsyncResult _result = base.BeginInvoke("RemoveService", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndRemoveService(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("RemoveService", _args, result);
             }
             
             public System.IAsyncResult BeginLoadAllServices(System.AsyncCallback callback, object asyncState) {
