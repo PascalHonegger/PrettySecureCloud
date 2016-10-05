@@ -22,7 +22,7 @@ namespace PrettySecureCloud.Pages
 
 			switch (item.Title)
 			{
-				case "Home":
+				case "Dienste":
 					Detail = new MasterPage();
 					break;
 				default:
@@ -33,10 +33,13 @@ namespace PrettySecureCloud.Pages
 			IsPresented = false;
 		}
 
-		private async Task PushAsync(ContentPage page, bool clearStack = true)
+		private async Task PushAsync(Page page, bool clearStack = true)
 		{
 			if (clearStack)
+			{
 				await NavigationStack.PopToRootAsync(true);
+			}
+
 			await NavigationStack.PushAsync(page);
 		}
 	}

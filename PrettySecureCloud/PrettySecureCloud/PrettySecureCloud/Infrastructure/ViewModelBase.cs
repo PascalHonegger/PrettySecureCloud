@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using PrettySecureCloud.LoginService;
+using PrettySecureCloud.Service_References.LoginService;
 using Xamarin.Forms;
 
 namespace PrettySecureCloud.Infrastructure

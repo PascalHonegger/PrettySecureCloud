@@ -1,8 +1,7 @@
 ﻿using System;
 using PrettySecureCloud.Infrastructure;
-using PrettySecureCloud.Login;
 
-namespace PrettySecureCloud.Pages
+namespace PrettySecureCloud.Login
 {
 	public partial class LoginPage
 	{

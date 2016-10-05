@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:theme="clr-namespace:PrettySecureCloud.Theme;assembly=PrettySecureCloud"
-             x:Class="PrettySecureCloud.Pages.RegistrationPage" Title="Registrieren" >
+             x:Class="PrettySecureCloud.Login.RegistrationPage" Title="Registrieren" >
 	<Grid>
 		<StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
 			<Entry Placeholder="Benutzername" Text="{Binding Username}" Completed="Entry_OnCompleted" IsEnabled="{Binding IsFree}"/>

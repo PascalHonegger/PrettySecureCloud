@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="CloudServices\ServiceChooserViewModel.cs" />
     <Compile Include="Encryption\IByteEncryptor.cs" />
     <Compile Include="Infrastructure\EventsHelper.cs" />
     <Compile Include="Encryption\AesEncryptor.cs" />
@@ -46,8 +47,8 @@
     <Compile Include="Login\RegisterViewModel.cs" />
     <Compile Include="Model\Base.cs" />
     <Compile Include="Model\Startscreen.cs" />
-    <Compile Include="Pages\HomePage.xaml.cs">
-      <DependentUpon>HomePage.xaml</DependentUpon>
+    <Compile Include="CloudServices\ServiceChooser.xaml.cs">
+      <DependentUpon>ServiceChooser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
@@ -62,10 +63,10 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Theme\Colors.cs" />
-    <Compile Include="Pages\LoginPage.xaml.cs">
+    <Compile Include="Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\RegistrationPage.xaml.cs">
+    <Compile Include="Login\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -74,14 +75,14 @@
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\HomePage.xaml">
+    <EmbeddedResource Include="CloudServices\ServiceChooser.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\LoginPage.xaml">
+    <EmbeddedResource Include="Login\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\RegistrationPage.xaml">
+    <EmbeddedResource Include="Login\RegistrationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -149,6 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\LoginService\LoginService1.wsdl" />
+    <None Include="Service References\LoginService\PrettySecureCloud.LoginService.CloudService.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\LoginService\PrettySecureCloud.LoginService.ServiceType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -160,6 +164,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

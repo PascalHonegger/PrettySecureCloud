@@ -14,7 +14,7 @@ namespace PrettySecureCloud.Pages
 			{
 				new Startscreen
 				{
-					Title = "Home",
+					Title = "Dienste",
 					Image = "home.png"
 				}
 			};

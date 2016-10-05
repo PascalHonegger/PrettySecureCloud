@@ -1,7 +1,7 @@
 ﻿using System.ServiceModel;
 using PrettySecureCloud.Infrastructure;
-using PrettySecureCloud.LoginService;
 using PrettySecureCloud.Pages;
+using PrettySecureCloud.Service_References.LoginService;
 using Xamarin.Forms;
 
 namespace PrettySecureCloud.Login
@@ -21,9 +21,6 @@ namespace PrettySecureCloud.Login
 
 		public bool CanLogin()
 		{
-			//TODO 
-			// var entry = (Entry)sender;
-			// entry.PlaceholderColor = !string.IsNullOrEmpty(entry.Text) ? Color.Default : Color.Red;
 			return !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password);
 		}
 
