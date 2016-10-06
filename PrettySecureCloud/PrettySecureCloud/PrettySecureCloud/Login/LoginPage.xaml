@@ -5,7 +5,7 @@
                            x:Class="PrettySecureCloud.Login.LoginPage">
 	<Grid>
 		<StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
-			<Image Source="prettySecureCloudIcon.png" Aspect="AspectFit" IsEnabled="{Binding IsFree}"/>
+			<Image Source="Icon.png" Aspect="AspectFit" IsEnabled="{Binding IsFree}"/>
 			<Label Text="Pretty Secure Cloud" VerticalTextAlignment="Center" IsEnabled="{Binding IsFree}"/>
 			<Entry Placeholder="Benutzername/E-Mail" Text="{Binding Username}" Completed="OnComplete" IsEnabled="{Binding IsFree}"/>
 			<Entry Placeholder="Passwort" Text="{Binding Password}" IsPassword="true"
