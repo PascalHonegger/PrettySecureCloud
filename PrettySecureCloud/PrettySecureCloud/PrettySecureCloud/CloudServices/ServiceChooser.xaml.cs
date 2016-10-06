@@ -12,10 +12,5 @@ namespace PrettySecureCloud.CloudServices
 
 			this.Subscribe<ServiceChooserViewModel, ServiceChooser>();
 		}
-
-		~ServiceChooser()
-		{
-			this.Unsubscribe<ServiceChooserViewModel, ServiceChooser>();
-		}
 	}
 }

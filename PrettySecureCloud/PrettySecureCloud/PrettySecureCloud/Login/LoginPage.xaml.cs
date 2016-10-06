@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ServiceModel;
 using PrettySecureCloud.Infrastructure;
+using PrettySecureCloud.Service_References.LoginService;
 
 namespace PrettySecureCloud.Login
 {
@@ -7,21 +9,27 @@ namespace PrettySecureCloud.Login
 	{
 		private readonly LoginViewModel _viewModel;
 
+		private void TryConnectToServer()
+		{
+			ViewModelBase.Service = new LoginServiceClient(LoginServiceClient.EndpointConfiguration.BasicHttpsBinding_ILoginService);
+
+			ViewModelBase.Service.OpenAsync();
+		}
+
 		public LoginPage()
 		{
 			InitializeComponent();
 
-			BindingContext = _viewModel = new LoginViewModel();
+			_viewModel = new LoginViewModel();
+
+			TryConnectToServer();
+
+			BindingContext = _viewModel;
 
 			_viewModel.LoginCommand.ChangeCanExecute();
 			_viewModel.RegisterCommand.ChangeCanExecute();
 
 			this.Subscribe<LoginViewModel, LoginPage>();
-		}
-
-		~LoginPage()
-		{
-			this.Unsubscribe<LoginViewModel, LoginPage>();
 		}
 
 		private void OnComplete(object sender, EventArgs e)

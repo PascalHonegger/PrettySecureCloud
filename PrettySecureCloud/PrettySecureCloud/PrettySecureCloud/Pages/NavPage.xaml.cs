@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using PrettySecureCloud.Model;
-using Xamarin.Forms;
-
-namespace PrettySecureCloud.Pages
+﻿namespace PrettySecureCloud.Pages
 {
 	public partial class NavPage
 	{

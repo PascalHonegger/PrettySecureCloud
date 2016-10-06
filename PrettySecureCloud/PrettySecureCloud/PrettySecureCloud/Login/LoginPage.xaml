@@ -2,10 +2,10 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                            xmlns:theme="clr-namespace:PrettySecureCloud.Theme;assembly=PrettySecureCloud"
-                           x:Class="PrettySecureCloud.Login.LoginPage">
+                           x:Class="PrettySecureCloud.Login.LoginPage" Title="Anmelden">
 	<Grid>
 		<StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
-			<Image Source="Icon.png" Aspect="AspectFit" IsEnabled="{Binding IsFree}"/>
+			<Image Source="icon.png" Aspect="AspectFit" />
 			<Label Text="Pretty Secure Cloud" VerticalTextAlignment="Center" IsEnabled="{Binding IsFree}"/>
 			<Entry Placeholder="Benutzername/E-Mail" Text="{Binding Username}" Completed="OnComplete" IsEnabled="{Binding IsFree}"/>
 			<Entry Placeholder="Passwort" Text="{Binding Password}" IsPassword="true"

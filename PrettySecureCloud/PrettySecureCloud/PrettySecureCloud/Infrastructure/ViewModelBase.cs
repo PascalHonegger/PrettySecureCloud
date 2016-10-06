@@ -10,14 +10,11 @@ namespace PrettySecureCloud.Infrastructure
 		public const string NavigationPushView = "Naviagion.PushView";
 		public const string NavigationPushViewModal = "Naviagion.PushViewModal";
 
-		protected static LoginServiceClient Service
-			=> _service ??
-			   (_service = new LoginServiceClient(LoginServiceClient.EndpointConfiguration.BasicHttpsBinding_ILoginService));
+		public static LoginServiceClient Service { get; set; }
 
 		protected static Session CurrentSession => _session ?? (_session = new Session());
 
 		private int _workers;
-		private static LoginServiceClient _service;
 		private static Session _session;
 
 		protected static void DisplayAlert<T>(T instance, MessageData message) where T : class

@@ -74,6 +74,10 @@ namespace PrettySecureCloud.Login
 					{
 						DisplayAlert(this, new MessageData("Failure", fault.Message, "Ok"));
 					}
+					catch (CommunicationException)
+					{
+						DisplayAlert(this, new MessageData("Keine Verbindung", "Konnte keine Verbindung zum Server herstellen", "Ok"));
+					}
 				}
 				else
 				{

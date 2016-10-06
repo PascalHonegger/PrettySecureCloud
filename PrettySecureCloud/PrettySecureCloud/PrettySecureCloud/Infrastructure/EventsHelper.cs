@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace PrettySecureCloud.Infrastructure
 {

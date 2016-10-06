@@ -18,11 +18,6 @@ namespace PrettySecureCloud.Login
 			this.Subscribe<RegisterViewModel, RegistrationPage>();
 		}
 
-		~RegistrationPage()
-		{
-			this.Unsubscribe<RegisterViewModel, RegistrationPage>();
-		}
-
 		private void Entry_OnCompleted(object sender, EventArgs e)
 		{
 			if (_viewModel.RegisterCommand.CanExecute(null))

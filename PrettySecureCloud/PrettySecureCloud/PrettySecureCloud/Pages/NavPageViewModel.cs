@@ -2,7 +2,6 @@
 using System.Linq;
 using PrettySecureCloud.CloudServices;
 using PrettySecureCloud.Infrastructure;
-using PrettySecureCloud.Model;
 using Xamarin.Forms;
 
 namespace PrettySecureCloud.Pages
@@ -19,11 +18,14 @@ namespace PrettySecureCloud.Pages
 				new NavigationItem
 				{
 					Title = CloudServices,
-					Image = "home.png"
+					Image = "home.png",
+					Page = new NavigationPage(new ServiceChooser())
 				},
 				new NavigationItem
 				{
-					Title = Settings
+					Title = Settings,
+					Image = "settings.png",
+					Page = new SettingsPage()
 				}
 			};
 
@@ -40,22 +42,12 @@ namespace PrettySecureCloud.Pages
 			set
 			{
 				_selectedPage = value;
-				OnPropertyChanged();
 
 				if (_selectedPage == null) return;
 
-				switch (_selectedPage.Title)
-				{
-					case CloudServices:
-						PushView(this, new NavigationPage(new ServiceChooser()));
-						break;
-					case Settings:
-						PushView(this, new SettingsPage());
-						break;
-					default:
-						DisplayAlert(this, new MessageData("Fehler", "Fehler beim Laden der Seite", "OK"));
-						break;
-				}
+				PushView(this, _selectedPage.Page);
+
+				OnPropertyChanged();
 			}
 		}
 
