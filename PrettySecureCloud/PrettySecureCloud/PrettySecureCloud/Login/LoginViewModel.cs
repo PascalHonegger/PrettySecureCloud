@@ -64,22 +64,7 @@ namespace PrettySecureCloud.Login
 			Service.LoginCompleted -= LoginCompleted;
 			Device.BeginInvokeOnMainThread(() =>
 			{
-				if (args.Error != null)
-				{
-					try
-					{
-						throw args.Error;
-					}
-					catch (FaultException fault)
-					{
-						DisplayAlert(this, new MessageData("Fehler", fault.Message, "Ok"));
-					}
-					catch (CommunicationException)
-					{
-						DisplayAlert(this, new MessageData("Keine Verbindung", "Konnte keine Verbindung zum Server herstellen", "Ok"));
-					}
-				}
-				else
+				if (HandleException(this, args))
 				{
 					var result = args.Result;
 					CurrentSession.CurrentUser = result;

@@ -1,4 +1,5 @@
 ﻿using System;
+using PrettySecureCloud.Infrastructure;
 
 namespace PrettySecureCloud.Pages
 {
@@ -13,6 +14,8 @@ namespace PrettySecureCloud.Pages
 			BindingContext = _viewModel = new SettingsViewModel();
 
 			_viewModel.ChangePasswordCommand.ChangeCanExecute();
+
+			this.Subscribe<SettingsViewModel, SettingsPage>();
 		}
 
 		private void OnComplete(object sender, EventArgs e)

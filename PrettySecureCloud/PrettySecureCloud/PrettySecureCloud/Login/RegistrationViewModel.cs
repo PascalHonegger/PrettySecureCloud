@@ -82,20 +82,9 @@ namespace PrettySecureCloud.Login
 			Workers--;
 			Service.RegisterCompleted -= RegisterCompleted;
 
-			if (args.Error != null)
+			if (HandleException(this, args))
 			{
-				try
-				{
-					throw args.Error;
-				}
-				catch (FaultException fault)
-				{
-					DisplayAlert(this, new MessageData("Fehler", fault.Message, "Ok"));
-				}
-				catch (CommunicationException)
-				{
-					DisplayAlert(this, new MessageData("Keine Verbindung", "Konnte keine Verbindung zum Server herstellen", "Ok"));
-				}
+				//TODO Login
 			}
 		}
 
@@ -112,8 +101,13 @@ namespace PrettySecureCloud.Login
 			var isUsernameValid = Username.Length > 3 && Username.Length < 20;
 			var regex = new Regex(emailRegex);
 			var isEmailValid = regex.IsMatch(Email);
-			var isPasswordValid = Equals(Password1, Password2) && Password1.Length > 8;
+			var isPasswordValid = PasswordValid(Password1, Password2);
 			return isPasswordValid && isUsernameValid && isEmailValid;
+		}
+
+		public static bool PasswordValid(string password1, string password2)
+		{
+			return Equals(password1, password2) && password1.Length > 8;
 		}
 	}
 }

@@ -12,7 +12,7 @@
 				</ListView.ItemTemplate>
 			</ListView>
 
-			<Button Text="Hinzufügen" Command="{Binding AddServiceCommand}"/>
+			<Button Text="Hinzufügen" Command="{Binding AddServiceCommand}" IsEnabled="{Binding IsFree}"/>
 		</StackLayout>
 		<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
 	</Grid>

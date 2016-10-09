@@ -8,7 +8,11 @@ namespace PrettySecureCloud.CloudServices
 		{
 			InitializeComponent();
 
-			BindingContext = new AddServiceViewModel();
+			AddServiceViewModel viewModel;
+
+			BindingContext = viewModel = new AddServiceViewModel();
+
+			viewModel.AddServiceCommand.ChangeCanExecute();
 
 			this.Subscribe<AddServiceViewModel, AddServicePage>();
 		}

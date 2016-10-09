@@ -6,11 +6,11 @@
 	<Grid>
 		<StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
 			<Label Text="Passwort ändern" VerticalTextAlignment="Center" IsEnabled="{Binding IsFree}"/>
-			<Entry Placeholder="Passwort" Text="{Binding OldPassword}" IsPassword="true"
+			<Entry Placeholder="Altes Passwort" Text="{Binding OldPassword}" IsPassword="true"
 							Completed="OnComplete" IsEnabled="{Binding IsFree}"/>
-			<Entry Placeholder="Passwort" Text="{Binding NewPassword1}" IsPassword="true"
+			<Entry Placeholder="Neues Passwort" Text="{Binding NewPassword1}" IsPassword="true"
 							Completed="OnComplete" IsEnabled="{Binding IsFree}"/>
-			<Entry Placeholder="Passwort" Text="{Binding NewPassword2}" IsPassword="true"
+			<Entry Placeholder="Neues Passwort wiederholen" Text="{Binding NewPassword2}" IsPassword="true"
 							Completed="OnComplete" IsEnabled="{Binding IsFree}"/>
 			<Button Text="Passwort ändern" TextColor="White" BackgroundColor="{x:Static theme:Colors.LogoBlue}" Command="{Binding ChangePasswordCommand}" IsEnabled="{Binding IsFree}"/>
 		</StackLayout>
