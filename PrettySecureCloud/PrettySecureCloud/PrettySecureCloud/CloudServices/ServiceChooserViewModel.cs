@@ -2,6 +2,7 @@
 using System.Linq;
 using PrettySecureCloud.Infrastructure;
 using PrettySecureCloud.Service_References.LoginService;
+using Xamarin.Forms;
 
 namespace PrettySecureCloud.CloudServices
 {
@@ -46,7 +47,11 @@ namespace PrettySecureCloud.CloudServices
 			});
 			*/
 			CloudServices = new ObservableCollection<CloudService>(CurrentSession.CurrentUser.Services);
+
+			AddCommand = new Command(() => DisplayAlert(this, new MessageData("Hallo", "Hallo", "Cancüll")));
 		}
+
+		public Command AddCommand { get; }
 
 		private string _searchText;
 		private CloudService _selectedCloudService;
