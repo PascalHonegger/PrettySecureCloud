@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using PrettySecureCloud.Infrastructure;
-using PrettySecureCloud.Service_References.LoginService;
+using PrettySecureCloud.LoginService;
 using Xamarin.Forms;
 
 namespace PrettySecureCloud.CloudServices

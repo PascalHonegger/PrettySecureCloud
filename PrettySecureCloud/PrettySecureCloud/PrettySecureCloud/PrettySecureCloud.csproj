@@ -160,9 +160,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\LoginService\LoginService1.wsdl" />
-    <None Include="Service References\LoginService\PrettySecureCloud.LoginService.CloudService.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\LoginService\PrettySecureCloud.LoginService.ServiceType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -103,7 +103,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" name="userId" type="xs:int" />
-            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PrettySecureCloud.Model" minOccurs="0" name="type" nillable="true" type="q2:ServiceType" />
+            <xs:element minOccurs="0" name="typeId" type="xs:int" />
             <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
             <xs:element minOccurs="0" name="loginToken" nillable="true" type="xs:string" />
           </xs:sequence>
@@ -112,17 +112,15 @@
       <xs:element name="AddServiceResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PrettySecureCloud.Model" minOccurs="0" name="AddServiceResult" nillable="true" type="q3:CloudService" />
+            <xs:element minOccurs="0" name="AddServiceResult" type="xs:int" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="UpdateService">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" name="userId" type="xs:int" />
             <xs:element minOccurs="0" name="serviceId" type="xs:int" />
             <xs:element minOccurs="0" name="newName" nillable="true" type="xs:string" />
-            <xs:element minOccurs="0" name="newLoginToken" nillable="true" type="xs:string" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -134,7 +132,6 @@
       <xs:element name="RemoveService">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" name="userId" type="xs:int" />
             <xs:element minOccurs="0" name="serviceId" type="xs:int" />
           </xs:sequence>
         </xs:complexType>
@@ -152,7 +149,7 @@
       <xs:element name="LoadAllServicesResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PrettySecureCloud.Model" minOccurs="0" name="LoadAllServicesResult" nillable="true" type="q4:ArrayOfServiceType" />
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PrettySecureCloud.Model" minOccurs="0" name="LoadAllServicesResult" nillable="true" type="q2:ArrayOfServiceType" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
