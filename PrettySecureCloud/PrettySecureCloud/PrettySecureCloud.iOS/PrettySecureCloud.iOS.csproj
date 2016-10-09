@@ -213,6 +213,15 @@
   <ItemGroup>
     <BundleResource Include="Resources\add%403.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dropbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dropbox%402.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dropbox%403.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

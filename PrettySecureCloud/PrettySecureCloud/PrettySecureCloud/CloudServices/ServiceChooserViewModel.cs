@@ -48,7 +48,12 @@ namespace PrettySecureCloud.CloudServices
 			*/
 			CloudServices = new ObservableCollection<CloudService>(CurrentSession.CurrentUser.Services);
 
-			AddCommand = new Command(() => DisplayAlert(this, new MessageData("Hallo", "Hallo", "Cancüll")));
+			AddCommand = new Command(Add);
+		}
+
+		private void Add()
+		{
+			PushView(this, new AddServicePage());
 		}
 
 		public Command AddCommand { get; }

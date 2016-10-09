@@ -5,17 +5,17 @@ namespace PrettySecureCloud.Login
 {
 	public partial class RegistrationPage
 	{
-		private readonly RegisterViewModel _viewModel;
+		private readonly RegistrationViewModel _viewModel;
 
 		public RegistrationPage()
 		{
 			InitializeComponent();
 
-			BindingContext = _viewModel = new RegisterViewModel();
+			BindingContext = _viewModel = new RegistrationViewModel();
 
 			_viewModel.RegisterCommand.ChangeCanExecute();
 
-			this.Subscribe<RegisterViewModel, RegistrationPage>();
+			this.Subscribe<RegistrationViewModel, RegistrationPage>();
 		}
 
 		private void Entry_OnCompleted(object sender, EventArgs e)

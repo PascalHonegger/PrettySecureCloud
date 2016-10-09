@@ -6,14 +6,14 @@ using Xamarin.Forms;
 
 namespace PrettySecureCloud.Login
 {
-	public class RegisterViewModel : ViewModelBase
+	public class RegistrationViewModel : ViewModelBase
 	{
 		private string _email = "";
 		private string _password1 = "";
 		private string _password2 = "";
 		private string _username = "";
 
-		public RegisterViewModel()
+		public RegistrationViewModel()
 		{
 			RegisterCommand = new Command(Register, CanRegister);
 		}
@@ -90,7 +90,7 @@ namespace PrettySecureCloud.Login
 				}
 				catch (FaultException fault)
 				{
-					DisplayAlert(this, new MessageData("Failure", fault.Message, "Ok"));
+					DisplayAlert(this, new MessageData("Fehler", fault.Message, "Ok"));
 				}
 				catch (CommunicationException)
 				{

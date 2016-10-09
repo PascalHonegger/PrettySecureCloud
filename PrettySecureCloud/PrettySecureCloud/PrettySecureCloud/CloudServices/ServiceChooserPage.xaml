@@ -2,12 +2,12 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PrettySecureCloud.CloudServices.ServiceChooser">
+             x:Class="PrettySecureCloud.CloudServices.ServiceChooserPage">
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Text="Hinzufügen" Icon="add.png" Order="Primary"
 						Command="{Binding AddCommand}" />
 	</ContentPage.ToolbarItems>
-a
+
 	<StackLayout>
 		<SearchBar Placeholder="Dienst suchen" Text="{Binding SearchText}"/>
 		<ListView ItemsSource="{Binding CloudServices}" SelectedItem="{Binding SelectedCloudService}">

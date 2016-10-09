@@ -19,7 +19,7 @@ namespace PrettySecureCloud.Pages
 				{
 					Title = CloudServices,
 					Image = "home.png",
-					Page = new NavigationPage(new ServiceChooser())
+					Page = new NavigationPage(new ServiceChooserPage())
 				},
 				new NavigationItem
 				{

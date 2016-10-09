@@ -2,15 +2,15 @@
 
 namespace PrettySecureCloud.CloudServices
 {
-	public partial class ServiceChooser
+	public partial class ServiceChooserPage
 	{
-		public ServiceChooser()
+		public ServiceChooserPage()
 		{
 			InitializeComponent();
 
 			BindingContext = new ServiceChooserViewModel();
 
-			this.Subscribe<ServiceChooserViewModel, ServiceChooser>();
+			this.Subscribe<ServiceChooserViewModel, ServiceChooserPage>();
 		}
 	}
 }

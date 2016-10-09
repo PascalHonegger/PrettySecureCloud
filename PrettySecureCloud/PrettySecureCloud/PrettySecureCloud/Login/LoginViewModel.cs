@@ -72,7 +72,7 @@ namespace PrettySecureCloud.Login
 					}
 					catch (FaultException fault)
 					{
-						DisplayAlert(this, new MessageData("Failure", fault.Message, "Ok"));
+						DisplayAlert(this, new MessageData("Fehler", fault.Message, "Ok"));
 					}
 					catch (CommunicationException)
 					{
