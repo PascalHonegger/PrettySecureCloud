@@ -7,25 +7,37 @@ namespace PrettySecureCloud.Infrastructure
 		public static void Subscribe<TViewModel, TView>(this TView instance) where TView : Page where TViewModel : class
 		{
 			MessagingCenter.Subscribe<TViewModel, MessageData>(instance, MessageData.DisplayAlert,
-				async (sender, message) =>
+				(sender, message) =>
 				{
-					if (string.IsNullOrEmpty(message.Accept))
+					Device.BeginInvokeOnMainThread(async () =>
 					{
-						await instance.DisplayAlert(message.Title, message.Content, message.Cancel);
-					}
-					else
-					{
-						await instance.DisplayAlert(message.Title, message.Content, message.Accept, message.Cancel);
-					}
+						if (string.IsNullOrEmpty(message.Accept))
+						{
+							await instance.DisplayAlert(message.Title, message.Content, message.Cancel);
+						}
+						else
+						{
+							await instance.DisplayAlert(message.Title, message.Content, message.Accept, message.Cancel);
+						}
+					});
 				});
 
 			MessagingCenter.Subscribe<TViewModel, Page>(instance, ViewModelBase.NavigationPushView,
-				async (sender, page) => { await instance.Navigation.PushAsync(page); });
+				(sender, page) =>
+				{
+					Device.BeginInvokeOnMainThread(async () =>
+					{
+						await instance.Navigation.PushAsync(page);
+					});
+				});
 
 			MessagingCenter.Subscribe<TViewModel, Page>(instance, ViewModelBase.NavigationPushViewModal,
 				(sender, page) =>
 				{
-					Application.Current.MainPage = page;
+					Device.BeginInvokeOnMainThread(() =>
+					{
+						Application.Current.MainPage = page;
+					});
 				});
 		}
 
@@ -33,6 +45,7 @@ namespace PrettySecureCloud.Infrastructure
 		{
 			MessagingCenter.Unsubscribe<TViewModel, MessageData>(instance, MessageData.DisplayAlert);
 			MessagingCenter.Unsubscribe<TViewModel, Page>(instance, ViewModelBase.NavigationPushView);
+			MessagingCenter.Unsubscribe<TViewModel, Page>(instance, ViewModelBase.NavigationPushViewModal);
 		}
 	}
 }

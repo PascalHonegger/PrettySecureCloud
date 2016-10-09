@@ -62,15 +62,13 @@ namespace PrettySecureCloud.Login
 			Workers--;
 
 			Service.LoginCompleted -= LoginCompleted;
-			Device.BeginInvokeOnMainThread(() =>
+			
+			if (HandleException(this, args))
 			{
-				if (HandleException(this, args))
-				{
-					var result = args.Result;
-					CurrentSession.CurrentUser = result;
-					PushViewModal(this, new MasterPage());
-				}
-			});
+				var result = args.Result;
+				CurrentSession.CurrentUser = result;
+				PushViewModal(this, new MasterPage());
+			}
 		}
 
 		private void Register()

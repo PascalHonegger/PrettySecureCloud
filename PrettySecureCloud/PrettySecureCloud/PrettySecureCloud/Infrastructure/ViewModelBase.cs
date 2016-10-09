@@ -14,23 +14,24 @@ namespace PrettySecureCloud.Infrastructure
 		/// <summary>
 		///     Handles the exception if possible, else throws it
 		/// </summary>
+		/// <param name="instance"></param>
 		/// <param name="args"></param>
 		/// <returns>True if there was no exception, true if there was one</returns>
-		protected bool HandleException<T>(T instance, AsyncCompletedEventArgs args) where T : class
+		protected static bool HandleException<TViewModel>(TViewModel instance, AsyncCompletedEventArgs args) where TViewModel : class
 		{
 			if (args.Error == null) return true;
 
-			try
+			if (args.Error is FaultException)
 			{
-				throw args.Error;
+				DisplayAlert(instance, new MessageData("Fehler", args.Error.Message, "Ok"));
 			}
-			catch (FaultException fault)
-			{
-				DisplayAlert(instance, new MessageData("Fehler", fault.Message, "Ok"));
-			}
-			catch (CommunicationException)
+			else if (args.Error is CommunicationException)
 			{
 				DisplayAlert(instance, new MessageData("Keine Verbindung", "Konnte keine Verbindung zum Server herstellen", "Ok"));
+			}
+			else
+			{
+				throw args.Error;
 			}
 
 			return false;
@@ -43,17 +44,17 @@ namespace PrettySecureCloud.Infrastructure
 		private int _workers;
 		private static Session _session;
 
-		protected static void DisplayAlert<T>(T instance, MessageData message) where T : class
+		protected static void DisplayAlert<TViewModel>(TViewModel instance, MessageData message) where TViewModel : class
 		{
 			MessagingCenter.Send(instance, MessageData.DisplayAlert, message);
 		}
 
-		protected static void PushView<T>(T instance, Page page) where T : class
+		protected static void PushView<TViewModel>(TViewModel instance, Page page) where TViewModel : class
 		{
 			MessagingCenter.Send(instance, NavigationPushView, page);
 		}
 
-		protected static void PushViewModal<T>(T instance, Page page) where T : class
+		protected static void PushViewModal<TViewModel>(TViewModel instance, Page page) where TViewModel : class
 		{
 			MessagingCenter.Send(instance, NavigationPushViewModal, page);
 		}
