@@ -1,5 +1,5 @@
-﻿using Xamarin.Forms;
-using LoginPage = PrettySecureCloud.Login.LoginPage;
+﻿using PrettySecureCloud.Login;
+using Xamarin.Forms;
 
 namespace PrettySecureCloud
 {

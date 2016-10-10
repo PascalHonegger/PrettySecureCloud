@@ -14,8 +14,6 @@ namespace PrettySecureCloud.Login
 			BindingContext = _viewModel = new RegistrationViewModel();
 
 			_viewModel.RegisterCommand.ChangeCanExecute();
-
-			this.Subscribe<RegistrationViewModel, RegistrationPage>();
 		}
 
 		private void Entry_OnCompleted(object sender, EventArgs e)
@@ -24,6 +22,18 @@ namespace PrettySecureCloud.Login
 			{
 				_viewModel.RegisterCommand.Execute(null);
 			}
+		}
+
+		protected override void OnAppearing()
+		{
+			this.Subscribe<RegistrationViewModel, RegistrationPage>();
+			base.OnAppearing();
+		}
+
+		protected override void OnDisappearing()
+		{
+			this.Unsubscribe<RegistrationViewModel, RegistrationPage>();
+			base.OnDisappearing();
 		}
 	}
 }

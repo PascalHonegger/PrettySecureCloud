@@ -8,7 +8,7 @@ namespace PrettySecureCloud.Login
 	{
 		private readonly LoginViewModel _viewModel;
 
-		private void TryConnectToServer()
+		private static void TryConnectToServer()
 		{
 			ViewModelBase.Service = new LoginServiceClient(LoginServiceClient.EndpointConfiguration.BasicHttpsBinding_ILoginService);
 
@@ -27,14 +27,24 @@ namespace PrettySecureCloud.Login
 
 			_viewModel.LoginCommand.ChangeCanExecute();
 			_viewModel.RegisterCommand.ChangeCanExecute();
+		}
 
+		protected override void OnAppearing()
+		{
 			this.Subscribe<LoginViewModel, LoginPage>();
+			base.OnAppearing();
 		}
 
 		private void OnComplete(object sender, EventArgs e)
 		{
 			if (_viewModel.LoginCommand.CanExecute(null))
 				_viewModel.LoginCommand.Execute(null);
+		}
+
+		protected override void OnDisappearing()
+		{
+			this.Unsubscribe<LoginViewModel, LoginPage>();
+			base.OnDisappearing();
 		}
 	}
 }

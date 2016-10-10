@@ -13,8 +13,18 @@ namespace PrettySecureCloud.CloudServices
 			BindingContext = viewModel = new AddServiceViewModel();
 
 			viewModel.AddServiceCommand.ChangeCanExecute();
+		}
 
+		protected override void OnAppearing()
+		{
 			this.Subscribe<AddServiceViewModel, AddServicePage>();
+			base.OnAppearing();
+		}
+
+		protected override void OnDisappearing()
+		{
+			this.Unsubscribe<AddServiceViewModel, AddServicePage>();
+			base.OnDisappearing();
 		}
 	}
 }

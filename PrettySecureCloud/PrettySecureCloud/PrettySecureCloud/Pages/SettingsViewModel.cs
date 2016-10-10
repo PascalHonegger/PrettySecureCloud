@@ -14,9 +14,17 @@ namespace PrettySecureCloud.Pages
 		public SettingsViewModel()
 		{
 			ChangePasswordCommand = new Command(ChangePassword, CanChangePassword);
+			LogoutCommand = new Command(Logout);
+		}
+
+		private void Logout()
+		{
+			CurrentSession.CurrentUser = null;
+			PushViewModal(this, new NavigationPage(new LoginPage()));
 		}
 
 		public Command ChangePasswordCommand { get; }
+		public Command LogoutCommand { get; }
 
 		public string OldPassword
 		{

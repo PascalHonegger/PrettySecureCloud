@@ -1,5 +1,4 @@
-﻿using System.ServiceModel;
-using PrettySecureCloud.Infrastructure;
+﻿using PrettySecureCloud.Infrastructure;
 using PrettySecureCloud.Pages;
 using PrettySecureCloud.LoginService;
 using Xamarin.Forms;

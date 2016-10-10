@@ -13,6 +13,8 @@
 			<Entry Placeholder="Neues Passwort wiederholen" Text="{Binding NewPassword2}" IsPassword="true"
 							Completed="OnComplete" IsEnabled="{Binding IsFree}"/>
 			<Button Text="Passwort ändern" TextColor="White" BackgroundColor="{x:Static theme:Colors.LogoBlue}" Command="{Binding ChangePasswordCommand}" IsEnabled="{Binding IsFree}"/>
+			<BoxView Color="Black" HeightRequest="2" />
+			<Button Command="{Binding LogoutCommand}" Text="Abmelden"/>
 		</StackLayout>
 		<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
 	</Grid>

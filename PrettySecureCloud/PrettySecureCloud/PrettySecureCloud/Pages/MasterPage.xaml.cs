@@ -1,4 +1,5 @@
 ﻿using PrettySecureCloud.Infrastructure;
+using PrettySecureCloud.Login;
 using Xamarin.Forms;
 
 namespace PrettySecureCloud.Pages
@@ -17,6 +18,12 @@ namespace PrettySecureCloud.Pages
 				});
 
 			Master = new NavPage();
+		}
+
+		protected override void OnDisappearing()
+		{
+			MessagingCenter.Unsubscribe<NavPageViewModel, Page>(this, ViewModelBase.NavigationPushView);
+			base.OnDisappearing();
 		}
 	}
 }

@@ -14,8 +14,6 @@ namespace PrettySecureCloud.Pages
 			BindingContext = _viewModel = new SettingsViewModel();
 
 			_viewModel.ChangePasswordCommand.ChangeCanExecute();
-
-			this.Subscribe<SettingsViewModel, SettingsPage>();
 		}
 
 		private void OnComplete(object sender, EventArgs e)
@@ -24,6 +22,18 @@ namespace PrettySecureCloud.Pages
 			{
 				_viewModel.ChangePasswordCommand.Execute(null);
 			}
+		}
+
+		protected override void OnAppearing()
+		{
+			this.Subscribe<SettingsViewModel, SettingsPage>();
+			base.OnAppearing();
+		}
+
+		protected override void OnDisappearing()
+		{
+			this.Unsubscribe<SettingsViewModel, SettingsPage>();
+			base.OnDisappearing();
 		}
 	}
 }

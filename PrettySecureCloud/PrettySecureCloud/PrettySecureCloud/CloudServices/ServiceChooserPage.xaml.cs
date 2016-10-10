@@ -9,8 +9,18 @@ namespace PrettySecureCloud.CloudServices
 			InitializeComponent();
 
 			BindingContext = new ServiceChooserViewModel();
+		}
 
+		protected override void OnAppearing()
+		{
 			this.Subscribe<ServiceChooserViewModel, ServiceChooserPage>();
+			base.OnAppearing();
+		}
+
+		protected override void OnDisappearing()
+		{
+			this.Unsubscribe<ServiceChooserViewModel, ServiceChooserPage>();
+			base.OnDisappearing();
 		}
 	}
 }
