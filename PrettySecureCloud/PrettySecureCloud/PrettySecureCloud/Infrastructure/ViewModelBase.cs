@@ -39,10 +39,9 @@ namespace PrettySecureCloud.Infrastructure
 
 		public static LoginServiceClient Service { get; set; }
 
-		protected static Session CurrentSession => _session ?? (_session = new Session());
+		protected static Session CurrentSession => Session.Instance;
 
 		private int _workers;
-		private static Session _session;
 
 		protected static void DisplayAlert<TViewModel>(TViewModel instance, MessageData message) where TViewModel : class
 		{
