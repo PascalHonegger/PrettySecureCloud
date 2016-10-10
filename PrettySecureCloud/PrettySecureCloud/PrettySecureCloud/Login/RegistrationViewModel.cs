@@ -88,7 +88,7 @@ namespace PrettySecureCloud.Login
 			}
 		}
 
-		private bool CanRegister()
+		public bool CanRegister()
 		{
 			return IsInputValid();
 		}

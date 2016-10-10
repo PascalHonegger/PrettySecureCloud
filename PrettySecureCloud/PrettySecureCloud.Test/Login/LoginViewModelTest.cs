@@ -27,5 +27,12 @@ namespace PrettySecureCloud.Test.Login
 			//Assert
 			Assert.That(UnitUnderTest.CanLogin(), Is.True);
 		}
+
+		[Test]
+		public void CanLoginIsFalseIfNoValuesAreEntered()
+		{
+			//Assert
+			Assert.That(UnitUnderTest.CanLogin(), Is.False);
+		}
 	}
 }
