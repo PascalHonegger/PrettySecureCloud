@@ -1,0 +1,30 @@
+Pascals Lernjournal
+===================
+Pascal Honegger
+Version 1.1, 24.10.2016
+:toc:
+
+== 04.10.2016
+=== Skype Online-Meeting
+Technische Probleme
+Kommunikationsprobleme
+Lange Zeit bis zur Schule
+Falls Home-Meetings => Home-Office
+
+Online-Scrum-Poker was hilfreich
+
+=== MVVM vs MVC
+Vergleich
+Bild
+MVVM-Framework
+
+=== FCoI ist wichtig
+Link CleanCode
+Beispiel => FCoI verletzt
+Folgen
+
+== 24.10.2016
+=== Lose Kopplung zum Cloud Dienst -> Möglichst viel Komposition
+Dienst über Interface trennen
+Möglichst viel Logik zusammenfassen, Cloud-Dienst über Komposition verwenden
+Architektur erstellen -> Besprechen -> Umsetzen

@@ -99,3 +99,60 @@ C#-WCF-Server. Verantwortlich für das Login und speichern der Keys (Dienste-Log
 == Scrum
 === link:https://tree.taiga.io/project/starlordthecoder-cloud-project/backlog[Taiga]
 Unsere Scrum-Stories werden auf Taiga verwaltet.
+
+== Architektur
+=== Cloud-Dienst
+Cloud-Dienste müssen so gekaptselt sein, dass der selbe Code für alle verwendet werden kann.
+So wird unsere Applikation nur auf Dropbox ausgelegt sein, trotzdem wird die Implementation durch diverse Schnittstellen gekapselt.
+Daher sollte die Einbindung eines weiteren Dienstes wie OneDrive keinen Aufwand bedueten, ausser die Einbindung von OneDrive.
+Dateiexplorer und weiteres verfügt über eine lose Kopplung.
+
+[uml]
+--
+
+interface IFile {
+    +FileName: string
+    +FileType: string
+    +Path: string
+}
+
+class CloudServiceTypeMapper<Static> {
+    +static IsSupported(this CloudServiceType type): bool
+    +static ToICloudService(this CloudServiceType type): ICloudService
+    +static ToICloudService(this CloudService type): ICloudService
+}
+
+interface ICloudService {
+    +CustomName: string
+    +Type: CloudServiceType
+    +FileStructure: IEnumerable<IFile>
+    +AuthenticateLoginToken(): string
+    +UploadFile(FileStream source, IFile target): void
+    +DownloadFile(IFile target): FileStream
+}
+
+class AddCloudServiceViewModel {
+    SelectedServiceType: CloudServiceType
+    AddCloudService(): void
+}
+
+class FileExplorerViewModel {
+    +Files: IEnumerable<IFile>
+    +SelectedFile: IFile
+    +CloudService: ICloudService
+}
+
+class CloudServicesViewModel {
+    +CloudServices: IEnumerable<ICloudService>
+}
+
+AddCloudServiceViewModel --o CloudServiceTypeMapper
+FileExplorerViewModel --o IFile
+FileExplorerViewModel --o ICloudService
+CloudServicesViewModel --* ICloudService
+CloudServicesViewModel --* AddCloudServiceViewModel
+CloudServicesViewModel --* FileExplorerViewModel
+ICloudService --* IFile
+CloudServiceTypeMapper --* ICloudService
+
+--
