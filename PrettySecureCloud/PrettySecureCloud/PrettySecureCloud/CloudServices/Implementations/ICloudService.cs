@@ -7,7 +7,7 @@ namespace PrettySecureCloud.CloudServices.Implementations
 {
 	public interface ICloudService
 	{
-		string CustomName { get; }
+		string CustomName { get; set; }
 
 		ServiceType CloudServiceType { get; }
 
