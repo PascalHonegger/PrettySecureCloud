@@ -6,7 +6,7 @@
 	<Grid>
 		<StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
 			<Image Source="icon.png" Aspect="AspectFit" />
-			<Label Text="Pretty Secure Cloud" VerticalTextAlignment="Center" IsEnabled="{Binding IsFree}"/>
+			<Label Text="Pretty Secure Cloud" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" IsEnabled="{Binding IsFree}"/>
 			<Entry Placeholder="Benutzername/E-Mail" Text="{Binding Username}" Completed="OnComplete" IsEnabled="{Binding IsFree}"/>
 			<Entry Placeholder="Passwort" Text="{Binding Password}" IsPassword="true"
 							Completed="OnComplete" IsEnabled="{Binding IsFree}"/>
