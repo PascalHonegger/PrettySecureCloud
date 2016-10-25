@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using PrettySecureCloud.LoginService;
 
 namespace PrettySecureCloud.CloudServices.Implementations
 {
 	public interface ICloudService
 	{
-		string CustomName { get; }
+		string CustomName { get; set; }
 
 		ServiceType CloudServiceType { get; }
 
 		IEnumerable<IFile> FileStructure { get; }
 
-		string AuthenticateLoginToken();
+		Task<string> AuthenticateLoginTokenAsync();
 
 		void UploadFile(StreamReader source, IFile target);
 
