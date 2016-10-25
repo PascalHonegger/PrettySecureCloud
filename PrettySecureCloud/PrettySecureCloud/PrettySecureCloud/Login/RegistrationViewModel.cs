@@ -79,13 +79,17 @@ namespace PrettySecureCloud.Login
 
 		private void RegisterCompleted(object sender, AsyncCompletedEventArgs args)
 		{
-			Workers--;
 			Service.RegisterCompleted -= RegisterCompleted;
 
 			if (HandleException(this, args))
 			{
-				//TODO Login
+				var LoginViewModel = new LoginViewModel();
+				LoginViewModel.Username = Username;
+				LoginViewModel.Password = Password1;
+				LoginViewModel.Login();
 			}
+
+			Workers--;
 		}
 
 		public bool CanRegister()

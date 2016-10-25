@@ -26,7 +26,7 @@ namespace PrettySecureCloud.Infrastructure
 		/// </summary>
 		/// <param name="instance"></param>
 		/// <param name="args"></param>
-		/// <returns>True if there was no exception, true if there was one</returns>
+		/// <returns>True if there was no exception, false if there was one</returns>
 		protected static bool HandleException<TViewModel>(TViewModel instance, AsyncCompletedEventArgs args) where TViewModel : class
 		{
 			if (args.Error == null) return true;
