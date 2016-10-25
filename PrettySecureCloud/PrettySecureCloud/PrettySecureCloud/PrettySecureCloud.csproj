@@ -51,6 +51,7 @@
     <Compile Include="CloudServices\ServiceChooserViewModel.cs" />
     <Compile Include="CloudServices\ServiceTypeViewModel.cs" />
     <Compile Include="Encryption\IByteEncryptor.cs" />
+    <Compile Include="FileChooser\DirectoryElement.cs" />
     <Compile Include="Infrastructure\EventsHelper.cs" />
     <Compile Include="Encryption\AesEncryptor.cs" />
     <Compile Include="Infrastructure\MessageData.cs" />
