@@ -53,7 +53,7 @@ namespace PrettySecureCloud.CloudServices
 
 		private void Add()
 		{
-			PushView(this, new AddServicePage());
+			PushView(this, new SelectServiceTypePage());
 		}
 
 		public Command AddCommand { get; }

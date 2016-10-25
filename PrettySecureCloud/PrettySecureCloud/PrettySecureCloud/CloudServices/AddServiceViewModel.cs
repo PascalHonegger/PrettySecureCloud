@@ -1,57 +1,33 @@
-﻿using System.Collections.ObjectModel;
-using PrettySecureCloud.Infrastructure;
-using PrettySecureCloud.LoginService;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using PrettySecureCloud.CloudServices.Implementations;
 using Xamarin.Forms;
 
 namespace PrettySecureCloud.CloudServices
 {
-	public class AddServiceViewModel : ViewModelBase
+	public class AddServiceViewModel
 	{
-		private ServiceType _selectedServiceType;
-
-		public AddServiceViewModel()
+		public AddServiceViewModel(ServiceTypeViewModel serviceType)
 		{
-			Workers++;
+			ServiceTypeViewModel = serviceType;
 
-			AddServiceCommand = new Command(AddService, CanAddService);
+			//TODO Map serviceType to CloudService
 
-			ServiceTypes = new ObservableCollection<ServiceTypeViewModel>();
-
-			Service.LoadAllServicesCompleted += ServiceOnLoadAllServicesCompleted;
-
-			Service.LoadAllServicesAsync();
+			AuthenticateCommand = new Command(Authenticate);
 		}
 
-		private bool CanAddService() => SelectedServiceType != null;
-
-		private void AddService()
+		private void Authenticate()
 		{
-			DisplayAlert(this, new MessageData("TODO", "Diese Funktion ist noch in Entwicklung", "Ok :("));
+			//TODO var loginToken = await CloudService.AuthenticateLoginToken()
 		}
 
-		private void ServiceOnLoadAllServicesCompleted(object sender, LoadAllServicesCompletedEventArgs loadAllServicesCompletedEventArgs)
-		{
-			Workers--;
-			foreach (var serviceType in loadAllServicesCompletedEventArgs.Result)
-			{
-				ServiceTypes.Add(new ServiceTypeViewModel(serviceType));
-			}
-		}
+		public ServiceTypeViewModel ServiceTypeViewModel { get; set; }
 
-		public Command AddServiceCommand { get; }
+		public ICloudService CloudService { get; }
 
-		public ObservableCollection<ServiceTypeViewModel> ServiceTypes { get; }
-
-		public ServiceType SelectedServiceType
-		{
-			get { return _selectedServiceType; }
-			set
-			{
-				if (Equals(_selectedServiceType, value)) return;
-				_selectedServiceType = value;
-				OnPropertyChanged();
-				AddServiceCommand.ChangeCanExecute();
-			}
-		}
+		public Command AuthenticateCommand { get; }
 	}
 }

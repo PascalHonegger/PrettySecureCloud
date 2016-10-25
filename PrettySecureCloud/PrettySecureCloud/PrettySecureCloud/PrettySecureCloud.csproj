@@ -41,6 +41,12 @@
       <DependentUpon>AddServicePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="CloudServices\AddServiceViewModel.cs" />
+    <Compile Include="CloudServices\Implementations\ICloudService.cs" />
+    <Compile Include="CloudServices\Implementations\IFile.cs" />
+    <Compile Include="CloudServices\SelectServiceTypePage.xaml.cs">
+      <DependentUpon>SelectServiceTypePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CloudServices\SelectServiceTypeViewModel.cs" />
     <Compile Include="CloudServices\ServiceChooserViewModel.cs" />
     <Compile Include="CloudServices\ServiceTypeViewModel.cs" />
     <Compile Include="Encryption\IByteEncryptor.cs" />
@@ -174,6 +180,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CloudServices\SelectServiceTypePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
