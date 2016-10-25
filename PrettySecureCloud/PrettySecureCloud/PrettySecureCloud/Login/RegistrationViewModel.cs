@@ -83,10 +83,12 @@ namespace PrettySecureCloud.Login
 
 			if (HandleException(this, args))
 			{
-				var LoginViewModel = new LoginViewModel();
-				LoginViewModel.Username = Username;
-				LoginViewModel.Password = Password1;
-				LoginViewModel.Login();
+				var loginViewModel = new LoginViewModel
+				{
+					Username = Username,
+					Password = Password1
+				};
+				loginViewModel.Login();
 			}
 
 			Workers--;

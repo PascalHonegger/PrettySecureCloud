@@ -1,5 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using PrettySecureCloud.CloudServices.Implementations;
 using PrettySecureCloud.Infrastructure;
 using PrettySecureCloud.LoginService;
 using Xamarin.Forms;
@@ -10,43 +13,7 @@ namespace PrettySecureCloud.CloudServices
 	{
 		public ServiceChooserViewModel()
 		{
-			/* Testdata:
-			var dropbox = new ServiceType
-			{
-				Id = 1,
-				Key = "ADSFASDFASF",
-				Name = "DropBox",
-				Secret = "687968795689"
-			};
-
-			CurrentSession.CurrentUser.Services.Add(new CloudService
-			{
-				Id = 1,
-				LoginToken = "QWERQWER",
-				Name = "Dropbox Privat",
-				Type = dropbox
-			});
-
-			CurrentSession.CurrentUser.Services.Add(new CloudService
-			{
-				Id = 2,
-				LoginToken = "QWERQWER",
-				Name = "Dropbox Arbeit",
-				Type = dropbox
-			});
-
-			dropbox.Id = 2;
-			dropbox.Name = "OneDrive";
-
-			CurrentSession.CurrentUser.Services.Add(new CloudService
-			{
-				Id = 3,
-				LoginToken = "QWERQWER",
-				Name = "OneDrive",
-				Type = dropbox
-			});
-			*/
-			CloudServices = new ObservableCollection<CloudService>(CurrentSession.CurrentUser.Services);
+			ApplyFilter();
 
 			AddCommand = new Command(Add);
 		}
@@ -58,18 +25,18 @@ namespace PrettySecureCloud.CloudServices
 
 		public Command AddCommand { get; }
 
-		private string _searchText;
-		private CloudService _selectedCloudService;
-		public ObservableCollection<CloudService> CloudServices { get; }
+		private string _searchText = string.Empty;
+		private ICloudService _selectedCloudService;
+		public ObservableCollection<ICloudService> CloudServices { get; } = new ObservableCollection<ICloudService>();
 
-		public CloudService SelectedCloudService
+		public ICloudService SelectedCloudService
 		{
 			get { return _selectedCloudService; }
 			set
 			{
 				if (Equals(_selectedCloudService, value)) return;
 				_selectedCloudService = value;
-				DisplayAlert(this, new MessageData("Ausgewählt", $"Sie haben {_selectedCloudService.Name} ausgewählt", "Ok"));
+				DisplayAlert(this, new MessageData("Ausgewählt", $"Sie haben {_selectedCloudService.Model.Name} ausgewählt", "Ok"));
 			}
 		}
 
@@ -82,13 +49,47 @@ namespace PrettySecureCloud.CloudServices
 				_searchText = value;
 				OnPropertyChanged();
 
-				CloudServices.Clear();
-
-				foreach (var service in CurrentSession.CurrentUser.Services.Where(s => s.Name.ToLower().Contains(_searchText.ToLower())))
-				{
-					CloudServices.Add(service);
-				}
+				ApplyFilter();
 			}
+		}
+
+		private void ApplyFilter()
+		{
+			CloudServices.Clear();
+
+			foreach (
+				var service in
+				CurrentSession.CurrentUser.Services.Where(s => s.Type.IsSupported())
+					.Where(s => s.Name.ToLower().Contains(_searchText.ToLower()))
+					.Select(s => s.ToICloudService()))
+			{
+				CloudServices.Add(service);
+			}
+		}
+
+		public void DeleteService(ICloudService clickedService)
+		{
+			Workers++;
+
+			Service.RemoveServiceCompleted += RemoveServiceCompleted;
+			Service.RemoveServiceAsync(clickedService.Model.Id, clickedService);
+		}
+
+		private void RemoveServiceCompleted(object sender, AsyncCompletedEventArgs asyncCompletedEventArgs)
+		{
+			if(HandleException(this, asyncCompletedEventArgs))
+			{
+				var clickedService = (ICloudService) asyncCompletedEventArgs.UserState;
+
+				CurrentSession.CurrentUser.Services.Remove(clickedService.Model);
+				CloudServices.Remove(clickedService);
+			}
+		}
+
+		public void EditService(ICloudService clickedService)
+		{
+			//TODO Re-Use AddServicePage
+			throw new System.NotImplementedException();
 		}
 	}
 }

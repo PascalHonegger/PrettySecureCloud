@@ -18,6 +18,15 @@ namespace PrettySecureCloud.CloudServices.Implementations
 			return Mapping[type.Name](type);
 		}
 
+		public static ICloudService ToICloudService(this CloudService service)
+		{
+			var type = service.Type.ToICloudService();
+
+			type.Model = service;
+
+			return type;
+		}
+
 		public static bool IsSupported(this ServiceType type)
 		{
 			return Mapping.ContainsKey(type.Name);

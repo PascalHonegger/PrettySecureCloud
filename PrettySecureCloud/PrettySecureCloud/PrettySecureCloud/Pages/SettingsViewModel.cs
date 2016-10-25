@@ -76,13 +76,14 @@ namespace PrettySecureCloud.Pages
 
 		private void ChangePasswordCompleted(object sender, AsyncCompletedEventArgs args)
 		{
-			Workers--;
 			Service.ChangePasswordCompleted -= ChangePasswordCompleted;
 
 			if (HandleException(this, args))
 			{
 				DisplayAlert(this, new MessageData("Passwort geändert", "Dein Passwort wurde erfolgreich geändert", "Ok"));
 			}
+
+			Workers--;
 		}
 	}
 }

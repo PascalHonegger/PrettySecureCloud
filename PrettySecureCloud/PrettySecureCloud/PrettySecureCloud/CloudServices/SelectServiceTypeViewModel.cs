@@ -17,18 +17,24 @@ namespace PrettySecureCloud.CloudServices
 
 			ServiceTypes = new ObservableCollection<ServiceTypeViewModel>();
 
-			Service.LoadAllServicesCompleted += ServiceOnLoadAllServicesCompleted;
+			Service.LoadAllServicesCompleted += LoadAllServicesCompleted;
 
 			Service.LoadAllServicesAsync();
 		}
 
-		private void ServiceOnLoadAllServicesCompleted(object sender, LoadAllServicesCompletedEventArgs loadAllServicesCompletedEventArgs)
+		private void LoadAllServicesCompleted(object sender, LoadAllServicesCompletedEventArgs loadAllServicesCompletedEventArgs)
 		{
-			Workers--;
-			foreach (var serviceType in loadAllServicesCompletedEventArgs.Result.Where(t => t.IsSupported()))
+			Service.LoadAllServicesCompleted -= LoadAllServicesCompleted;
+
+			if (HandleException(this, loadAllServicesCompletedEventArgs))
 			{
-				ServiceTypes.Add(new ServiceTypeViewModel(serviceType));
+				foreach (var serviceType in loadAllServicesCompletedEventArgs.Result.Where(t => t.IsSupported()))
+				{
+					ServiceTypes.Add(new ServiceTypeViewModel(serviceType));
+				}
 			}
+
+			Workers--;
 		}
 
 		public ObservableCollection<ServiceTypeViewModel> ServiceTypes { get; }

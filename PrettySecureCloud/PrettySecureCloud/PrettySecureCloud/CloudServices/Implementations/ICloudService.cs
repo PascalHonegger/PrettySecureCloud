@@ -9,7 +9,9 @@ namespace PrettySecureCloud.CloudServices.Implementations
 	{
 		string CustomName { get; set; }
 
-		ServiceType CloudServiceType { get; }
+		ServiceTypeViewModel CloudServiceType { get; }
+
+		CloudService Model { get; set; }
 
 		IEnumerable<IFile> FileStructure { get; }
 
