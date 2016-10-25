@@ -2,24 +2,24 @@
 
 namespace PrettySecureCloud.CloudServices
 {
-	public partial class AddServicePage
+	public partial class SelectServiceTypePage
 	{
-		public AddServicePage(AddServiceViewModel viewModel)
+		public SelectServiceTypePage()
 		{
 			InitializeComponent();
 
-			BindingContext = viewModel;
+			BindingContext = new SelectServiceTypeViewModel();
 		}
 
 		protected override void OnAppearing()
 		{
-			this.Subscribe<AddServiceViewModel, AddServicePage>();
+			this.Subscribe<SelectServiceTypeViewModel, SelectServiceTypePage>();
 			base.OnAppearing();
 		}
 
 		protected override void OnDisappearing()
 		{
-			this.Unsubscribe<AddServiceViewModel, AddServicePage>();
+			this.Unsubscribe<SelectServiceTypeViewModel, SelectServiceTypePage>();
 			base.OnDisappearing();
 		}
 	}

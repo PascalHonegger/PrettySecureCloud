@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using PrettySecureCloud.CloudServices.Implementations;
 using PrettySecureCloud.Infrastructure;
 using PrettySecureCloud.LoginService;
 using Xamarin.Forms;
@@ -7,51 +7,42 @@ namespace PrettySecureCloud.CloudServices
 {
 	public class AddServiceViewModel : ViewModelBase
 	{
-		private ServiceType _selectedServiceType;
+		private string _loginToken;
 
-		public AddServiceViewModel()
+		public AddServiceViewModel(ServiceTypeViewModel serviceType)
+		{
+			ServiceTypeViewModel = serviceType;
+
+			CloudService = serviceType.Type.ToICloudService();
+
+			AuthenticateCommand = new Command(Authenticate);
+		}
+
+		private async void Authenticate()
 		{
 			Workers++;
 
-			AddServiceCommand = new Command(AddService, CanAddService);
+			_loginToken = await CloudService.AuthenticateLoginTokenAsync();
 
-			ServiceTypes = new ObservableCollection<ServiceTypeViewModel>();
-
-			Service.LoadAllServicesCompleted += ServiceOnLoadAllServicesCompleted;
-
-			Service.LoadAllServicesAsync();
+			Service.AddServiceCompleted += ServiceOnAddServiceCompleted;
+			Service.AddServiceAsync(CurrentSession.CurrentUser.Id, ServiceTypeViewModel.Type.Id, CloudService.CustomName, _loginToken);
 		}
 
-		private bool CanAddService() => SelectedServiceType != null;
-
-		private void AddService()
+		private void ServiceOnAddServiceCompleted(object sender, AddServiceCompletedEventArgs addServiceCompletedEventArgs)
 		{
-			DisplayAlert(this, new MessageData("TODO", "Diese Funktion ist noch in Entwicklung", "Ok :("));
-		}
-
-		private void ServiceOnLoadAllServicesCompleted(object sender, LoadAllServicesCompletedEventArgs loadAllServicesCompletedEventArgs)
-		{
-			Workers--;
-			foreach (var serviceType in loadAllServicesCompletedEventArgs.Result)
+			if (HandleException(this, addServiceCompletedEventArgs))
 			{
-				ServiceTypes.Add(new ServiceTypeViewModel(serviceType));
+				Workers--;
+
+				//TODO Return back
+				DisplayAlert(this, new MessageData("Yay", $"You are now authenticated! {_loginToken}", "YAY!!"));
 			}
 		}
 
-		public Command AddServiceCommand { get; }
+		public ServiceTypeViewModel ServiceTypeViewModel { get; }
 
-		public ObservableCollection<ServiceTypeViewModel> ServiceTypes { get; }
+		public ICloudService CloudService { get; }
 
-		public ServiceType SelectedServiceType
-		{
-			get { return _selectedServiceType; }
-			set
-			{
-				if (Equals(_selectedServiceType, value)) return;
-				_selectedServiceType = value;
-				OnPropertyChanged();
-				AddServiceCommand.ChangeCanExecute();
-			}
-		}
+		public Command AuthenticateCommand { get; }
 	}
 }
