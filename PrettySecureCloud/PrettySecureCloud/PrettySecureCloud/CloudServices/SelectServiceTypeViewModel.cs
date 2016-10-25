@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
+using PrettySecureCloud.CloudServices.Implementations;
 using PrettySecureCloud.Infrastructure;
 using PrettySecureCloud.LoginService;
 using Xamarin.Forms;
@@ -23,7 +25,7 @@ namespace PrettySecureCloud.CloudServices
 		private void ServiceOnLoadAllServicesCompleted(object sender, LoadAllServicesCompletedEventArgs loadAllServicesCompletedEventArgs)
 		{
 			Workers--;
-			foreach (var serviceType in loadAllServicesCompletedEventArgs.Result)
+			foreach (var serviceType in loadAllServicesCompletedEventArgs.Result.Where(t => t.IsSupported()))
 			{
 				ServiceTypes.Add(new ServiceTypeViewModel(serviceType));
 			}

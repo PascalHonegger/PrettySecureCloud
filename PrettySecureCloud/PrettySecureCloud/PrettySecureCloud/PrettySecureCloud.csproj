@@ -43,6 +43,7 @@
     <Compile Include="CloudServices\AddServiceViewModel.cs" />
     <Compile Include="CloudServices\Implementations\ICloudService.cs" />
     <Compile Include="CloudServices\Implementations\IFile.cs" />
+    <Compile Include="CloudServices\Implementations\ServiceTypeMapper.cs" />
     <Compile Include="CloudServices\SelectServiceTypePage.xaml.cs">
       <DependentUpon>SelectServiceTypePage.xaml</DependentUpon>
     </Compile>

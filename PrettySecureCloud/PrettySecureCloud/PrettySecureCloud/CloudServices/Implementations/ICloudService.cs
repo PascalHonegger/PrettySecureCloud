@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using PrettySecureCloud.LoginService;
 
 namespace PrettySecureCloud.CloudServices.Implementations
@@ -12,7 +13,7 @@ namespace PrettySecureCloud.CloudServices.Implementations
 
 		IEnumerable<IFile> FileStructure { get; }
 
-		string AuthenticateLoginToken();
+		Task<string> AuthenticateLoginTokenAsync();
 
 		void UploadFile(StreamReader source, IFile target);
 
