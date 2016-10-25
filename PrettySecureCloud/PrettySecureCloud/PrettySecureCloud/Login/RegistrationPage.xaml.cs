@@ -27,12 +27,14 @@ namespace PrettySecureCloud.Login
 		protected override void OnAppearing()
 		{
 			this.Subscribe<RegistrationViewModel, RegistrationPage>();
+			this.Subscribe<LoginViewModel, RegistrationPage>();
 			base.OnAppearing();
 		}
 
 		protected override void OnDisappearing()
 		{
 			this.Unsubscribe<RegistrationViewModel, RegistrationPage>();
+			this.Unsubscribe<LoginViewModel, RegistrationPage>();
 			base.OnDisappearing();
 		}
 	}

@@ -47,7 +47,7 @@ namespace PrettySecureCloud.Login
 			}
 		}
 
-		private void Login()
+		public void Login()
 		{
 			Service.LoginCompleted += LoginCompleted;
 
