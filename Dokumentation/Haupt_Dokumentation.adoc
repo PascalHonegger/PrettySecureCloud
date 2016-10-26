@@ -132,8 +132,8 @@ interface ICloudService {
 }
 
 class AddCloudServiceViewModel {
-    SelectedServiceType: CloudServiceType
-    AddCloudService(): void
+    +SelectedServiceType: CloudServiceType
+    +AddCloudService(): void
 }
 
 class FileExplorerViewModel {
@@ -146,13 +146,15 @@ class CloudServicesViewModel {
     +CloudServices: IEnumerable<ICloudService>
 }
 
-AddCloudServiceViewModel --o CloudServiceTypeMapper
-FileExplorerViewModel --o IFile
-FileExplorerViewModel --o ICloudService
-CloudServicesViewModel --* ICloudService
-CloudServicesViewModel --* AddCloudServiceViewModel
-CloudServicesViewModel --* FileExplorerViewModel
-ICloudService --* IFile
-CloudServiceTypeMapper --* ICloudService
+CloudServicesViewModel o-- CloudServiceTypeMapper
+AddCloudServiceViewModel o-- CloudServiceTypeMapper
+FileExplorerViewModel o-- IFile
+FileExplorerViewModel o-- ICloudService
+CloudServicesViewModel *-- ICloudService
+CloudServicesViewModel *-- AddCloudServiceViewModel
+CloudServicesViewModel *-- FileExplorerViewModel
+ICloudService *-- IFile
+CloudServiceTypeMapper *-- ICloudService
+ICloudService <|-- DropBoxService
 
 --
