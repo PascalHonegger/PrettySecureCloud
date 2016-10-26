@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.ServiceModel;
 using PrettySecureCloud.LoginService;
@@ -30,13 +31,13 @@ namespace PrettySecureCloud.Infrastructure
 			{
 				DisplayAlert(instance, new MessageData("Fehler", args.Error.Message, "Ok"));
 			}
-			else if (args.Error is CommunicationException)
+			else if (args.Error is CommunicationException || args.Error is TimeoutException)
 			{
 				DisplayAlert(instance, new MessageData("Keine Verbindung", "Konnte keine Verbindung zum Server herstellen", "Ok"));
 			}
 			else
 			{
-				throw args.Error;
+				Device.BeginInvokeOnMainThread(() => { throw args.Error; });
 			}
 
 			return false;
@@ -79,10 +80,8 @@ namespace PrettySecureCloud.Infrastructure
 		/// <summary>
 		///     Changes the main page of the application
 		/// </summary>
-		/// <typeparam name="TViewModel">The type of the viewmodel</typeparam>
-		/// <param name="instance">The instance of the viewmodel</param>
 		/// <param name="page">The page to display</param>
-		protected static void PushViewModal<TViewModel>(TViewModel instance, Page page) where TViewModel : class
+		protected static void PushViewModal(Page page)
 		{
 			Device.BeginInvokeOnMainThread(() =>
 			{

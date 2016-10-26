@@ -1,4 +1,6 @@
-﻿using PrettySecureCloud.CloudServices.Implementations;
+﻿using System;
+using Dropbox.Api;
+using PrettySecureCloud.CloudServices.Implementations;
 using PrettySecureCloud.Infrastructure;
 using PrettySecureCloud.LoginService;
 using PrettySecureCloud.Pages;
@@ -23,7 +25,15 @@ namespace PrettySecureCloud.CloudServices
 		{
 			Workers++;
 
-			_loginToken = await CloudService.AuthenticateLoginTokenAsync();
+			try
+			{
+				_loginToken = await CloudService.AuthenticateLoginTokenAsync();
+			}
+			catch (AuthException)
+			{
+				DisplayAlert(this, new MessageData("Fehler", "Fehler beim Authentifizieren", "Ok"));
+				return;
+			}
 
 			Service.AddServiceCompleted += AddServiceCompleted;
 			Service.AddServiceAsync(CurrentSession.CurrentUser.Id, ServiceTypeViewModel.Type.Id, CloudService.CustomName, _loginToken);
@@ -46,7 +56,7 @@ namespace PrettySecureCloud.CloudServices
 
 				CurrentSession.CurrentUser.Services.Add(addedService);
 
-				PushViewModal(this, new MasterPage());
+				PushViewModal(new MasterPage());
 			}
 
 			Workers--;

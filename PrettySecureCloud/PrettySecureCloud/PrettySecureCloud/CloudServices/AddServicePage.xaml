@@ -6,7 +6,7 @@
 	<StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
 			<Image Source="{Binding ServiceTypeViewModel.ImageName}" Aspect="AspectFit" />
 			<Label Text="{Binding ServiceTypeViewModel.Type.Name}" VerticalTextAlignment="Center" />
-			<Entry Placeholder="Benutzerdefinierter Name" Text="{Binding CloudService.CustomName}" />
+			<Entry Placeholder="Benutzerdefinierter Name" Text="{Binding CloudService.CustomName}" Completed="Entry_OnCompleted" />
 			<Button Text="Authentizieren" TextColor="White" BackgroundColor="{x:Static theme:Colors.LogoBlue}" Command="{Binding AuthenticateCommand}" />
 	</StackLayout>
 </ContentPage>

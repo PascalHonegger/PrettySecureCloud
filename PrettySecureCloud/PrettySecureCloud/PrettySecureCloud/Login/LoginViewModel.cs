@@ -59,12 +59,12 @@ namespace PrettySecureCloud.Login
 		private void LoginCompleted(object sender, LoginCompletedEventArgs args)
 		{
 			Service.LoginCompleted -= LoginCompleted;
-			
+
 			if (HandleException(this, args))
 			{
 				var result = args.Result;
 				CurrentSession.CurrentUser = result;
-				PushViewModal(this, new MasterPage());
+				PushViewModal(new MasterPage());
 			}
 
 			Workers--;

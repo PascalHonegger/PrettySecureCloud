@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Dropbox.Api;
 using PrettySecureCloud.LoginService;
+using Xamarin.Forms;
 using Xamarin.Forms.OAuth;
 
 namespace PrettySecureCloud.CloudServices.Implementations
@@ -40,19 +41,21 @@ namespace PrettySecureCloud.CloudServices.Implementations
 
 		public async Task<string> AuthenticateLoginTokenAsync()
 		{
+			var previousMainWindow = Application.Current.MainPage;
+
 			var authenticationResult =
 				await OAuthAuthenticator.Authenticate(OAuthProviders.Dropbox(CloudServiceType.Type.Key, CloudServiceType.Type.Secret,
+					// ReSharper disable once RedundantExplicitParamsArrayCreation
 					"https://www.dropbox.com/", new string[0]));
 
 			if (authenticationResult.Success)
 			{
 				return authenticationResult.Account.AccessToken.Token;
 			}
-			else
-			{
-				//TODO Login failed
-				throw new NotImplementedException(authenticationResult.ErrorDescription);
-			}
+
+
+			Application.Current.MainPage = previousMainWindow;
+			throw new AuthException();
 		}
 
 		public StreamReader DownloadFile(IFile target)

@@ -20,7 +20,7 @@ namespace PrettySecureCloud.Pages
 		private void Logout()
 		{
 			CurrentSession.CurrentUser = null;
-			PushViewModal(this, new NavigationPage(new LoginPage()));
+			PushViewModal(new NavigationPage(new LoginPage()));
 		}
 
 		public Command ChangePasswordCommand { get; }
