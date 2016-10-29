@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Dropbox.Api;
 using PrettySecureCloud.LoginService;
-using Xamarin.Auth;
+using Xamarin.Forms;
 using Xamarin.Forms.OAuth;
-using Xamarin.Forms.OAuth.Providers;
 
 namespace PrettySecureCloud.CloudServices.Implementations
 {
@@ -15,12 +13,17 @@ namespace PrettySecureCloud.CloudServices.Implementations
 	{
 		public DropboxImplementation(ServiceType type)
 		{
-			CloudServiceType = type;
+			Model.Type = type;
 		}
 
-		public ServiceType CloudServiceType { get; }
+		public ServiceTypeViewModel CloudServiceType => new ServiceTypeViewModel(Model.Type);
+		public CloudService Model { get; set; } = new CloudService();
 
-		public string CustomName { get; set; }
+		public string CustomName
+		{
+			get { return Model.Name; }
+			set { Model.Name = value; }
+		}
 
 		public IEnumerable<IFile> FileStructure
 		{
@@ -38,36 +41,21 @@ namespace PrettySecureCloud.CloudServices.Implementations
 
 		public async Task<string> AuthenticateLoginTokenAsync()
 		{
-			var authorizeUrl = DropboxOAuth2Helper.GetAuthorizeUri(CloudServiceType.Key);
-			var redirectUrl = new Uri("https://www.dropbox.com/1/oauth2/authorize");
-
-			var auth = new OAuth2Authenticator(
-				clientId: CloudServiceType.Key,
-				scope: CloudServiceType.Secret,
-				authorizeUrl: authorizeUrl,
-				redirectUrl: redirectUrl);
-
-			auth.Completed += (sender, eventArgs) =>
-			{
-				if (eventArgs.IsAuthenticated)
-				{
-				}
-			};
-
+			var previousMainWindow = Application.Current.MainPage;
 
 			var authenticationResult =
-				await OAuthAuthenticator.Authenticate(OAuthProviders.Dropbox(CloudServiceType.Key, CloudServiceType.Secret,
+				await OAuthAuthenticator.Authenticate(OAuthProviders.Dropbox(CloudServiceType.Type.Key, CloudServiceType.Type.Secret,
+					// ReSharper disable once RedundantExplicitParamsArrayCreation
 					"https://www.dropbox.com/", new string[0]));
 
 			if (authenticationResult.Success)
 			{
 				return authenticationResult.Account.AccessToken.Token;
 			}
-			else
-			{
-				//TODO Login failed
-				throw new NotImplementedException(authenticationResult.ErrorDescription);
-			}
+
+
+			Application.Current.MainPage = previousMainWindow;
+			throw new AuthException();
 		}
 
 		public StreamReader DownloadFile(IFile target)

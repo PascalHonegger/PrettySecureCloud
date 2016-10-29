@@ -47,7 +47,7 @@ namespace PrettySecureCloud.Login
 			}
 		}
 
-		private void Login()
+		public void Login()
 		{
 			Service.LoginCompleted += LoginCompleted;
 
@@ -58,16 +58,16 @@ namespace PrettySecureCloud.Login
 
 		private void LoginCompleted(object sender, LoginCompletedEventArgs args)
 		{
-			Workers--;
-
 			Service.LoginCompleted -= LoginCompleted;
-			
+
 			if (HandleException(this, args))
 			{
 				var result = args.Result;
 				CurrentSession.CurrentUser = result;
-				PushViewModal(this, new MasterPage());
+				PushViewModal(new MasterPage());
 			}
+
+			Workers--;
 		}
 
 		private void Register()

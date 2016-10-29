@@ -1,0 +1,40 @@
+Elias Lernjournal
+=================
+Elia Perenzin
+Version 1.0, 26.10.2016
+:toc:
+
+== 20.09.2016
+=== Andoird Gerät mit VS
+Um ein Android gerät mit Visual Studio zu verbinden muss der Google USB Driver über den SDK Manager installiert worden sein. Wenn das Gerät immer noch nicht angezeigt wird, muss man über die LogCat Console adb -kill und adb -start eingeben um den Server neuzustarten. Wenn dies nicht hilft müssen die Gerätetreiber installiert werden. 
+
+== 27.09.2016
+=== Boolean Converter
+Boolean Converter in xaml für Button. Um ein Boolean in xaml zu drehen (true zu false) braucht es eine extra BooleanConverter Methode im Codebehind, ! funkioniert nicht. 
+
+[source,xml]
+IsEnabled="{Binding NoEntries, Converter={StaticResource booleanConverter}}
+
+[source,c#]
+public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+{
+    if (value is bool){
+        return !(bool)value;
+    }
+    return value;
+}
+
+== 04.10.2016
+=== Skypmeeting
+Skypmeeting war sehr cool, da bei uns in der Firma das Daily auch über Skype gemacht wird, fand ich es sehr hilfreich für die Praxis. Es war jedoch mühsam bis alle in der Schule waren, es ging viel Zeit verloren.
+
+=== Dropbox API
+Applikation auf Dropbox registriert. https://www.dropbox.com/developers 
+
+AppKey und AppSecret erhalten. Diese werden dann verwendet um sich bei Dropbox zu authentifizieren welche App eine Anfrage über ihre API sendet. 
+
+== 25.10.2016
+=== Dropbox hinzufügen
+Den Dropbox Account fügen wir mit einer Helferklasse hinzu die wir mithilfe von Nuget herutergeladen haben. Das Nuget heisst OAuth und ist eine Schnitstelle für die Aplikation mit verschiedenen Services. Zum Beispiel DropBox, Facebook, etc. 
+
+Mithilfe der Helferklasse wird das oginfenster von Dropbox geöffnet und der User kann sich einlogen. Nachdem der User unsere App authentifiziert hat, bekommen wir einen AccessToken, dieser wird danach für jede Anfrage für den spezifischen User verwendet. 

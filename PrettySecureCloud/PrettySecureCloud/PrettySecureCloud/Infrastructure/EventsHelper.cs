@@ -39,15 +39,6 @@ namespace PrettySecureCloud.Infrastructure
 						await instance.Navigation.PushAsync(page);
 					});
 				});
-
-			MessagingCenter.Subscribe<TViewModel, Page>(instance, ViewModelBase.NavigationPushViewModal,
-				(sender, page) =>
-				{
-					Device.BeginInvokeOnMainThread(() =>
-					{
-						Application.Current.MainPage = page;
-					});
-				});
 		}
 
 		/// <summary>
@@ -60,7 +51,6 @@ namespace PrettySecureCloud.Infrastructure
 		{
 			MessagingCenter.Unsubscribe<TViewModel, MessageData>(instance, MessageData.DisplayAlert);
 			MessagingCenter.Unsubscribe<TViewModel, Page>(instance, ViewModelBase.NavigationPushView);
-			MessagingCenter.Unsubscribe<TViewModel, Page>(instance, ViewModelBase.NavigationPushViewModal);
 		}
 	}
 }

@@ -20,7 +20,7 @@ namespace PrettySecureCloud.Pages
 		private void Logout()
 		{
 			CurrentSession.CurrentUser = null;
-			PushViewModal(this, new NavigationPage(new LoginPage()));
+			PushViewModal(new NavigationPage(new LoginPage()));
 		}
 
 		public Command ChangePasswordCommand { get; }
@@ -76,13 +76,14 @@ namespace PrettySecureCloud.Pages
 
 		private void ChangePasswordCompleted(object sender, AsyncCompletedEventArgs args)
 		{
-			Workers--;
 			Service.ChangePasswordCompleted -= ChangePasswordCompleted;
 
 			if (HandleException(this, args))
 			{
 				DisplayAlert(this, new MessageData("Passwort geändert", "Dein Passwort wurde erfolgreich geändert", "Ok"));
 			}
+
+			Workers--;
 		}
 	}
 }

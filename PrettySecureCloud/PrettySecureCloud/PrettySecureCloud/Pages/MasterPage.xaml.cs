@@ -1,5 +1,4 @@
 ﻿using PrettySecureCloud.Infrastructure;
-using PrettySecureCloud.Login;
 using Xamarin.Forms;
 
 namespace PrettySecureCloud.Pages
@@ -10,20 +9,39 @@ namespace PrettySecureCloud.Pages
 		{
 			InitializeComponent();
 
+			Subscribe();
+			Master = new NavPage();
+			Unsubscribe();
+		}
+
+		/// <inheritdoc />
+		protected override void OnAppearing()
+		{
+			Subscribe();
+			base.OnAppearing();
+		}
+
+		private void Subscribe()
+		{
 			MessagingCenter.Subscribe<NavPageViewModel, Page>(this, ViewModelBase.NavigationPushView,
 				(sender, page) =>
 				{
 					Detail = page;
 					IsPresented = false;
 				});
-
-			Master = new NavPage();
 		}
 
-		protected override void OnDisappearing()
+		private void Unsubscribe()
 		{
 			MessagingCenter.Unsubscribe<NavPageViewModel, Page>(this, ViewModelBase.NavigationPushView);
+		}
+
+		/// <inheritdoc />
+		protected override void OnDisappearing()
+		{
+			Unsubscribe();
 			base.OnDisappearing();
 		}
 	}
 }
+ 
