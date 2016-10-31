@@ -1,9 +1,8 @@
 ﻿using System;
-using PrettySecureCloud.CloudServices.Implementations;
 using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 
-namespace PrettySecureCloud.CloudServices
+namespace PrettySecureCloud.CloudServices.ServiceChooser
 {
 	public partial class ServiceChooserPage
 	{

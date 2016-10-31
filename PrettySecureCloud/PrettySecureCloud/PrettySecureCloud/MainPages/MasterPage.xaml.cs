@@ -1,7 +1,7 @@
 ﻿using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 
-namespace PrettySecureCloud.Pages
+namespace PrettySecureCloud.MainPages
 {
 	public partial class MasterPage
 	{

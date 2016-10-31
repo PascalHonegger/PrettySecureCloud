@@ -1,6 +1,6 @@
-﻿using PrettySecureCloud.LoginService;
+﻿using PrettySecureCloud.Service_References.LoginService;
 
-namespace PrettySecureCloud.CloudServices
+namespace PrettySecureCloud.CloudServices.AddService
 {
 	public class ServiceTypeViewModel
 	{

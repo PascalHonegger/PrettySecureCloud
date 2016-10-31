@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Dropbox.Api;
-using PrettySecureCloud.LoginService;
+using PrettySecureCloud.CloudServices.AddService;
+using PrettySecureCloud.CloudServices.Files;
+using PrettySecureCloud.Service_References.LoginService;
 using Xamarin.Forms;
 using Xamarin.Forms.OAuth;
 

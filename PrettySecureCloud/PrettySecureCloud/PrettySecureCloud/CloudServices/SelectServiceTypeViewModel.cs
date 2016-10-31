@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using PrettySecureCloud.CloudServices.AddService;
 using PrettySecureCloud.CloudServices.Implementations;
 using PrettySecureCloud.Infrastructure;
-using PrettySecureCloud.LoginService;
+using PrettySecureCloud.Service_References.LoginService;
 using Xamarin.Forms;
 
 namespace PrettySecureCloud.CloudServices
@@ -49,7 +50,7 @@ namespace PrettySecureCloud.CloudServices
 				OnPropertyChanged();
 
 
-				PushView(this, new AddServicePage(new AddServiceViewModel(SelectedServiceType)));
+				PushView(this, new AddService.AddServicePage(new AddServiceViewModel(SelectedServiceType)));
 			}
 		}
 	}

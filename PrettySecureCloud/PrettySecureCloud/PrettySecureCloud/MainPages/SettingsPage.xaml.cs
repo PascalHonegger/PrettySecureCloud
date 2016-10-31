@@ -1,7 +1,7 @@
 ﻿using System;
 using PrettySecureCloud.Infrastructure;
 
-namespace PrettySecureCloud.Pages
+namespace PrettySecureCloud.MainPages
 {
 	public partial class SettingsPage
 	{

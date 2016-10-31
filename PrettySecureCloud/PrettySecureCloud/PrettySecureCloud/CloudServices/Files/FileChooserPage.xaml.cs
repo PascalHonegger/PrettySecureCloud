@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 
-namespace PrettySecureCloud.Pages
+namespace PrettySecureCloud.CloudServices.Files
 {
 	public partial class FileChooserPage : ContentPage
 	{

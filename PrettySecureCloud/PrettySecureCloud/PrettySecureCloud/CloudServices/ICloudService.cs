@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using PrettySecureCloud.LoginService;
+using PrettySecureCloud.CloudServices.AddService;
+using PrettySecureCloud.CloudServices.Files;
+using PrettySecureCloud.Service_References.LoginService;
 
-namespace PrettySecureCloud.CloudServices.Implementations
+namespace PrettySecureCloud.CloudServices
 {
 	public interface ICloudService
 	{

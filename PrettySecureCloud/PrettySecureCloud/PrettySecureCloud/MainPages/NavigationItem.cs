@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace PrettySecureCloud.Pages
+namespace PrettySecureCloud.MainPages
 {
 	public class NavigationItem
 	{

@@ -1,12 +1,10 @@
-﻿using System;
-using Dropbox.Api;
-using PrettySecureCloud.CloudServices.Implementations;
+﻿using Dropbox.Api;
 using PrettySecureCloud.Infrastructure;
-using PrettySecureCloud.LoginService;
-using PrettySecureCloud.Pages;
+using PrettySecureCloud.MainPages;
+using PrettySecureCloud.Service_References.LoginService;
 using Xamarin.Forms;
 
-namespace PrettySecureCloud.CloudServices
+namespace PrettySecureCloud.CloudServices.AddService
 {
 	public class AddServiceViewModel : ViewModelBase
 	{

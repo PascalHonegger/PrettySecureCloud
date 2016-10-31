@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using PrettySecureCloud.LoginService;
+using PrettySecureCloud.CloudServices.Implementations;
+using PrettySecureCloud.Service_References.LoginService;
 
-namespace PrettySecureCloud.CloudServices.Implementations
+namespace PrettySecureCloud.CloudServices
 {
 	public static class ServiceTypeMapper
 	{

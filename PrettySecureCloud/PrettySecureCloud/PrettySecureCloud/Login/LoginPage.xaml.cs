@@ -1,6 +1,6 @@
 ﻿using System;
 using PrettySecureCloud.Infrastructure;
-using PrettySecureCloud.LoginService;
+using PrettySecureCloud.Service_References.LoginService;
 
 namespace PrettySecureCloud.Login
 {

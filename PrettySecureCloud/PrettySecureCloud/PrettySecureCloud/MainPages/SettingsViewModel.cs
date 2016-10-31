@@ -3,7 +3,7 @@ using PrettySecureCloud.Infrastructure;
 using PrettySecureCloud.Login;
 using Xamarin.Forms;
 
-namespace PrettySecureCloud.Pages
+namespace PrettySecureCloud.MainPages
 {
 	public class SettingsViewModel : ViewModelBase
 	{

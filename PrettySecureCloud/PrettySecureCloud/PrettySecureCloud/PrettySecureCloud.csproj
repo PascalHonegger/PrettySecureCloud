@@ -37,19 +37,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="CloudServices\AddServicePage.xaml.cs">
+    <Compile Include="CloudServices\AddService\AddServicePage.xaml.cs">
       <DependentUpon>AddServicePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CloudServices\AddServiceViewModel.cs" />
-    <Compile Include="CloudServices\Implementations\ICloudService.cs" />
-    <Compile Include="CloudServices\Implementations\IFile.cs" />
-    <Compile Include="CloudServices\Implementations\ServiceTypeMapper.cs" />
-    <Compile Include="CloudServices\SelectServiceTypePage.xaml.cs">
+    <Compile Include="CloudServices\AddService\AddServiceViewModel.cs" />
+    <Compile Include="CloudServices\ICloudService.cs" />
+    <Compile Include="CloudServices\Files\IFile.cs" />
+    <Compile Include="CloudServices\ServiceTypeMapper.cs" />
+    <Compile Include="CloudServices\AddService\SelectServiceTypePage.xaml.cs">
       <DependentUpon>SelectServiceTypePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="CloudServices\SelectServiceTypeViewModel.cs" />
-    <Compile Include="CloudServices\ServiceChooserViewModel.cs" />
-    <Compile Include="CloudServices\ServiceTypeViewModel.cs" />
+    <Compile Include="CloudServices\ServiceChooser\ServiceChooserViewModel.cs" />
+    <Compile Include="CloudServices\AddService\ServiceTypeViewModel.cs" />
     <Compile Include="Encryption\IByteEncryptor.cs" />
     <Compile Include="FileChooser\DirectoryElement.cs" />
     <Compile Include="Infrastructure\EventsHelper.cs" />
@@ -59,25 +59,25 @@
     <Compile Include="Infrastructure\ViewModelBase.cs" />
     <Compile Include="Login\LoginViewModel.cs" />
     <Compile Include="Login\RegistrationViewModel.cs" />
-    <Compile Include="Pages\FileChooserPage.xaml.cs">
+    <Compile Include="CloudServices\Files\FileChooserPage.xaml.cs">
       <DependentUpon>FileChooserPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FileChooserViewModel.cs" />
-    <Compile Include="Pages\NavigationItem.cs" />
-    <Compile Include="CloudServices\ServiceChooserPage.xaml.cs">
+    <Compile Include="CloudServices\Files\FileChooserViewModel.cs" />
+    <Compile Include="MainPages\NavigationItem.cs" />
+    <Compile Include="CloudServices\ServiceChooser\ServiceChooserPage.xaml.cs">
       <DependentUpon>ServiceChooserPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MasterPage.xaml.cs">
+    <Compile Include="MainPages\MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NavPage.xaml.cs">
+    <Compile Include="MainPages\NavPage.xaml.cs">
       <DependentUpon>NavPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NavPageViewModel.cs" />
-    <Compile Include="Pages\SettingsPage.xaml.cs">
+    <Compile Include="MainPages\NavPageViewModel.cs" />
+    <Compile Include="MainPages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SettingsViewModel.cs" />
+    <Compile Include="MainPages\SettingsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\LoginService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -99,7 +99,7 @@
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CloudServices\ServiceChooserPage.xaml">
+    <EmbeddedResource Include="CloudServices\ServiceChooser\ServiceChooserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -114,13 +114,13 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\MasterPage.xaml">
+    <EmbeddedResource Include="MainPages\MasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\NavPage.xaml">
+    <EmbeddedResource Include="MainPages\NavPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -209,25 +209,25 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\SettingsPage.xaml">
+    <EmbeddedResource Include="MainPages\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CloudServices\SelectServiceTypePage.xaml">
+    <EmbeddedResource Include="CloudServices\AddService\SelectServiceTypePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CloudServices\AddServicePage.xaml">
+    <EmbeddedResource Include="CloudServices\AddService\AddServicePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\FileChooserPage.xaml">
+    <EmbeddedResource Include="CloudServices\Files\FileChooserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

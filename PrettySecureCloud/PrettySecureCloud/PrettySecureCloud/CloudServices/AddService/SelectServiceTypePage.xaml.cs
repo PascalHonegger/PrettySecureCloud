@@ -1,6 +1,6 @@
 ﻿using PrettySecureCloud.Infrastructure;
 
-namespace PrettySecureCloud.CloudServices
+namespace PrettySecureCloud.CloudServices.AddService
 {
 	public partial class SelectServiceTypePage
 	{

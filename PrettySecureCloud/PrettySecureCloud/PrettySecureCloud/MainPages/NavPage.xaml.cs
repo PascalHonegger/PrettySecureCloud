@@ -1,4 +1,4 @@
-﻿namespace PrettySecureCloud.Pages
+﻿namespace PrettySecureCloud.MainPages
 {
 	public partial class NavPage
 	{

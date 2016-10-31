@@ -1,10 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using PrettySecureCloud.CloudServices;
+using PrettySecureCloud.CloudServices.ServiceChooser;
 using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 
-namespace PrettySecureCloud.Pages
+namespace PrettySecureCloud.MainPages
 {
 	public class NavPageViewModel : ViewModelBase
 	{

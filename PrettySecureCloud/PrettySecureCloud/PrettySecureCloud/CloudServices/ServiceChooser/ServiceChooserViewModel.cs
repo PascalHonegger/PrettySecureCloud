@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using PrettySecureCloud.CloudServices.Implementations;
 using PrettySecureCloud.Infrastructure;
-using PrettySecureCloud.LoginService;
 using Xamarin.Forms;
 
-namespace PrettySecureCloud.CloudServices
+namespace PrettySecureCloud.CloudServices.ServiceChooser
 {
 	public class ServiceChooserViewModel : ViewModelBase
 	{
@@ -20,7 +17,7 @@ namespace PrettySecureCloud.CloudServices
 
 		private void Add()
 		{
-			PushView(this, new SelectServiceTypePage());
+			PushView(this, new AddService.SelectServiceTypePage());
 		}
 
 		public Command AddCommand { get; }
