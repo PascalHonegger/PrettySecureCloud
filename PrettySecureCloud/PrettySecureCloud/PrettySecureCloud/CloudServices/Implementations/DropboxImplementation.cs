@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Dropbox.Api;
+using Dropbox.Api.Files;
 using PrettySecureCloud.CloudServices.AddService;
 using PrettySecureCloud.CloudServices.Files;
 using PrettySecureCloud.Service_References.LoginService;
@@ -18,27 +20,47 @@ namespace PrettySecureCloud.CloudServices.Implementations
 			Model.Type = type;
 		}
 
+		///<inheritdoc cref="ICloudService.CloudServiceType"/>
 		public ServiceTypeViewModel CloudServiceType => new ServiceTypeViewModel(Model.Type);
+
+
+		///<inheritdoc cref="ICloudService.Model"/>
 		public CloudService Model { get; set; } = new CloudService();
 
+
+		///<inheritdoc cref="ICloudService.CustomName"/>
 		public string CustomName
 		{
 			get { return Model.Name; }
 			set { Model.Name = value; }
 		}
 
-		public IEnumerable<IFile> FileStructure
+		private DropboxClient DropboxClient
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				if (_dropboxClient == null)
+				{
+					if(Model?.LoginToken  == null) throw new InvalidOperationException();
+
+					_dropboxClient = new DropboxClient(Model.LoginToken);
+				}
+
+				return _dropboxClient;
+			}
 		}
 
-		static async Task Run()
+		private DropboxClient _dropboxClient;
+
+		///<inheritdoc cref="ICloudService.FileStructure"/>
+		public async Task<IEnumerable<IFile>> FileStructure()
 		{
-			using (var dbx = new DropboxClient("YOUR ACCESS TOKEN"))
-			{
-				var full = await dbx.Users.GetCurrentAccountAsync();
-				System.Diagnostics.Debug.WriteLine("{0} - {1}", full.Name.DisplayName, full.Email);
-			}
+			var folderContent = await DropboxClient.Files.ListFolderAsync(string.Empty);
+
+			var files = folderContent.Entries.Where(e => e.IsFile).Select(f => f.AsFile);
+
+			//TODO cast to IFile
+			return new List<IFile>();
 		}
 
 		public async Task<string> AuthenticateLoginTokenAsync()
@@ -60,14 +82,18 @@ namespace PrettySecureCloud.CloudServices.Implementations
 			throw new AuthException();
 		}
 
-		public StreamReader DownloadFile(IFile target)
+		///<inheritdoc cref="ICloudService.UploadFile"/>
+		public async Task UploadFile(Stream source, IFile target)
 		{
-			throw new NotImplementedException();
+			await DropboxClient.Files.UploadAsync(new CommitInfo(target.Path, WriteMode.Add.Instance), source);
 		}
 
-		public void UploadFile(StreamReader source, IFile target)
+		///<inheritdoc cref="ICloudService.DownloadFile"/>
+		public async Task<Stream> DownloadFile(IFile target)
 		{
-			throw new NotImplementedException();
+			var result = await DropboxClient.Files.DownloadAsync(target.Path);
+
+			return await result.GetContentAsStreamAsync();
 		}
 	}
 }
