@@ -1,5 +1,4 @@
 # Lernjournal Luca Marti
-==========
 ## Inhaltsverzeichnis
 ### - 20.09.16
 ### - 27.09.16
