@@ -35,13 +35,16 @@ namespace PrettySecureCloud.CloudServices.Files
 			_cloudService = cloudService;
 
 			UploadCommand = new Command(async () => await UploadFileAsync());
+			RefreshFilesCommand = new Command(async () => await ShowDirectory());
 
-			ShowDirectory();
+			RefreshFilesCommand.Execute(null);
 		}
 
-		private async void ShowDirectory()
+		private async Task ShowDirectory()
 		{
 			Workers++;
+
+			FilledListView.Clear();
 
 			var files = await _cloudService.FileStructure();
 
@@ -102,5 +105,7 @@ namespace PrettySecureCloud.CloudServices.Files
 
 			Workers--;
 		}
+
+		public Command RefreshFilesCommand { get; }
 	}
 }
