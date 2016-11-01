@@ -7,6 +7,7 @@
 			InitializeComponent();
 
 			BindingContext = new NavPageViewModel();
+			ListViewNav.Footer = string.Empty;
 		}
 	}
 }

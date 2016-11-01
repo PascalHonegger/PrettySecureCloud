@@ -101,6 +101,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PrettySecureCloud\PrettySecureCloud.csproj">
       <Name>PrettySecureCloud</Name>
+      <Project>{42E84D6B-6424-4F7C-BCD4-4A3F095F7052}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -109,9 +110,12 @@
     <BundleResource Include="Resources\Default-Portrait%402x.png" />
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\Icon-60%402x.png" />
-    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\bild.png" />
+    <BundleResource Include="Resources\add%402x.png" />
+    <BundleResource Include="Resources\add%403x.png" />
+    <BundleResource Include="Resources\dropbox%402x.png" />
+    <BundleResource Include="Resources\dropbox%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PCLCrypto, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d4421c8a4786956c, processorArchitecture=MSIL">
@@ -181,18 +185,6 @@
     <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon-80.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Icon-120.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Icon-512.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Icon-1024.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\Icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -208,19 +200,7 @@
     <BundleResource Include="Resources\add.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\add%402.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\add%403.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\dropbox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\dropbox%402.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\dropbox%403.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\icon%402x.png" />

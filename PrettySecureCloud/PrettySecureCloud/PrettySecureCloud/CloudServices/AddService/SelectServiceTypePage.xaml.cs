@@ -9,6 +9,7 @@ namespace PrettySecureCloud.CloudServices.AddService
 			InitializeComponent();
 
 			BindingContext = new SelectServiceTypeViewModel();
+			ListViewServiceType.Footer = string.Empty;
 		}
 
 		protected override void OnAppearing()

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -10,7 +10,7 @@
 
 	<StackLayout>
 		<SearchBar Placeholder="Dienst suchen" Text="{Binding SearchText}"/>
-		<ListView ItemsSource="{Binding CloudServices}" SelectedItem="{Binding SelectedCloudService}">
+		<ListView x:Name="ListViewService" ItemsSource="{Binding CloudServices}" SelectedItem="{Binding SelectedCloudService}">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ImageCell Text="{Binding CustomName}" ImageSource="{Binding ImageName}">

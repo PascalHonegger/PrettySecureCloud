@@ -13,6 +13,7 @@ namespace PrettySecureCloud.CloudServices.ServiceChooser
 			InitializeComponent();
 
 			BindingContext = _viewModel = new ServiceChooserViewModel();
+			ListViewService.Footer = string.Empty;
 		}
 
 		/// <inheritdoc />

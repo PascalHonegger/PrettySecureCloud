@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -8,7 +8,7 @@
 	<StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand">
 		<Image Source="bild.png" Aspect="AspectFill" HeightRequest="150" HorizontalOptions="FillAndExpand"/>
 
-		<ListView ItemsSource="{Binding AvailablePages}" SelectedItem="{Binding SelectedPage}" HasUnevenRows="True" VerticalOptions="FillAndExpand" Margin="20, 10, 20, 20">
+		<ListView x:Name="ListViewNav" ItemsSource="{Binding AvailablePages}" SelectedItem="{Binding SelectedPage}" HasUnevenRows="True" VerticalOptions="FillAndExpand" Margin="20, 10, 20, 20">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ImageCell ImageSource="{Binding Image}" Text="{Binding Title}" Detail="{Binding Description}"/>
