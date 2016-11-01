@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using Dropbox.Api;
 using Dropbox.Api.Files;
 using PrettySecureCloud.CloudServices.AddService;
-using PrettySecureCloud.CloudServices.Files;
 using PrettySecureCloud.FileChooser;
+using PrettySecureCloud.Infrastructure;
 using PrettySecureCloud.Service_References.LoginService;
 using Xamarin.Forms;
 using Xamarin.Forms.OAuth;
 
 namespace PrettySecureCloud.CloudServices.Implementations
 {
-	public class DropboxImplementation : ICloudService
+	public class DropboxImplementation : PropertyChangedBase, ICloudService
 	{
 		public DropboxImplementation(ServiceType type)
 		{
@@ -33,7 +33,11 @@ namespace PrettySecureCloud.CloudServices.Implementations
 		public string CustomName
 		{
 			get { return Model.Name; }
-			set { Model.Name = value; }
+			set
+			{
+				Model.Name = value;
+				OnPropertyChanged();
+			}
 		}
 
 		private DropboxClient DropboxClient
@@ -60,20 +64,15 @@ namespace PrettySecureCloud.CloudServices.Implementations
 
 			var files = folderContent.Entries.Where(e => e.IsFile).Select(f => f.AsFile);
 
-			var Directory = new List<IFile>();
-			foreach (var file in files)
+			return files.Select(file => new DirectoryElement
 			{
-				var element = new DirectoryElement()
-				{
-					FileName = file.Name,
-					FileType = file.ParentSharedFolderId,
-					Path = file.PathDisplay,
-				};
-				Directory.Add(element);
-			}
-			return Directory;
+				FileName = file.Name,
+				FileType = file.ParentSharedFolderId,
+				Path = file.PathDisplay,
+			});
 		}
 
+		///<inheritdoc cref="ICloudService.AuthenticateLoginTokenAsync"/>
 		public async Task<string> AuthenticateLoginTokenAsync()
 		{
 			var previousMainWindow = Application.Current.MainPage;

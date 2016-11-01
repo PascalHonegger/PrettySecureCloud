@@ -1,12 +1,12 @@
 using Android.Content;
 using Android.Net;
-using FlexChartImageSave.Droid;
 using Java.IO;
+using PrettySecureCloud.Droid;
 using PrettySecureCloud.FileChooser;
 
 [assembly: Xamarin.Forms.Dependency(typeof(Picture_Droid))]
 
-namespace FlexChartImageSave.Droid
+namespace PrettySecureCloud.Droid
 {
 	public class Picture_Droid : IPicture
 	{

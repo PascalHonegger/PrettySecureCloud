@@ -1,40 +1,36 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
 using Plugin.Media;
-using PrettySecureCloud.FileChooser;
+using Plugin.Media.Abstractions;
+using PrettySecureCloud.CloudServices;
 using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 
-namespace PrettySecureCloud.CloudServices.Files
+namespace PrettySecureCloud.FileChooser
 {
 	public class FileChooserViewModel : ViewModelBase
 	{
-		private const string FileExtension = ".aes";
+		public const string FileExtension = ".aes";
 
 		private readonly ICloudService _cloudService;
-		private IFile _selectedFile;
 		public ObservableCollection<IFile> FilledListView { get; } = new ObservableCollection<IFile>();
 
 		public IFile SelectedFile
 		{
-			get { return _selectedFile; }
+			get { return null; }
 			set
 			{
-				_selectedFile = value;
 				OnPropertyChanged();
-
-				PushView(this, new FileDetailsView(_selectedFile, _cloudService));
+				PushView(this, new FileDetailsView(value, _cloudService));
 			}
 		}
-
-		public Command UploadCommand { get; }
 
 		public FileChooserViewModel(ICloudService cloudService)
 		{
 			_cloudService = cloudService;
 
-			UploadCommand = new Command(async () => await UploadFileAsync());
 			RefreshFilesCommand = new Command(async () => await ShowDirectory());
 
 			RefreshFilesCommand.Execute(null);
@@ -59,30 +55,30 @@ namespace PrettySecureCloud.CloudServices.Files
 			});
 		}
 
-		private async Task UploadFileAsync()
+		public async Task UploadFileAsync(Func<Task<MediaFile>> getFileAction)
 		{
 			Workers++;
+
+			Action exit = () =>
+			{
+				Workers--;
+				DisplayAlert(this, new MessageData("Fehler", "Konnte kein Bild laden. Überprüfe die App-Berechtigungen", "OK"));
+			};
 
 			await CrossMedia.Current.Initialize();
 
 			if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
 			{
-				DisplayAlert(this, new MessageData("Fehler", "Kamera nicht verfügbar.", "OK"));
+				exit();
 				return;
 			}
 
-			var file = await CrossMedia.Current.PickPhotoAsync();
-
-			//TODO Take photo with camera as option
-			/*file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
-			{
-				Directory = "LocalData",
-				Name = "bill_" + DateTime.Now + ".jpg"
-			});*/
+			var file = await getFileAction();
 
 			if (file == null)
 			{
-				throw new FileNotFoundException();
+				exit();
+				return;
 			}
 
 

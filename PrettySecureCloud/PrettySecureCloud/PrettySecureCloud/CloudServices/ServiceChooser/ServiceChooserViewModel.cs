@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using Dropbox.Api.Files;
-using PrettySecureCloud.CloudServices.Files;
+using PrettySecureCloud.CloudServices.EditService;
+using PrettySecureCloud.FileChooser;
 using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 
@@ -33,6 +33,7 @@ namespace PrettySecureCloud.CloudServices.ServiceChooser
 			set
 			{
 				if (value == null) return;
+				OnPropertyChanged();
 				PushView(this, new FileChooserPage(value));
 			}
 		}
@@ -74,6 +75,8 @@ namespace PrettySecureCloud.CloudServices.ServiceChooser
 
 		private void RemoveServiceCompleted(object sender, AsyncCompletedEventArgs asyncCompletedEventArgs)
 		{
+			Service.RemoveServiceCompleted -= RemoveServiceCompleted;
+
 			if(HandleException(this, asyncCompletedEventArgs))
 			{
 				var clickedService = (ICloudService) asyncCompletedEventArgs.UserState;
@@ -81,12 +84,13 @@ namespace PrettySecureCloud.CloudServices.ServiceChooser
 				CurrentSession.CurrentUser.Services.Remove(clickedService.Model);
 				CloudServices.Remove(clickedService);
 			}
+
+			Workers--;
 		}
 
 		public void EditService(ICloudService clickedService)
 		{
-			//TODO Re-Use AddServicePage
-			throw new System.NotImplementedException();
+			PushView(this, new EditServicePage(clickedService));
 		}
 	}
 }

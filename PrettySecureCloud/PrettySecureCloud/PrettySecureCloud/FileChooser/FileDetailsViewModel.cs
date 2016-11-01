@@ -1,8 +1,6 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
-using Plugin.Media;
 using PrettySecureCloud.CloudServices;
-using PrettySecureCloud.CloudServices.Files;
 using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 
@@ -49,9 +47,14 @@ namespace PrettySecureCloud.FileChooser
 			{
 				await file.CopyToAsync(ms);
 
-				var decrypted = CurrentSession.Encryptor.Decrypt(ms.ToArray(), CurrentSession.CurrentUser.EncryptionKey);
+				var data = ms.ToArray();
 
-				DependencyService.Get<IPicture>().SavePictureToDisk(Path.GetFileNameWithoutExtension(SelectedFile.FileName), decrypted);
+				if (Equals(SelectedFile.FileType, FileChooserViewModel.FileExtension))
+				{
+					data = CurrentSession.Encryptor.Decrypt(data, CurrentSession.CurrentUser.EncryptionKey);
+				}
+
+				DependencyService.Get<IPicture>().SavePictureToDisk(Path.GetFileNameWithoutExtension(SelectedFile.FileName), data);
 			}
 
 			Workers--;

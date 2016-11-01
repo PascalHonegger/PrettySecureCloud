@@ -10,7 +10,7 @@
 
 	<StackLayout>
 		<SearchBar Placeholder="Dienst suchen" Text="{Binding SearchText}"/>
-		<ListView x:Name="ListViewService" ItemsSource="{Binding CloudServices}" SelectedItem="{Binding SelectedCloudService}">
+		<ListView x:Name="ListViewService" ItemsSource="{Binding CloudServices}" SelectedItem="{Binding SelectedCloudService, Mode=TwoWay}">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ImageCell Text="{Binding CustomName}" ImageSource="{Binding ImageName}">
