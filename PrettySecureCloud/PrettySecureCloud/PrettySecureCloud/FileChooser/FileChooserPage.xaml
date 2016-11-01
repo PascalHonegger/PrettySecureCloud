@@ -6,7 +6,7 @@
 
 	<StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand" Padding="20, 10, 20, 20">
 		<ListView x:Name="MainListView" ItemsSource="{Binding FilledListView}" HasUnevenRows="True"
-		          ItemSelected="OnSelection">
+		          SelectedItem="{Binding SelectedFile}">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<TextCell Text="{Binding FileName}" />

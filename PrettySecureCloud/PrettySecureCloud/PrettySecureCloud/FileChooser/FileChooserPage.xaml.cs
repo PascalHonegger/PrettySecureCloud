@@ -1,4 +1,6 @@
 ﻿using System;
+using PrettySecureCloud.CloudServices.ServiceChooser;
+using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 
 namespace PrettySecureCloud.CloudServices.Files
@@ -12,9 +14,19 @@ namespace PrettySecureCloud.CloudServices.Files
 			BindingContext = new FileChooserViewModel(selectedCloudService);
 		}
 
-		private void OnSelection(object sender, SelectedItemChangedEventArgs e)
+
+		/// <inheritdoc />
+		protected override void OnAppearing()
 		{
-			throw new NotImplementedException();
+			this.Subscribe<FileChooserViewModel, FileChooserPage>();
+			base.OnAppearing();
+		}
+
+		/// <inheritdoc />
+		protected override void OnDisappearing()
+		{
+			this.Unsubscribe<FileChooserViewModel, FileChooserPage>();
+			base.OnDisappearing();
 		}
 	}
 }

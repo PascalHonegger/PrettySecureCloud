@@ -13,7 +13,7 @@ namespace PrettySecureCloud.FileChooser
 		public string FileName { get; set; }
 		public string FileType { get; set; }
 		public string Path { get; set; }
-		public string Imgae { get; } = "Bla";
+		public string Image { get; } = "Bla";
 		//public ImageSource Image { get; set; }
 	}
 }

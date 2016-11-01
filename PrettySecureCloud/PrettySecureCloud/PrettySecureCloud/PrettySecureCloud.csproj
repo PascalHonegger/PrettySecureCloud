@@ -42,6 +42,10 @@
     </Compile>
     <Compile Include="CloudServices\AddService\AddServiceViewModel.cs" />
     <Compile Include="CloudServices\ICloudService.cs" />
+    <Compile Include="FileChooser\FileDetailsView.xaml.cs">
+      <DependentUpon>FileDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FileChooser\FileDetailsViewModel.cs" />
     <Compile Include="FileChooser\IFile.cs" />
     <Compile Include="CloudServices\ServiceTypeMapper.cs" />
     <Compile Include="CloudServices\AddService\SelectServiceTypePage.xaml.cs">
@@ -231,7 +235,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="FileChooser\FileDetailsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -8,6 +8,6 @@ namespace PrettySecureCloud.CloudServices.Files
 
 		string Path { get; }
 
-		string Imgae { get; }
+		string Image { get; }
 	}
 }
