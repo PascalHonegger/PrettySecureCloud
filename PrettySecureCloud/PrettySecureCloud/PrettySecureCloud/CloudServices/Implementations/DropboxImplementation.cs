@@ -96,7 +96,7 @@ namespace PrettySecureCloud.CloudServices.Implementations
 		///<inheritdoc cref="ICloudService.UploadFile"/>
 		public async Task UploadFile(Stream source, IFile target)
 		{
-			await DropboxClient.Files.UploadAsync(new CommitInfo(target.Path, WriteMode.Add.Instance), source);
+			await DropboxClient.Files.UploadAsync(new CommitInfo($"/{target.Path}", WriteMode.Add.Instance), source);
 		}
 
 		///<inheritdoc cref="ICloudService.DownloadFile"/>
