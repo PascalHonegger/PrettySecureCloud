@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using Dropbox.Api.Files;
+using PrettySecureCloud.CloudServices.Files;
 using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 
@@ -33,7 +35,7 @@ namespace PrettySecureCloud.CloudServices.ServiceChooser
 			{
 				if (Equals(_selectedCloudService, value)) return;
 				_selectedCloudService = value;
-				DisplayAlert(this, new MessageData("Ausgewählt", $"Sie haben {_selectedCloudService.Model.Name} ausgewählt", "Ok"));
+				PushView(this, new FileChooserPage(_selectedCloudService));
 			}
 		}
 

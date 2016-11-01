@@ -9,7 +9,7 @@
 		          ItemSelected="OnSelection">
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<ImageCell Text="{Binding FileName}" ImageSource="{Binding Image}" />
+					<TextCell Text="{Binding FileName}" />
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>

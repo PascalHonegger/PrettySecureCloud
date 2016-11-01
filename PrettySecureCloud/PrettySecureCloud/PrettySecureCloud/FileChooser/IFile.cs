@@ -7,5 +7,7 @@ namespace PrettySecureCloud.CloudServices.Files
 		string FileType { get; }
 
 		string Path { get; }
+
+		string Imgae { get; }
 	}
 }

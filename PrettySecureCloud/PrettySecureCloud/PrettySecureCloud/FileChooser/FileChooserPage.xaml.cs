@@ -5,11 +5,11 @@ namespace PrettySecureCloud.CloudServices.Files
 {
 	public partial class FileChooserPage : ContentPage
 	{
-		public FileChooserPage()
+		public FileChooserPage(ICloudService selectedCloudService)
 		{
 			InitializeComponent();
 
-			BindingContext = new FileChooserViewModel();
+			BindingContext = new FileChooserViewModel(selectedCloudService);
 		}
 
 		private void OnSelection(object sender, SelectedItemChangedEventArgs e)

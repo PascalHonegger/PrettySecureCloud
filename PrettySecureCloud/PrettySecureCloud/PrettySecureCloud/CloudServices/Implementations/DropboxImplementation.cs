@@ -7,6 +7,7 @@ using Dropbox.Api;
 using Dropbox.Api.Files;
 using PrettySecureCloud.CloudServices.AddService;
 using PrettySecureCloud.CloudServices.Files;
+using PrettySecureCloud.FileChooser;
 using PrettySecureCloud.Service_References.LoginService;
 using Xamarin.Forms;
 using Xamarin.Forms.OAuth;
@@ -59,8 +60,18 @@ namespace PrettySecureCloud.CloudServices.Implementations
 
 			var files = folderContent.Entries.Where(e => e.IsFile).Select(f => f.AsFile);
 
-			//TODO cast to IFile
-			return new List<IFile>();
+			var Directory = new List<IFile>();
+			foreach (var file in files)
+			{
+				var element = new DirectoryElement()
+				{
+					FileName = file.Name,
+					FileType = file.ParentSharedFolderId,
+					Path = file.PathDisplay,
+				};
+				Directory.Add(element);
+			}
+			return Directory;
 		}
 
 		public async Task<string> AuthenticateLoginTokenAsync()
