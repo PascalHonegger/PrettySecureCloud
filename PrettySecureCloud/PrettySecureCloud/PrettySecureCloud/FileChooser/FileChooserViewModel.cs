@@ -1,13 +1,18 @@
 ﻿using System.Collections.ObjectModel;
+using System.IO;
+using System.Threading.Tasks;
+using Plugin.Media;
 using PrettySecureCloud.FileChooser;
 using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 
 namespace PrettySecureCloud.CloudServices.Files
 {
-	internal class FileChooserViewModel : ViewModelBase
+	public class FileChooserViewModel : ViewModelBase
 	{
-		private readonly ICloudService CloudService;
+		private const string FileExtension = ".aes";
+
+		private readonly ICloudService _cloudService;
 		private IFile _selectedFile;
 		public ObservableCollection<IFile> FilledListView { get; } = new ObservableCollection<IFile>();
 
@@ -19,14 +24,17 @@ namespace PrettySecureCloud.CloudServices.Files
 				_selectedFile = value;
 				OnPropertyChanged();
 
-				PushView(this, new FileDetailsView(_selectedFile, CloudService));
+				PushView(this, new FileDetailsView(_selectedFile, _cloudService));
 			}
 		}
 
+		public Command UploadCommand { get; }
+
 		public FileChooserViewModel(ICloudService cloudService)
 		{
-			CloudService = cloudService;
+			_cloudService = cloudService;
 
+			UploadCommand = new Command(async () => await UploadFileAsync());
 
 			ShowDirectory();
 		}
@@ -35,7 +43,7 @@ namespace PrettySecureCloud.CloudServices.Files
 		{
 			Workers++;
 
-			var files = await CloudService.FileStructure();
+			var files = await _cloudService.FileStructure();
 
 			Device.BeginInvokeOnMainThread(() =>
 			{
@@ -46,6 +54,53 @@ namespace PrettySecureCloud.CloudServices.Files
 
 				Workers--;
 			});
+		}
+
+		private async Task UploadFileAsync()
+		{
+			Workers++;
+
+			await CrossMedia.Current.Initialize();
+
+			if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+			{
+				DisplayAlert(this, new MessageData("Fehler", "Kamera nicht verfügbar.", "OK"));
+				return;
+			}
+
+			var file = await CrossMedia.Current.PickPhotoAsync();
+
+			//TODO Take photo with camera as option
+			/*file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+			{
+				Directory = "LocalData",
+				Name = "bill_" + DateTime.Now + ".jpg"
+			});*/
+
+			if (file == null)
+			{
+				throw new FileNotFoundException();
+			}
+
+
+			var onlyFileName = Path.GetFileName(file.Path);
+			var toBeUploaded = new DirectoryElement
+			{
+				Path = onlyFileName + FileExtension,
+				FileName = onlyFileName,
+				FileType = Path.GetExtension(onlyFileName)
+			};
+
+			using (var ms = new MemoryStream())
+			{
+				await file.GetStream().CopyToAsync(ms);
+
+				var encrypted = CurrentSession.Encryptor.Encrypt(ms.ToArray(), CurrentSession.CurrentUser.EncryptionKey);
+
+				await _cloudService.UploadFile(new MemoryStream(encrypted), toBeUploaded);
+			}
+
+			Workers--;
 		}
 	}
 }

@@ -10,7 +10,7 @@
 			<Label Text="{Binding SelectedFile.FileType}"/>
 			<Label Text="{Binding SelectedFile.Path}"/>
 			<Label Text="{Binding SelectedFile.Image}"/>
-			<Button Text="Daunloaden" Clicked="Button_OnClicked"/>
+			<Button Text="Herunterladen" Command="{Binding DownloadCommand}" IsEnabled="{Binding IsFree}"/>
 		</StackLayout>
 		<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
 	</Grid>

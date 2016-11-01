@@ -5,14 +5,15 @@
              x:Class="PrettySecureCloud.CloudServices.Files.FileChooserPage">
 	<Grid>
 		<StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand" Padding="20, 10, 20, 20">
-			<ListView x:Name="MainListView" ItemsSource="{Binding FilledListView}" HasUnevenRows="True"
-								SelectedItem="{Binding SelectedFile}">
+			<ListView ItemsSource="{Binding FilledListView}" HasUnevenRows="True"
+								SelectedItem="{Binding SelectedFile}" IsEnabled="{Binding IsFree}">
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<TextCell Text="{Binding FileName}" />
+						<TextCell Text="{Binding FileName}" IsEnabled="{Binding IsFree}"/>
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
+			<Button Text="Hochladen" Command="{Binding UploadCommand}"/>
 		</StackLayout>
 		<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
 	</Grid>

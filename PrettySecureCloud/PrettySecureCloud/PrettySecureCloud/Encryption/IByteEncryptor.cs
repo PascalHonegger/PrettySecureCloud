@@ -1,6 +1,6 @@
 ﻿namespace PrettySecureCloud.Encryption
 {
-	internal interface IByteEncryptor
+	public interface IByteEncryptor
 	{
 		/// <summary>
 		/// Decrypts given bytes using a symmetric alogrithm

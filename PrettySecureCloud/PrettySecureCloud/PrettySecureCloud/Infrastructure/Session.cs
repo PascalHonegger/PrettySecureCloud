@@ -1,4 +1,5 @@
-﻿using PrettySecureCloud.Service_References.LoginService;
+﻿using PrettySecureCloud.Encryption;
+using PrettySecureCloud.Service_References.LoginService;
 
 namespace PrettySecureCloud.Infrastructure
 {
@@ -6,11 +7,12 @@ namespace PrettySecureCloud.Infrastructure
 	{
 		private Session()
 		{
-
+			Encryptor = new AesEncryptor();
 		}
 
 		public static Session Instance { get; } = new Session();
 
 		public User CurrentUser { get; set; }
+		public IByteEncryptor Encryptor { get; set; }
 	}
 }

@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PrettySecureCloud.CloudServices;
+﻿using PrettySecureCloud.CloudServices;
 using PrettySecureCloud.CloudServices.Files;
 using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 
 namespace PrettySecureCloud.FileChooser
 {
-	public partial class FileDetailsView : ContentPage
+	public partial class FileDetailsView
 	{
-		private FileDetailsViewModel ViewModel;
 		public FileDetailsView(IFile selectedFile, ICloudService cloudService)
 		{
 			InitializeComponent();
 
-			ViewModel = new FileDetailsViewModel(selectedFile, cloudService);
-			BindingContext = ViewModel;
+			var viewModel = new FileDetailsViewModel(selectedFile, cloudService);
+
+			BindingContext = viewModel;
+
+			viewModel.DownloadCommand.ChangeCanExecute();
 		}
 
 		/// <inheritdoc />
@@ -33,11 +30,6 @@ namespace PrettySecureCloud.FileChooser
 		{
 			this.Unsubscribe<FileDetailsViewModel, FileDetailsView>();
 			base.OnDisappearing();
-		}
-
-		private async void Button_OnClicked(object sender, EventArgs e)
-		{
-			await ViewModel.DownloadFile();
 		}
 	}
 }
