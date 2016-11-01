@@ -1,21 +1,18 @@
 # Lernjournal Luca Marti
-## Inhaltsverzeichnis
-### - 20.09.16
-### - 27.09.16
-### - 04.10.16
-### - Ferien
-### - 25.10.16
-### - 01.11.16
-
-## Journale
 ### 20.09.16
+Heute haben wir alles installiert, damit wir nächste Woche mit dem implementieren beginnen können. Es ist etwas mühsam, da das TBZ Netzwerk nicht all zu schnell ist und wenn alle etwas downloaden müssen ist es noch langsamer. Wir haben heute zudem das MockUp erstellt, damit wir wissen, wie die App aussehen soll.  
+> **Erkentnis / Was habe ich gelernt**  
+- Für die Installation und Konfiguration von Programmen sollte man mehr Zeit einrechnen, damit, wenn Fehler auftreten, diese zu diesem Zietpunkt behoben werden können. 
 
 ### 27.09.16
 #### Xamarin Einführung
 Heute hielt ich eine Präsentation über Xamarin.Forms und seine Komponenten. Ich konnte mein Wissen vertiefen, indem ich mein Wissen an die anderen - versucht - weiterzugeben. Die [Dokumentation von Xamarin Forms](https://developer.xamarin.com/guides/xamarin-forms/) habe ich den Jungs vorgestellt. Zudem habe ich ihnen die verschiedenen Typen von Pages, welche in Xamarin verfügbar sind. 
 ![data](https://developer.xamarin.com/guides/xamarin-forms/controls/Pages/Images/Pages-sml.png)  
 Dadurch entstand ein Konw-How Transfer. 
+Zudem haben wir heute die erste Retro gehalten. Ich war noch nie gross dabei bei einer solchen Retro. Nun weiss ich aber, wie das abläuft und was diese genau beinhaltet. 
 > **Erkentnis / Was habe ich gelernt**  
+- Was und wie eine Retro-Perspektive aussieht
+- Xamarin Wissen vertieft
 
 ### 04.10.16
 #### Skype Meeting 
