@@ -33,4 +33,9 @@ Da in den Ferien mein Surface kaputt gegangen ist, war ich diese Woche ohne Lapo
 - Ich kann schon ziemlich viel was das Coden von Xamarin.Forms anbelangt.  
 
 ## 01.11.16
-
+Heute habe ich wieder einen PC dabei. Visual Studio ist installiert, aber Xamarin nicht. Eigentlich ist Xamarin keine grosse Mehrinstallation, ich habe aber um 11:30h erst 20% heruntergeladen. Meiner Meinung nach kann das nicht sein, dass ich für einen Download, welche die Grössen von 5GB hat, einen ganzen Morgen warten muss und nacher nur 20% gedownloaded sind. So kann man in einer berufsschule nicht arbeiten. Also habe ich die Dokumenation mit Luca Zatti geschrieben und Pascal beim coden und implementieren des Plugins, welches die Daten liefert, geholfen. 
+Wir mussten eine weile nach einem Fehler suchen: Der Fehler war, dass die App keine Berechtigung auf die Kamera erhielt.  
+=> **Lösung** Wir haben zwei Assamblys hinzuegfügt und in den App-Einstellungen die Berechtigungen gesetzt. Nachdem wir das gemacht haben funktionierte die App einwandfrei.  
+> **Erkentnis / Was habe ich gelernt**
+- In der TBZ keine Programme mehr downloaden
+- Die Berechtigungen müssen in einer Klasse definiert werden und anschliessend im AndroidManifest auch, damit man Rechte auf dem Gerät bekommt. 
