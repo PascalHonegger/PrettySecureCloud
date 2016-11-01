@@ -29,6 +29,7 @@ In den Ferien habe ich nicht viel an diesem Projekt arbeiten können, da ich in 
 Da in den Ferien mein Surface kaputt gegangen ist, war ich diese Woche ohne Lapotp in der Schule und ich habe gemerkt, dass man als Informatiker einfach auf ein Laptop angewiesen ist. Leider hat die Schule in unserem Klassenzimmer keine fixe Workstations mehr, sonst hätte ich auf diesen arbeiten können. Darum habe ich heute als Coach fungiert und geholfen, wo es ging. Ich habe die Fragen von den Teammitgliedern bezüglich Xamarin und Xamarin.Forms beantwortet und konnte ihnen so einen Know-how Transfer ermöglichen. 
 > **Erkentnis / Was habe ich gelernt**
 - Immer einen laufenden PC zur Hand haben ist vor Vorteil
-- Ich kann schon ziemlich viel was das Coden von Xamarin.Forms anbelangt. <
+- Ich kann schon ziemlich viel was das Coden von Xamarin.Forms anbelangt.  
+
 ### 01.11.16
 
