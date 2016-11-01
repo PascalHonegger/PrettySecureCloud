@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PrettySecureCloud.CloudServices;
 using PrettySecureCloud.CloudServices.Files;
 using PrettySecureCloud.Infrastructure;
+using Xamarin.Forms;
 
 namespace PrettySecureCloud.FileChooser
 {
@@ -35,8 +37,17 @@ namespace PrettySecureCloud.FileChooser
 
 		public async Task DownloadFile()
 		{
-			var File = await  CloudService.DownloadFile(SelectedFile);
-			
+			Workers++;
+			var File = await CloudService.DownloadFile(SelectedFile);
+			//Image image = new Image();
+			//image.Source = ImageSource.FromStream(() => File);
+			using (var ms = new MemoryStream())
+			{
+				File.CopyTo(ms);
+				DependencyService.Get<IPicture>().SavePictureToDisk(SelectedFile.FileName, ms.ToArray());
+			}
+
+			Workers--;
 		}
 	}
 }

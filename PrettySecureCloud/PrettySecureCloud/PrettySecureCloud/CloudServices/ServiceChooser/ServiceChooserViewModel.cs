@@ -25,17 +25,15 @@ namespace PrettySecureCloud.CloudServices.ServiceChooser
 		public Command AddCommand { get; }
 
 		private string _searchText = string.Empty;
-		private ICloudService _selectedCloudService;
 		public ObservableCollection<ICloudService> CloudServices { get; } = new ObservableCollection<ICloudService>();
 
 		public ICloudService SelectedCloudService
 		{
-			get { return _selectedCloudService; }
+			get { return null; }
 			set
 			{
-				if (Equals(_selectedCloudService, value)) return;
-				_selectedCloudService = value;
-				PushView(this, new FileChooserPage(_selectedCloudService));
+				if (value == null) return;
+				PushView(this, new FileChooserPage(value));
 			}
 		}
 

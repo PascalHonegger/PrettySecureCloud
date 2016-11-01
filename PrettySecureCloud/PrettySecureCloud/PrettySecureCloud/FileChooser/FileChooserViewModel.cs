@@ -33,12 +33,18 @@ namespace PrettySecureCloud.CloudServices.Files
 
 		private async void ShowDirectory()
 		{
+			Workers++;
+
 			var files = await CloudService.FileStructure();
 
 			Device.BeginInvokeOnMainThread(() =>
 			{
 				foreach (var file in files)
+				{
 					FilledListView.Add(file);
+				}
+
+				Workers--;
 			});
 		}
 	}
