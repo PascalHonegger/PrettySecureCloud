@@ -22,7 +22,7 @@ Dadurch entstand ein Konw-How Transfer.
 Heute haben wir ein Skype Meeting gehalten und mussten erst um 10:00Uhr in der Schule sein. Es gab ein paar technische Probleme, aber am Schluss funktionierte alles. 
 Wir hatten leider ein paar Team-Mitglieder, welche nicht lange Zeit hatten für das Meeting und wir uns etwas beeilen mussten. Ich werde diese Art von Meeting in meiner Lehre nicht brauchen, da wir unsere Scrum-Meetings, etc. immer im Büro halten, da alle Mitarbeiter anwesend sind. Trotzdem war es eine gute Erkentnis, diese Art von Meeting kennen zu lernen.  
 
-> **Erkentnis / Was habe ich gelernt**
+> **Erkentnis / Was habe ich gelernt**  
 Mehr Zeit für ein solches Meeting einplanen, da nicht bei allen alles funktioniert. Zudem entstehen unter Zeitdruck keine Konversationen und Disskusionen, welche wichtig für die Zeitschätzung sind.  
 
 ### Ferien
