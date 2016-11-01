@@ -38,5 +38,11 @@
 	<string>LaunchScreen</string>
 	<key>UIPrerenderedIcon</key>
 	<false/>
+	<key>CFBundleName</key>
+	<string>PrettySecureCloud</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Um ein Bild aus der Galerie hochzuladen</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Um ein Bild aufzunehmen</string>
 </dict>
 </plist>
