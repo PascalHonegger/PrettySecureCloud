@@ -19,7 +19,7 @@ namespace PrettySecureCloud.CloudServices.Files
 				_selectedFile = value;
 				OnPropertyChanged();
 
-				PushView(this, new FileDetailsView(_selectedFile));
+				PushView(this, new FileDetailsView(_selectedFile, CloudService));
 			}
 		}
 

@@ -8,6 +8,6 @@
 		<Label Text="{Binding SelectedFile.FileType}"/>
 		<Label Text="{Binding SelectedFile.Path}"/>
 		<Label Text="{Binding SelectedFile.Image}"/>
-		<Button Text="Daunloaden"/>
+		<Button Text="Daunloaden" Clicked="Button_OnClicked"/>
 	</StackLayout>
 </ContentPage>
