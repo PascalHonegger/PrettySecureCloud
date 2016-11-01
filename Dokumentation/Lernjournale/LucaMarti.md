@@ -13,7 +13,7 @@
 ### 27.09.16
 #### Xamarin Einführung
 Heute hielt ich eine Präsentation über Xamarin.Forms und seine Komponenten. Ich konnte mein Wissen vertiefen, indem ich mein Wissen an die anderen - versucht - weiterzugeben. Die [Dokumentation von Xamarin Forms](https://developer.xamarin.com/guides/xamarin-forms/) habe ich den Jungs vorgestellt. Zudem habe ich ihnen die verschiedenen Typen von Pages, welche in Xamarin verfügbar sind. 
-[!data](https://developer.xamarin.com/guides/xamarin-forms/controls/Pages/Images/Pages-sml.png)
+![data](https://developer.xamarin.com/guides/xamarin-forms/controls/Pages/Images/Pages-sml.png)
 Dadurch entstand ein Konw-How Transfer. 
 > **Erkentnis / Was habe ich gelernt**  
 
