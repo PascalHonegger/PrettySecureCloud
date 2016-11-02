@@ -13,7 +13,7 @@
 		<ListView x:Name="ListViewService" ItemsSource="{Binding CloudServices}" SelectedItem="{Binding SelectedCloudService, Mode=TwoWay}">
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<ImageCell Text="{Binding CustomName}" ImageSource="{Binding ImageName}">
+					<ImageCell Text="{Binding CustomName}" ImageSource="{Binding CloudServiceType.ImageName}">
 						<ImageCell.ContextActions>
 							<MenuItem Text="Bearbeiten" CommandParameter="{Binding .}" Clicked="MenuItem_OnClickedEdit"/>
 							<MenuItem Text="Löschen" IsDestructive="True" CommandParameter="{Binding .}" Clicked="MenuItem_OnClickedDelete"/>

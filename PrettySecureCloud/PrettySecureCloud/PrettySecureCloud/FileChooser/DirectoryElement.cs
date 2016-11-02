@@ -7,12 +7,24 @@ using Xamarin.Forms;
 
 namespace PrettySecureCloud.FileChooser
 {
-	class DirectoryElement : IFile
+	public class DirectoryElement : IFile
 	{
-		public string FileName { get; set; }
-		public string FileType { get; set; }
-		public string Path { get; set; }
-		public string Image { get; } = "Bla";
+		public DirectoryElement(string fileName, string fileType, string path)
+		{
+			FileName = fileName;
+			FileType = fileType;
+			Path = path;
+
+			//Beispiel:
+			//	.aes => _aes.png
+			//	.png => _png.png
+			Image = System.IO.Path.GetExtension(path).Replace('.', '_') + ".png";
+		}
+
+		public string FileName { get; }
+		public string FileType { get; }
+		public string Path { get; }
+		public string Image { get; }
 		//public ImageSource Image { get; set; }
 	}
 }
