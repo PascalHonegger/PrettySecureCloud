@@ -103,6 +103,7 @@ namespace PrettySecureCloud.CloudServices.Files
 				await _cloudService.UploadFile(new MemoryStream(encrypted), toBeUploaded);
 			}
 
+			await ShowDirectory();
 			Workers--;
 		}
 
