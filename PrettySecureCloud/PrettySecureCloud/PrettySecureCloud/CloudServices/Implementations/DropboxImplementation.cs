@@ -72,15 +72,17 @@ namespace PrettySecureCloud.CloudServices.Implementations
 			});
 		}
 
+		private const string RedirectUrl = "http://localhost";
+
 		///<inheritdoc cref="ICloudService.AuthenticateLoginTokenAsync"/>
 		public async Task<string> AuthenticateLoginTokenAsync()
 		{
 			var previousMainWindow = Application.Current.MainPage;
 
+			// ReSharper disable once RedundantExplicitParamsArrayCreation
 			var authenticationResult =
 				await OAuthAuthenticator.Authenticate(OAuthProviders.Dropbox(CloudServiceType.Type.Key, CloudServiceType.Type.Secret,
-					// ReSharper disable once RedundantExplicitParamsArrayCreation
-					"https://www.dropbox.com/", new string[0]));
+					RedirectUrl, new string[0]));
 
 			if (authenticationResult.Success)
 			{

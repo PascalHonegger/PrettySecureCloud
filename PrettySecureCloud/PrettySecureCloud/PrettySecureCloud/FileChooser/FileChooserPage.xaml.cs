@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using PrettySecureCloud.CloudServices;
 using PrettySecureCloud.Infrastructure;
 
@@ -45,21 +47,59 @@ namespace PrettySecureCloud.FileChooser
 			switch (action)
 			{
 				case gallery:
-					func = async () => await CrossMedia.Current.PickPhotoAsync();
+					func = PickPhotoAsync;
 					break;
 				case takePicture:
-					var options = new StoreCameraMediaOptions
-					{
-						Directory = "LocalData",
-						Name = "bild_" + DateTime.Now + ".jpg"
-					};
-					func = async () => await CrossMedia.Current.TakePhotoAsync(options); ;
+					func = TakePhotoAsync;
 					break;
 				default:
 					return;
 			}
 
 			await _viewModel.UploadFileAsync(func);
+		}
+
+		private async Task<MediaFile> PickPhotoAsync()
+		{
+			await TryGetPermissions(Permission.Storage);
+
+			return await CrossMedia.Current.PickPhotoAsync();
+		}
+
+		private async Task<MediaFile> TakePhotoAsync()
+		{
+			await TryGetPermissions(Permission.Camera);
+
+			var options = new StoreCameraMediaOptions
+			{
+				Directory = "LocalData",
+				Name = "bild_" + DateTime.Now + ".jpg"
+			};
+
+			return await CrossMedia.Current.TakePhotoAsync(options);
+		}
+
+		private async Task TryGetPermissions(Permission permission)
+		{
+			var permissions = await CrossPermissions.Current.CheckPermissionStatusAsync(permission);
+			if (permissions != PermissionStatus.Granted)
+			{
+				//Try get permissions
+				var results = await CrossPermissions.Current.RequestPermissionsAsync(permission);
+				permissions = results[permission];
+			}
+
+			//Still no permissions
+			if (permissions != PermissionStatus.Granted)
+			{
+				CrossPermissions.Current.OpenAppSettings();
+				var results = await CrossPermissions.Current.RequestPermissionsAsync(permission);
+				permissions = results[permission];
+				if (permissions != PermissionStatus.Granted)
+				{
+					throw new Exception("Konnte kein Bild laden. Überprüfe die App-Berechtigungen");
+				}
+			}
 		}
 	}
 }

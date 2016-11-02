@@ -4,6 +4,8 @@ using System.IO;
 using System.Threading.Tasks;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using PrettySecureCloud.CloudServices;
 using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
@@ -59,47 +61,43 @@ namespace PrettySecureCloud.FileChooser
 		{
 			Workers++;
 
-			Action exit = () =>
-			{
-				Workers--;
-				DisplayAlert(this, new MessageData("Fehler", "Konnte kein Bild laden. Überprüfe die App-Berechtigungen", "OK"));
-			};
-
 			await CrossMedia.Current.Initialize();
 
-			if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+			try
 			{
-				exit();
-				return;
+				var file = await getFileAction();
+
+				if (file == null)
+				{
+					DisplayAlert(this, new MessageData("Fehler", "Kein Bild ausgewählt", "Ok"));
+					return;
+				}
+
+				var onlyFileName = Path.GetFileName(file.Path);
+				var toBeUploaded = new DirectoryElement
+				{
+					Path = onlyFileName + FileExtension,
+					FileName = onlyFileName,
+					FileType = Path.GetExtension(onlyFileName)
+				};
+
+				using (var ms = new MemoryStream())
+				{
+					await file.GetStream().CopyToAsync(ms);
+
+					var encrypted = CurrentSession.Encryptor.Encrypt(ms.ToArray(), CurrentSession.CurrentUser.EncryptionKey);
+
+					await _cloudService.UploadFile(new MemoryStream(encrypted), toBeUploaded);
+				}
 			}
-
-			var file = await getFileAction();
-
-			if (file == null)
+			catch (Exception e)
 			{
-				exit();
-				return;
+				DisplayAlert(this, new MessageData("Fehler", e.Message, "OK"));
 			}
-
-
-			var onlyFileName = Path.GetFileName(file.Path);
-			var toBeUploaded = new DirectoryElement
+			finally
 			{
-				Path = onlyFileName + FileExtension,
-				FileName = onlyFileName,
-				FileType = Path.GetExtension(onlyFileName)
-			};
-
-			using (var ms = new MemoryStream())
-			{
-				await file.GetStream().CopyToAsync(ms);
-
-				var encrypted = CurrentSession.Encryptor.Encrypt(ms.ToArray(), CurrentSession.CurrentUser.EncryptionKey);
-
-				await _cloudService.UploadFile(new MemoryStream(encrypted), toBeUploaded);
+				Workers--;
 			}
-
-			Workers--;
 		}
 
 		public Command RefreshFilesCommand { get; }

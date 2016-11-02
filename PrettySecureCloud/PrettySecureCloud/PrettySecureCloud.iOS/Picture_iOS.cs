@@ -11,7 +11,7 @@ namespace FlexChartImageSave.iOS
 	{
 		public class Picture_iOS : IPicture
 		{
-			public void SavePictureToDisk(string filename, byte[] imageData)
+			public bool SavePictureToDisk(string filename, byte[] imageData)
 			{
 				var chartImage = new UIImage(NSData.FromArray(imageData));
 				chartImage.SaveToPhotosAlbum((image, error) =>
@@ -23,6 +23,8 @@ namespace FlexChartImageSave.iOS
 						Console.WriteLine(error.ToString());
 					}
 				});
+
+				return true;
 			}
 		}
 	}
