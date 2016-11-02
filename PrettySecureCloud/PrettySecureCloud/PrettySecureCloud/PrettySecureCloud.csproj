@@ -46,8 +46,8 @@
     </Compile>
     <Compile Include="CloudServices\EditService\EditServiceViewModel.cs" />
     <Compile Include="CloudServices\ICloudService.cs" />
-    <Compile Include="FileChooser\FileDetailsView.xaml.cs">
-      <DependentUpon>FileDetailsView.xaml</DependentUpon>
+    <Compile Include="FileChooser\FileDetailsPage.xaml.cs">
+      <DependentUpon>FileDetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="FileChooser\FileDetailsViewModel.cs" />
     <Compile Include="FileChooser\IFile.cs" />
@@ -258,7 +258,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FileChooser\FileDetailsView.xaml">
+    <EmbeddedResource Include="FileChooser\FileDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

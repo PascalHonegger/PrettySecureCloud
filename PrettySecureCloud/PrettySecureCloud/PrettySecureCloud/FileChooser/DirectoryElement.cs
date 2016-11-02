@@ -9,22 +9,24 @@ namespace PrettySecureCloud.FileChooser
 {
 	public class DirectoryElement : IFile
 	{
-		public DirectoryElement(string fileName, string fileType, string path)
+		public DirectoryElement(string fileName, string path)
 		{
 			FileName = fileName;
-			FileType = fileType;
+			FileType = System.IO.Path.GetExtension(fileName);
 			Path = path;
 
 			//Beispiel:
 			//	.aes => _aes.png
 			//	.png => _png.png
-			Image = System.IO.Path.GetExtension(path).Replace('.', '_') + ".png";
+			//TODO Image = System.IO.Path.GetExtension(path).Replace('.', '_') + ".png";
+
+			//Temp
+			Image = "fileblue.png";
 		}
 
 		public string FileName { get; }
 		public string FileType { get; }
 		public string Path { get; }
 		public string Image { get; }
-		//public ImageSource Image { get; set; }
 	}
 }

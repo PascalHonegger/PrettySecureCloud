@@ -26,7 +26,7 @@ namespace PrettySecureCloud.FileChooser
 			{
 				OnPropertyChanged();
 
-				PushView(this, new FileDetailsView(value, _cloudService));
+				PushView(this, new FileDetailsPage(value, _cloudService));
 			}
 		}
 
@@ -75,7 +75,7 @@ namespace PrettySecureCloud.FileChooser
 				}
 
 				var onlyFileName = Path.GetFileName(file.Path);
-				var toBeUploaded = new DirectoryElement(onlyFileName, Path.GetExtension(onlyFileName), onlyFileName + FileExtension);
+				var toBeUploaded = new DirectoryElement(onlyFileName, onlyFileName + FileExtension);
 
 				using (var ms = new MemoryStream())
 				{
