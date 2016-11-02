@@ -12,7 +12,7 @@ using Android.App;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("PrettySecureCloud.Droid")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright © 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
@@ -34,6 +34,10 @@ using Android.App;
 // Add some common permissions, these can be removed if not needed
 
 [assembly: UsesPermission(Manifest.Permission.Internet)]
+[assembly: UsesPermission(Manifest.Permission.Camera)]
 [assembly: UsesPermission(Manifest.Permission.WriteExternalStorage)]
+[assembly: UsesPermission(Manifest.Permission.ReadExternalStorage)]
+[assembly: UsesPermission(Manifest.Permission_group.Camera)]
+[assembly: UsesPermission(Manifest.Permission_group.Storage)]
 [assembly: UsesFeature("android.hardware.camera", Required = false)]
 [assembly: UsesFeature("android.hardware.camera.autofocus", Required = false)]

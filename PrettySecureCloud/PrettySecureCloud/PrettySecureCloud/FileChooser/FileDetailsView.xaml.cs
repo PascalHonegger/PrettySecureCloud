@@ -1,5 +1,4 @@
 ﻿using PrettySecureCloud.CloudServices;
-using PrettySecureCloud.CloudServices.Files;
 using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 

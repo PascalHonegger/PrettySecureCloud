@@ -4,7 +4,7 @@
              x:Class="PrettySecureCloud.CloudServices.AddService.SelectServiceTypePage">
 	<Grid>
 		<StackLayout>
-			<ListView x:Name="ListViewServiceType" ItemsSource="{Binding ServiceTypes}" SelectedItem="{Binding SelectedServiceType}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<ListView x:Name="ListViewServiceType" ItemsSource="{Binding ServiceTypes}" SelectedItem="{Binding SelectedServiceType, Mode=TwoWay}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<ImageCell Text="{Binding Type.Name}" ImageSource="{Binding ImageName}"/>

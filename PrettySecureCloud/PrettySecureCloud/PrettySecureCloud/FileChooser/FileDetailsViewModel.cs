@@ -1,8 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
-using Plugin.Media;
 using PrettySecureCloud.CloudServices;
-using PrettySecureCloud.CloudServices.Files;
 using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 
@@ -42,19 +41,43 @@ namespace PrettySecureCloud.FileChooser
 
 		public async Task DownloadFileAsync()
 		{
-			Workers++;
-			var file = await _cloudService.DownloadFile(SelectedFile);
 
-			using (var ms = new MemoryStream())
+			try
 			{
-				await file.CopyToAsync(ms);
+				Workers++;
+				var file = await _cloudService.DownloadFile(SelectedFile);
 
-				var decrypted = CurrentSession.Encryptor.Decrypt(ms.ToArray(), CurrentSession.CurrentUser.EncryptionKey);
+				using (var ms = new MemoryStream())
+				{
+					await file.CopyToAsync(ms);
 
-				DependencyService.Get<IPicture>().SavePictureToDisk(Path.GetFileNameWithoutExtension(SelectedFile.FileName), decrypted);
+					var data = ms.ToArray();
+
+					if (Equals(SelectedFile.FileType, FileChooserViewModel.FileExtension))
+					{
+						data = CurrentSession.Encryptor.Decrypt(data, CurrentSession.CurrentUser.EncryptionKey);
+					}
+
+					var wasAbleToSave = DependencyService.Get<IPicture>().SavePictureToDisk(Path.GetFileNameWithoutExtension(SelectedFile.FileName), data);
+
+					if (wasAbleToSave)
+					{
+						DisplayAlert(this, new MessageData("Gespeichert", "Die Datei wurde erfolgreich heruntergeladen!", "Ok"));
+					}
+					else
+					{
+						throw new Exception("Datei konnte nicht gespeichert werden!");
+					}
+				}
 			}
-
-			Workers--;
+			catch (Exception e)
+			{
+				DisplayAlert(this, new MessageData("Fehler", e.Message, "Ok"));
+			}
+			finally
+			{
+				Workers--;
+			}
 		}
 	}
 }

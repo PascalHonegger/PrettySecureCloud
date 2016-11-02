@@ -2,18 +2,18 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PrettySecureCloud.CloudServices.Files.FileChooserPage">
+             x:Class="PrettySecureCloud.FileChooser.FileChooserPage">
 	<Grid>
 		<StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand" Padding="20, 10, 20, 20">
 			<ListView ItemsSource="{Binding FilledListView}" HasUnevenRows="True"
-								SelectedItem="{Binding SelectedFile}" IsEnabled="{Binding IsFree}" IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsBusy}" RefreshCommand="{Binding RefreshFilesCommand}">
+								SelectedItem="{Binding SelectedFile, Mode=TwoWay}" IsEnabled="{Binding IsFree}" IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsBusy}" RefreshCommand="{Binding RefreshFilesCommand}">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<TextCell Text="{Binding FileName}" IsEnabled="{Binding IsFree}"/>
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
-			<Button Text="Hochladen" Command="{Binding UploadCommand}"/>
+			<Button Text="Verschlüsselt Hochladen" IsEnabled="{Binding IsFree}" Clicked="Button_OnClicked"/>
 		</StackLayout>
 		<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
 	</Grid>

@@ -25,7 +25,7 @@ namespace PrettySecureCloud.MainPages
 				{
 					Title = Settings,
 					Image = "settings.png",
-					Page = new SettingsPage()
+					Page = new NavigationPage(new SettingsPage())
 				}
 			};
 

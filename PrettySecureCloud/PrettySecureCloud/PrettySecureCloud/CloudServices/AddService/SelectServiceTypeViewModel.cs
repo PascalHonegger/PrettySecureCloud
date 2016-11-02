@@ -1,17 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using PrettySecureCloud.CloudServices.AddService;
-using PrettySecureCloud.CloudServices.Implementations;
 using PrettySecureCloud.Infrastructure;
 using PrettySecureCloud.Service_References.LoginService;
-using Xamarin.Forms;
 
-namespace PrettySecureCloud.CloudServices
+namespace PrettySecureCloud.CloudServices.AddService
 {
 	public class SelectServiceTypeViewModel : ViewModelBase
 	{
-		private ServiceTypeViewModel _selectedServiceType;
-
 		public SelectServiceTypeViewModel()
 		{
 			Workers++;
@@ -42,15 +37,12 @@ namespace PrettySecureCloud.CloudServices
 
 		public ServiceTypeViewModel SelectedServiceType
 		{
-			get { return _selectedServiceType; }
+			get { return null; }
 			set
 			{
-				if (Equals(_selectedServiceType, value)) return;
-				_selectedServiceType = value;
 				OnPropertyChanged();
 
-
-				PushView(this, new AddService.AddServicePage(new AddServiceViewModel(SelectedServiceType)));
+				PushView(this, new AddServicePage(new AddServiceViewModel(value)));
 			}
 		}
 	}

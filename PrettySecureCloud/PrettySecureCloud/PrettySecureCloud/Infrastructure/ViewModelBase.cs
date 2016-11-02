@@ -10,7 +10,7 @@ namespace PrettySecureCloud.Infrastructure
 	/// <summary>
 	///     Base-class for all main viewmodels
 	/// </summary>
-	public abstract class ViewModelBase : INotifyPropertyChanged
+	public abstract class ViewModelBase : PropertyChangedBase
 	{
 		/// <summary>
 		///     Constant for the PushView request
@@ -110,20 +110,6 @@ namespace PrettySecureCloud.Infrastructure
 				OnPropertyChanged(nameof(IsBusy));
 				OnPropertyChanged(nameof(IsFree));
 			}
-		}
-
-		/// <summary>
-		///     Notifies the GUI that a property has changed
-		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		/// <summary>
-		///     Event invocator for <see cref="PropertyChanged"/>
-		/// </summary>
-		/// <param name="propertyName"></param>
-		protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

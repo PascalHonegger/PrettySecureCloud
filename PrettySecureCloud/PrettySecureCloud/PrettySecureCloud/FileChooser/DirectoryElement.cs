@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PrettySecureCloud.CloudServices.Files;
 using Xamarin.Forms;
 
 namespace PrettySecureCloud.FileChooser

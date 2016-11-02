@@ -1,4 +1,4 @@
-namespace PrettySecureCloud.CloudServices.Files
+namespace PrettySecureCloud.FileChooser
 {
 	public interface IFile
 	{

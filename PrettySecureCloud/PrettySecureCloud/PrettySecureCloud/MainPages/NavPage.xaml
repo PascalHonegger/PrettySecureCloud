@@ -8,7 +8,7 @@
 	<StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand">
 		<Image Source="bild.png" Aspect="AspectFill" HeightRequest="150" HorizontalOptions="FillAndExpand"/>
 
-		<ListView x:Name="ListViewNav" ItemsSource="{Binding AvailablePages}" SelectedItem="{Binding SelectedPage}" HasUnevenRows="True" VerticalOptions="FillAndExpand" Margin="20, 10, 20, 20">
+		<ListView x:Name="ListViewNav" ItemsSource="{Binding AvailablePages}" SelectedItem="{Binding SelectedPage, Mode=TwoWay}" HasUnevenRows="True" VerticalOptions="FillAndExpand" Margin="20, 10, 20, 20">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ImageCell ImageSource="{Binding Image}" Text="{Binding Title}" Detail="{Binding Description}"/>

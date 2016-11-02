@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PrettySecureCloud.FileChooser
+﻿namespace PrettySecureCloud.FileChooser
 {
 	public interface IPicture
 	{
-		void SavePictureToDisk(string filename, byte[] imageData);
+		/// <summary>
+		/// Save a file to the phone
+		/// </summary>
+		/// <param name="filename"></param>
+		/// <param name="imageData"></param>
+		/// <returns>True, if the file was saved successfully</returns>
+		bool SavePictureToDisk(string filename, byte[] imageData);
 	}
 }

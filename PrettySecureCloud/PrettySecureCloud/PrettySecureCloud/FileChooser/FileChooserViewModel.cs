@@ -1,40 +1,38 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
 using Plugin.Media;
-using PrettySecureCloud.FileChooser;
+using Plugin.Media.Abstractions;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
+using PrettySecureCloud.CloudServices;
 using PrettySecureCloud.Infrastructure;
 using Xamarin.Forms;
 
-namespace PrettySecureCloud.CloudServices.Files
+namespace PrettySecureCloud.FileChooser
 {
 	public class FileChooserViewModel : ViewModelBase
 	{
-		private const string FileExtension = ".aes";
+		public const string FileExtension = ".aes";
 
 		private readonly ICloudService _cloudService;
-		private IFile _selectedFile;
 		public ObservableCollection<IFile> FilledListView { get; } = new ObservableCollection<IFile>();
 
 		public IFile SelectedFile
 		{
-			get { return _selectedFile; }
+			get { return null; }
 			set
 			{
-				_selectedFile = value;
 				OnPropertyChanged();
-
-				PushView(this, new FileDetailsView(_selectedFile, _cloudService));
+				PushView(this, new FileDetailsView(value, _cloudService));
 			}
 		}
-
-		public Command UploadCommand { get; }
 
 		public FileChooserViewModel(ICloudService cloudService)
 		{
 			_cloudService = cloudService;
 
-			UploadCommand = new Command(async () => await UploadFileAsync());
 			RefreshFilesCommand = new Command(async () => await ShowDirectory());
 
 			RefreshFilesCommand.Execute(null);
@@ -59,52 +57,48 @@ namespace PrettySecureCloud.CloudServices.Files
 			});
 		}
 
-		private async Task UploadFileAsync()
+		public async Task UploadFileAsync(Func<Task<MediaFile>> getFileAction)
 		{
 			Workers++;
 
 			await CrossMedia.Current.Initialize();
 
-			if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+			try
 			{
-				DisplayAlert(this, new MessageData("Fehler", "Kamera nicht verfügbar.", "OK"));
-				return;
+				var file = await getFileAction();
+
+				if (file == null)
+				{
+					DisplayAlert(this, new MessageData("Fehler", "Kein Bild ausgewählt", "Ok"));
+					return;
+				}
+
+				var onlyFileName = Path.GetFileName(file.Path);
+				var toBeUploaded = new DirectoryElement
+				{
+					Path = onlyFileName + FileExtension,
+					FileName = onlyFileName,
+					FileType = Path.GetExtension(onlyFileName)
+				};
+
+				using (var ms = new MemoryStream())
+				{
+					await file.GetStream().CopyToAsync(ms);
+
+					var encrypted = CurrentSession.Encryptor.Encrypt(ms.ToArray(), CurrentSession.CurrentUser.EncryptionKey);
+
+					await _cloudService.UploadFile(new MemoryStream(encrypted), toBeUploaded);
+				}
 			}
-
-			var file = await CrossMedia.Current.PickPhotoAsync();
-
-			//TODO Take photo with camera as option
-			/*file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+			catch (Exception e)
 			{
-				Directory = "LocalData",
-				Name = "bill_" + DateTime.Now + ".jpg"
-			});*/
-
-			if (file == null)
-			{
-				throw new FileNotFoundException();
+				DisplayAlert(this, new MessageData("Fehler", e.Message, "OK"));
 			}
-
-
-			var onlyFileName = Path.GetFileName(file.Path);
-			var toBeUploaded = new DirectoryElement
+			finally
 			{
-				Path = onlyFileName + FileExtension,
-				FileName = onlyFileName,
-				FileType = Path.GetExtension(onlyFileName)
-			};
-
-			using (var ms = new MemoryStream())
-			{
-				await file.GetStream().CopyToAsync(ms);
-
-				var encrypted = CurrentSession.Encryptor.Encrypt(ms.ToArray(), CurrentSession.CurrentUser.EncryptionKey);
-
-				await _cloudService.UploadFile(new MemoryStream(encrypted), toBeUploaded);
+				await ShowDirectory();
+				Workers--;
 			}
-
-			await ShowDirectory();
-			Workers--;
 		}
 
 		public Command RefreshFilesCommand { get; }
