@@ -37,5 +37,7 @@ using Android.App;
 [assembly: UsesPermission(Manifest.Permission.Camera)]
 [assembly: UsesPermission(Manifest.Permission.WriteExternalStorage)]
 [assembly: UsesPermission(Manifest.Permission.ReadExternalStorage)]
+[assembly: UsesPermission(Manifest.Permission_group.Camera)]
+[assembly: UsesPermission(Manifest.Permission_group.Storage)]
 [assembly: UsesFeature("android.hardware.camera", Required = false)]
 [assembly: UsesFeature("android.hardware.camera.autofocus", Required = false)]

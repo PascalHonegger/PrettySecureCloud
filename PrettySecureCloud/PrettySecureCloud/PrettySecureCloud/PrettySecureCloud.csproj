@@ -55,7 +55,7 @@
     <Compile Include="CloudServices\AddService\SelectServiceTypePage.xaml.cs">
       <DependentUpon>SelectServiceTypePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CloudServices\SelectServiceTypeViewModel.cs" />
+    <Compile Include="CloudServices\AddService\SelectServiceTypeViewModel.cs" />
     <Compile Include="CloudServices\ServiceChooser\ServiceChooserViewModel.cs" />
     <Compile Include="CloudServices\AddService\ServiceTypeViewModel.cs" />
     <Compile Include="Encryption\IByteEncryptor.cs" />
