@@ -7,7 +7,6 @@
 			<Label Text="{Binding SelectedFile.FileName}"/>
 			<Label Text="{Binding SelectedFile.FileType}"/>
 			<Label Text="{Binding SelectedFile.Path}"/>
-			<Label Text="{Binding SelectedFile.Image}"/>
 			<Image Source="{Binding SelectedFile.Image}" />
 			<Button Text="Herunterladen" Command="{Binding DownloadCommand}" IsEnabled="{Binding IsFree}" Image="download.png"/>
 		</StackLayout>

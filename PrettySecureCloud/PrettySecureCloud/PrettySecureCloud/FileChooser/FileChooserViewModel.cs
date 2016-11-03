@@ -84,6 +84,9 @@ namespace PrettySecureCloud.FileChooser
 					var encrypted = CurrentSession.Encryptor.Encrypt(ms.ToArray(), CurrentSession.CurrentUser.EncryptionKey);
 
 					await _cloudService.UploadFile(new MemoryStream(encrypted), toBeUploaded);
+
+					//Refresh after upload
+					await ShowDirectory();
 				}
 			}
 			catch (Exception e)
@@ -92,7 +95,6 @@ namespace PrettySecureCloud.FileChooser
 			}
 			finally
 			{
-				await ShowDirectory();
 				Workers--;
 			}
 		}
