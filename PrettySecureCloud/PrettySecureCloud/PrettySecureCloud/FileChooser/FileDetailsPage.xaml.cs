@@ -4,9 +4,9 @@ using Xamarin.Forms;
 
 namespace PrettySecureCloud.FileChooser
 {
-	public partial class FileDetailsView
+	public partial class FileDetailsPage
 	{
-		public FileDetailsView(IFile selectedFile, ICloudService cloudService)
+		public FileDetailsPage(IFile selectedFile, ICloudService cloudService)
 		{
 			InitializeComponent();
 
@@ -20,14 +20,14 @@ namespace PrettySecureCloud.FileChooser
 		/// <inheritdoc />
 		protected override void OnAppearing()
 		{
-			this.Subscribe<FileDetailsViewModel, FileDetailsView>();
+			this.Subscribe<FileDetailsViewModel, FileDetailsPage>();
 			base.OnAppearing();
 		}
 
 		/// <inheritdoc />
 		protected override void OnDisappearing()
 		{
-			this.Unsubscribe<FileDetailsViewModel, FileDetailsView>();
+			this.Unsubscribe<FileDetailsViewModel, FileDetailsPage>();
 			base.OnDisappearing();
 		}
 	}

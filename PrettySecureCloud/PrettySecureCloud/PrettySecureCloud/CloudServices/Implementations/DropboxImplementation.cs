@@ -64,12 +64,7 @@ namespace PrettySecureCloud.CloudServices.Implementations
 
 			var files = folderContent.Entries.Where(e => e.IsFile).Select(f => f.AsFile);
 
-			return files.Select(file => new DirectoryElement
-			{
-				FileName = file.Name,
-				FileType = file.ParentSharedFolderId,
-				Path = file.PathDisplay,
-			});
+			return files.Select(file => new DirectoryElement(file.Name, file.PathDisplay));
 		}
 
 		private const string RedirectUrl = "http://localhost";

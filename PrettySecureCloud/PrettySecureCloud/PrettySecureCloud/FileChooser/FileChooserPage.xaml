@@ -9,11 +9,11 @@
 								SelectedItem="{Binding SelectedFile, Mode=TwoWay}" IsEnabled="{Binding IsFree}" IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsBusy}" RefreshCommand="{Binding RefreshFilesCommand}">
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<TextCell Text="{Binding FileName}" IsEnabled="{Binding IsFree}"/>
+						<ImageCell Text="{Binding FileName}" ImageSource="{Binding Image}" IsEnabled="{Binding IsFree}"/>
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
-			<Button Text="Verschlüsselt Hochladen" IsEnabled="{Binding IsFree}" Clicked="Button_OnClicked"/>
+			<Button Text="Verschlüsselt Hochladen" IsEnabled="{Binding IsFree}" Clicked="Button_OnClicked" Image="upload.png" />
 		</StackLayout>
 		<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
 	</Grid>

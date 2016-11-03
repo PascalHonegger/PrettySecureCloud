@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PrettySecureCloud.FileChooser.FileDetailsView">
+             x:Class="PrettySecureCloud.FileChooser.FileDetailsPage">
 	<Grid>
 		<StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
 			<Label Text="{Binding SelectedFile.FileName}"/>
 			<Label Text="{Binding SelectedFile.FileType}"/>
 			<Label Text="{Binding SelectedFile.Path}"/>
-			<Label Text="{Binding SelectedFile.Image}"/>
-			<Button Text="Herunterladen" Command="{Binding DownloadCommand}" IsEnabled="{Binding IsFree}"/>
+			<Image Source="{Binding SelectedFile.Image}" />
+			<Button Text="Herunterladen" Command="{Binding DownloadCommand}" IsEnabled="{Binding IsFree}" Image="download.png"/>
 		</StackLayout>
 		<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
 	</Grid>

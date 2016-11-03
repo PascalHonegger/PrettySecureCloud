@@ -53,12 +53,19 @@ namespace PrettySecureCloud.FileChooser
 
 					var data = ms.ToArray();
 
+					string fileName;
+
 					if (Equals(SelectedFile.FileType, FileChooserViewModel.FileExtension))
 					{
+						fileName = Path.GetFileNameWithoutExtension(SelectedFile.FileName);
 						data = CurrentSession.Encryptor.Decrypt(data, CurrentSession.CurrentUser.EncryptionKey);
 					}
+					else
+					{
+						fileName = SelectedFile.FileName;
+					}
 
-					var wasAbleToSave = DependencyService.Get<IPicture>().SavePictureToDisk(Path.GetFileNameWithoutExtension(SelectedFile.FileName), data);
+					var wasAbleToSave = DependencyService.Get<IPicture>().SavePictureToDisk(fileName, data);
 
 					if (wasAbleToSave)
 					{
