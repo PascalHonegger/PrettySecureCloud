@@ -58,7 +58,7 @@ namespace PrettySecureCloud.CloudServices.ServiceChooser
 			foreach (
 				var service in
 				CurrentSession.CurrentUser.Services.Where(s => s.Type.IsSupported())
-					.Where(s => s.Name.ToLower().Contains(_searchText.ToLower()))
+					.Where(s => s.Name.ToLowerInvariant().Contains(_searchText.ToLowerInvariant()))
 					.Select(s => s.ToICloudService()))
 			{
 				CloudServices.Add(service);
