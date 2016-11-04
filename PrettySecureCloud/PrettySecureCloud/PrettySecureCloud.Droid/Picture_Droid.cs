@@ -11,11 +11,11 @@ using PrettySecureCloud.FileChooser;
 using Xamarin.Forms;
 using Uri = Android.Net.Uri;
 
-[assembly: Dependency(typeof(Picture_Droid))]
+[assembly: Dependency(typeof(PictureDroid))]
 
 namespace PrettySecureCloud.Droid
 {
-	public class Picture_Droid : IPicture
+	public class PictureDroid : IPicture
 	{
 		private const int StorageRequestCode = 0;
 

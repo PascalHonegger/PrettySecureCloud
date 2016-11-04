@@ -11,7 +11,8 @@ namespace PrettySecureCloud.Login
 		{
 			InitializeComponent();
 
-			BindingContext = _viewModel = new RegistrationViewModel();
+			_viewModel = new RegistrationViewModel();
+			BindingContext = _viewModel;
 
 			_viewModel.RegisterCommand.ChangeCanExecute();
 		}

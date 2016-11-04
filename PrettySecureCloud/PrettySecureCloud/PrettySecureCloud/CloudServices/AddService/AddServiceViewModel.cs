@@ -1,4 +1,5 @@
-﻿using Dropbox.Api;
+﻿using System.Threading.Tasks;
+using Dropbox.Api;
 using PrettySecureCloud.Infrastructure;
 using PrettySecureCloud.MainPages;
 using PrettySecureCloud.Service_References.LoginService;
@@ -14,12 +15,12 @@ namespace PrettySecureCloud.CloudServices.AddService
 
 			CloudService = serviceType.Type.ToICloudService();
 
-			AuthenticateCommand = new Command(Authenticate);
+			AuthenticateCommand = new Command(async () => await AuthenticateAsync());
 		}
 
 		private string _loginToken;
 
-		private async void Authenticate()
+		private async Task AuthenticateAsync()
 		{
 			Workers++;
 

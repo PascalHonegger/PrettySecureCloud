@@ -46,7 +46,7 @@ namespace PrettySecureCloud.CloudServices.Implementations
 			{
 				if (_dropboxClient == null)
 				{
-					if(Model?.LoginToken  == null) throw new InvalidOperationException();
+					if(Model?.LoginToken  == null) return null;
 
 					_dropboxClient = new DropboxClient(Model.LoginToken);
 				}

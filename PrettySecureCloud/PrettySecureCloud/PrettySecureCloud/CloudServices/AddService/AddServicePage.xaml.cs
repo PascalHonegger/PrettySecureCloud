@@ -11,7 +11,8 @@ namespace PrettySecureCloud.CloudServices.AddService
 		{
 			InitializeComponent();
 
-			BindingContext = _viewModel = viewModel;
+			_viewModel = viewModel;
+			BindingContext = _viewModel;
 		}
 
 		/// <inheritdoc />

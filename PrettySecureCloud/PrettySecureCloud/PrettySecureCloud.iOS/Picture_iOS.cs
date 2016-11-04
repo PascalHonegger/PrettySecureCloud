@@ -4,12 +4,12 @@ using PrettySecureCloud.FileChooser;
 using PrettySecureCloud.iOS.FlexChartImageSave.iOS;
 using UIKit;
 
-[assembly: Xamarin.Forms.Dependency(typeof(Picture_iOS))]
+[assembly: Xamarin.Forms.Dependency(typeof(Picture_IOs))]
 namespace PrettySecureCloud.iOS
 { 
 namespace FlexChartImageSave.iOS
 	{
-		public class Picture_iOS : IPicture
+		public class Picture_IOs : IPicture
 		{
 			public bool SavePictureToDisk(string filename, byte[] imageData)
 			{

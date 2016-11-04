@@ -16,8 +16,8 @@ namespace PrettySecureCloud.FileChooser
 		public FileChooserPage(ICloudService selectedCloudService)
 		{
 			InitializeComponent();
-
-			BindingContext = _viewModel =  new FileChooserViewModel(selectedCloudService);
+			_viewModel = new FileChooserViewModel(selectedCloudService);
+			BindingContext = _viewModel;
 		}
 
 

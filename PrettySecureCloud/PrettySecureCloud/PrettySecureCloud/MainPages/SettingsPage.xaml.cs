@@ -11,7 +11,8 @@ namespace PrettySecureCloud.MainPages
 		{
 			InitializeComponent();
 
-			BindingContext = _viewModel = new SettingsViewModel();
+			_viewModel = new SettingsViewModel();
+			BindingContext = _viewModel;
 
 			_viewModel.ChangePasswordCommand.ChangeCanExecute();
 		}
