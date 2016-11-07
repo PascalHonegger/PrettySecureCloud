@@ -7,6 +7,9 @@ using PrettySecureCloud.Service_References.LoginService;
 
 namespace PrettySecureCloud.CloudServices
 {
+	/// <summary>
+	/// Interface for any Cloud Service
+	/// </summary>
 	public interface ICloudService
 	{
 		/// <summary>
