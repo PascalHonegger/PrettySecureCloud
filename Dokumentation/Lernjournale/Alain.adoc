@@ -1,30 +1,20 @@
-Pascals Lernjournal
-===================
-Pascal Honegger
+Lernjournal Alain Keller
+========================
+Alain Keller
 Version 1.1, 24.10.2016
 :toc:
 
+== 20.09.2016, 27.09.2016
+An diesen beiden Tagen veruchte ich Xamarin bei mir aufzusetzten. Dies, vor allem die Android VM, war schwerer als gedacht. die Xamarinerweiterung für Visual-Studi war eim einfachsten. Mann muss dafür nur das Programm ändern, xamarin-erweiterung wählen und warten. Lange warten. Im WLan der TBZ kann man gut 2 Stunden dafür rechnen. Jedoch hatte ich am Anfang immer wieder komische Fehler im Code, der eigentlich richtig war, und bei den anderen auch Kompiliert hat. Nach einem Neustart waren sie dann plötzlich wieder Weg. Man konnte vor dem Prohgrammstart eine Münze werfen, ob es Fehler hat oder nicht.
+Das Mühsame war dann die Android-VM aufsetzen. Damit die Android-VM lauft, braucht man eine Intel erweiterung. Doch diese konnte nicht Installiert werden, da ich angeblich keine Intel-Virtualisation auf meinem Laptop unterstütze. Danach veruchte ich über Hyper-V eine Android-VM zu erstellen. Da bei WIN-10 nur noch die Pro-Version Hper-V untertützt, musste ich auf Pro upgraden. Zum Glück hatte mein alter Laptop eine Pro-Lizenz und ich koinnte seinen Key brauchen. Doch Hper-V funktionierte immer noch nicht. Nach ein bisschen Googeln fand ich heraus, dass bei einem Upgrade auf die Pro-Version gewisse Teile von Hyper-V nicht richtig funktionieren. Also war diese Option auch gestrichen. 
+Später fand ich dann heraus, dass ich die setup-datei der Intel Erweiterung zuerst entzppen muss, damit es erkennt ob ich virtualisation aktiviert habe. Nach langen ausprobieren habe ich es nun entlich geschafft meine Android-VM zum laufen zu bringen. 
+
 == 04.10.2016
 === Skype Online-Meeting
-Technische Probleme
-Kommunikationsprobleme
-Lange Zeit bis zur Schule
-Falls Home-Meetings => Home-Office
-
-Online-Scrum-Poker was hilfreich
-
-=== MVVM vs MVC
-Vergleich
-Bild
-MVVM-Framework
-
-=== FCoI ist wichtig
-Link CleanCode
-Beispiel => FCoI verletzt
-Folgen
+Das Live-Meeting verlief recht gut. Im Vergliech zu einem normalen Meeting sind mir keine Negativen Punkte eingefallen. Das Onlinepoker hat den Teil mit dem abschätzen der Storypoints recht vereinfacht. Was ich jedoch nicht gut fand, war dass ich wegen meinem langen Schulweg früher gehen musste, und durch den Weg eine Stunde verloren ging. Wenn man ein Livemeeting von Zuhause macht, sollte man dann auch zuhause arbeiten können. 
 
 == 24.10.2016
-=== Lose Kopplung zum Cloud Dienst -> Möglichst viel Komposition
-Dienst über Interface trennen
-Möglichst viel Logik zusammenfassen, Cloud-Dienst über Komposition verwenden
-Architektur erstellen -> Besprechen -> Umsetzen
+=== Android USB-Debuggging
+Alternativ Zur VM kann man  bei android die APP auch direkt auf dem Handy laufen lassen. Das geht über ADB dem Android Debugging tool. Somit kann man das Programm auf dem Handy laufen lassen, und auf dem PC den debugger laufen lassen. Ein weiterer Vorteil ist, dass die App auf den Handy schneller laauft als auf der VM.
+
+== Unterschiede Android-IOS
