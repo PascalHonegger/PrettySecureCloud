@@ -18,3 +18,4 @@ Das Live-Meeting verlief recht gut. Im Vergliech zu einem normalen Meeting sind 
 Alternativ Zur VM kann man  bei android die APP auch direkt auf dem Handy laufen lassen. Das geht über ADB dem Android Debugging tool. Somit kann man das Programm auf dem Handy laufen lassen, und auf dem PC den debugger laufen lassen. Ein weiterer Vorteil ist, dass die App auf den Handy schneller laauft als auf der VM.
 
 == Unterschiede Android-IOS
+Im Projekt war ich unter anderem für die Icons zuständig. Es fiel mir auf, dass die Icons im Android viel geordneter im Directory eingebunden sind. Es gibt mehrere ordner, welche die Icons in den verschiedenen grössen enthält. Bei IOS sind jedoch alle in einem Ordner, zur unterscheidung haben sie andere suffixe. 
