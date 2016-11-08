@@ -4,10 +4,16 @@ using Xamarin.Forms;
 
 namespace PrettySecureCloud.CloudServices.ServiceChooser
 {
+	/// <summary>
+	/// Class to choose a Service
+	/// </summary>
 	public partial class ServiceChooserPage
 	{
 		private readonly ServiceChooserViewModel _viewModel;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="ServiceChooserPage" /> class.
+		/// </summary>
 		public ServiceChooserPage()
 		{
 			InitializeComponent();

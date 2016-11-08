@@ -14,8 +14,15 @@ using Xamarin.Forms.OAuth;
 
 namespace PrettySecureCloud.CloudServices.Implementations
 {
+	/// <summary>
+	/// Implementation for <see cref="ICloudService"/> using DropBox
+	/// </summary>
 	public class DropboxImplementation : PropertyChangedBase, ICloudService
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="DropboxImplementation" /> class.
+		/// </summary>
+		/// <param name="type"></param>
 		public DropboxImplementation(ServiceType type)
 		{
 			Model.Type = type;

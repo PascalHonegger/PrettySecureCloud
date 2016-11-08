@@ -7,11 +7,17 @@ using Xamarin.Forms;
 
 namespace PrettySecureCloud.FileChooser
 {
+	/// <summary>
+	/// ViewModel for displaying the file details
+	/// </summary>
 	public class FileDetailsViewModel : ViewModelBase
 	{
 		private IFile _selectedFile;
 		private readonly ICloudService _cloudService;
 
+		/// <summary>
+		/// The selected file
+		/// </summary>
 		public IFile SelectedFile
 		{
 			get
@@ -27,8 +33,16 @@ namespace PrettySecureCloud.FileChooser
 			}
 		}
 
+		/// <summary>
+		/// Command for <see cref="DownloadFileAsync"/>
+		/// </summary>
 		public Command DownloadCommand { get; }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="FileDetailsViewModel" /> class.
+		/// </summary>
+		/// <param name="selectedFile"></param>
+		/// <param name="cloudService"></param>
 		public FileDetailsViewModel(IFile selectedFile, ICloudService cloudService)
 		{
 			DownloadCommand = new Command(async () => await DownloadFileAsync(), CanDownloadFile);
@@ -39,7 +53,7 @@ namespace PrettySecureCloud.FileChooser
 
 		private bool CanDownloadFile() => SelectedFile != null;
 
-		public async Task DownloadFileAsync()
+		private async Task DownloadFileAsync()
 		{
 
 			try

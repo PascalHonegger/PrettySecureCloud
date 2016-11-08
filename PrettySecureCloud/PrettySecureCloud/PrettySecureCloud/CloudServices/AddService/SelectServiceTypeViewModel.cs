@@ -5,8 +5,14 @@ using PrettySecureCloud.Service_References.LoginService;
 
 namespace PrettySecureCloud.CloudServices.AddService
 {
+	/// <summary>
+	/// Class for selectig the Service Type
+	/// </summary>
 	public class SelectServiceTypeViewModel : ViewModelBase
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="SelectServiceTypeViewModel" /> class.
+		/// </summary>
 		public SelectServiceTypeViewModel()
 		{
 			Workers++;
@@ -33,8 +39,14 @@ namespace PrettySecureCloud.CloudServices.AddService
 			Workers--;
 		}
 
+		/// <summary>
+		/// List of Service Types
+		/// </summary>
 		public ObservableCollection<ServiceTypeViewModel> ServiceTypes { get; }
 
+		/// <summary>
+		/// The selected service Type
+		/// </summary>
 		public ServiceTypeViewModel SelectedServiceType
 		{
 			get { return null; }

@@ -2,8 +2,14 @@
 
 namespace PrettySecureCloud.CloudServices.AddService
 {
+	/// <summary>
+	/// The Page where all Services are Listed
+	/// </summary>
 	public partial class SelectServiceTypePage
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="SelectServiceTypePage" /> class.
+		/// </summary>
 		public SelectServiceTypePage()
 		{
 			InitializeComponent();

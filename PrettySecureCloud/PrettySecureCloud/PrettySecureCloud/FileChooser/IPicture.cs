@@ -1,5 +1,8 @@
 ﻿namespace PrettySecureCloud.FileChooser
 {
+	/// <summary>
+	/// The interface for a Picture
+	/// </summary>
 	public interface IPicture
 	{
 		/// <summary>

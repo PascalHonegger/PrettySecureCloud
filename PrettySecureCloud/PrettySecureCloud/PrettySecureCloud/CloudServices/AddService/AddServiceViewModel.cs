@@ -7,8 +7,15 @@ using Xamarin.Forms;
 
 namespace PrettySecureCloud.CloudServices.AddService
 {
+	/// <summary>
+	/// This class adds a new Service 
+	/// </summary>
 	public class AddServiceViewModel : ViewModelBase
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="AddServiceViewModel" /> class.
+		/// </summary>
+		/// <param name="serviceType"></param>
 		public AddServiceViewModel(ServiceTypeViewModel serviceType)
 		{
 			ServiceTypeViewModel = serviceType;
@@ -61,10 +68,19 @@ namespace PrettySecureCloud.CloudServices.AddService
 			Workers--;
 		}
 
+		/// <summary>
+		/// Types of Services
+		/// </summary>
 		public ServiceTypeViewModel ServiceTypeViewModel { get; }
 
+		/// <summary>
+		/// A CloudService Object
+		/// </summary>
 		public ICloudService CloudService { get; }
 
+		/// <summary>
+		/// Authenticate the Service
+		/// </summary>
 		public Command AuthenticateCommand { get; }
 	}
 }

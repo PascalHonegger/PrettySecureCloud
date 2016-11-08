@@ -8,8 +8,14 @@ using Xamarin.Forms;
 
 namespace PrettySecureCloud.CloudServices.ServiceChooser
 {
+	/// <summary>
+	/// ViewModel to choose a Service
+	/// </summary>
 	public class ServiceChooserViewModel : ViewModelBase
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="ServiceChooserViewModel" /> class.
+		/// </summary>
 		public ServiceChooserViewModel()
 		{
 			ApplyFilter();
@@ -22,11 +28,20 @@ namespace PrettySecureCloud.CloudServices.ServiceChooser
 			PushView(this, new AddService.SelectServiceTypePage());
 		}
 
+		/// <summary>
+		/// Command for adding a CloudService
+		/// </summary>
 		public Command AddCommand { get; }
 
 		private string _searchText = string.Empty;
+		/// <summary>
+		/// List of CloudServices
+		/// </summary>
 		public ObservableCollection<ICloudService> CloudServices { get; } = new ObservableCollection<ICloudService>();
 
+		/// <summary>
+		/// The selected CloudService
+		/// </summary>
 		public ICloudService SelectedCloudService
 		{
 			get { return null; }
@@ -38,6 +53,9 @@ namespace PrettySecureCloud.CloudServices.ServiceChooser
 			}
 		}
 
+		/// <summary>
+		/// The text to search after
+		/// </summary>
 		public string SearchText
 		{
 			get { return _searchText; }
@@ -65,6 +83,10 @@ namespace PrettySecureCloud.CloudServices.ServiceChooser
 			}
 		}
 
+		/// <summary>
+		/// Deletes a Service
+		/// </summary>
+		/// <param name="clickedService"></param>
 		public void DeleteService(ICloudService clickedService)
 		{
 			Workers++;
@@ -88,6 +110,10 @@ namespace PrettySecureCloud.CloudServices.ServiceChooser
 			Workers--;
 		}
 
+		/// <summary>
+		/// Edits the Service
+		/// </summary>
+		/// <param name="clickedService"></param>
 		public void EditService(ICloudService clickedService)
 		{
 			PushView(this, new EditServicePage(clickedService));

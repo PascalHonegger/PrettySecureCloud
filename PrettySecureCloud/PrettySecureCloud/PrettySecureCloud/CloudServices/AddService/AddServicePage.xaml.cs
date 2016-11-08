@@ -3,10 +3,17 @@ using PrettySecureCloud.Infrastructure;
 
 namespace PrettySecureCloud.CloudServices.AddService
 {
+	/// <summary>
+	/// This class adds a new ServicePage
+	/// </summary>
 	public partial class AddServicePage
 	{
 		private readonly AddServiceViewModel _viewModel;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="AddServicePage" /> class.
+		/// </summary>
+		/// <param name="viewModel"></param>
 		public AddServicePage(AddServiceViewModel viewModel)
 		{
 			InitializeComponent();

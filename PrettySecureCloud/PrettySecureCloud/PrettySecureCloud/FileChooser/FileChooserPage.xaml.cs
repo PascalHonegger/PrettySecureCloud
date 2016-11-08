@@ -9,10 +9,17 @@ using PrettySecureCloud.Infrastructure;
 
 namespace PrettySecureCloud.FileChooser
 {
+	/// <summary>
+	/// The file explorer
+	/// </summary>
 	public partial class FileChooserPage
 	{
 		private FileChooserViewModel _viewModel;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="FileChooserPage" /> class.
+		/// </summary>
+		/// <param name="selectedCloudService"></param>
 		public FileChooserPage(ICloudService selectedCloudService)
 		{
 			InitializeComponent();

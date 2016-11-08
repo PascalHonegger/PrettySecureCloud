@@ -2,8 +2,15 @@
 
 namespace PrettySecureCloud.CloudServices.EditService
 {
+	/// <summary>
+	/// Class for editing the ServicePage
+	/// </summary>
 	public partial class EditServicePage
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="EditServicePage" /> class.
+		/// </summary>
+		/// <param name="clickedService"></param>
 		public EditServicePage(ICloudService clickedService)
 		{
 			InitializeComponent();

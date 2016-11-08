@@ -2,6 +2,9 @@
 
 namespace PrettySecureCloud.Encryption
 {
+	/// <summary>
+	/// The Encryptor
+	/// </summary>
 	public class AesEncryptor : IByteEncryptor
 	{
 		/// <summary>

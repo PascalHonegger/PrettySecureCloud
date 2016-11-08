@@ -3,6 +3,9 @@ using System.Runtime.CompilerServices;
 
 namespace PrettySecureCloud.Infrastructure
 {
+	/// <summary>
+	/// Base implementation of the <see cref="INotifyPropertyChanged"/> interface
+	/// </summary>
 	public abstract class PropertyChangedBase : INotifyPropertyChanged
 	{
 		/// <summary>

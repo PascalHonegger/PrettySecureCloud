@@ -13,6 +13,6 @@ namespace PrettySecureCloud.Infrastructure
 		public static Session Instance { get; } = new Session();
 
 		public User CurrentUser { get; set; }
-		public IByteEncryptor Encryptor { get; set; }
+		public IByteEncryptor Encryptor { get; }
 	}
 }

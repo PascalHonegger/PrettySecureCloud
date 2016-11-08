@@ -1,5 +1,8 @@
 ﻿namespace PrettySecureCloud.Encryption
 {
+	/// <summary>
+	/// The Interface for the Encryptor
+	/// </summary>
 	public interface IByteEncryptor
 	{
 		/// <summary>
