@@ -24,6 +24,9 @@ public object Convert(object value, Type targetType, object parameter, System.Gl
     return value;
 }
 
+=== Retro
+Ich habe heute erfahren was ein Retro ist. Wir haben den 1. Sprint abgeschlossen und das Retro durchgeführt.
+
 == 04.10.2016
 === Skypmeeting
 Skypmeeting war sehr cool, da bei uns in der Firma das Daily auch über Skype gemacht wird, fand ich es sehr hilfreich für die Praxis. Es war jedoch mühsam bis alle in der Schule waren, es ging viel Zeit verloren.
@@ -33,8 +36,15 @@ Applikation auf Dropbox registriert. https://www.dropbox.com/developers
 
 AppKey und AppSecret erhalten. Diese werden dann verwendet um sich bei Dropbox zu authentifizieren welche App eine Anfrage über ihre API sendet. 
 
+=== Planning 
+Wir haben heute das Planning 1 gemacht. Wir haben die neuen Storys für Sprint 2 besprochen und geschätzt. Das ganze haben wir über Skype durchgeführt. Danach haben wir das Planning 2 gemacht, wir haben den einzelnen Stories Task hinzugefügt und die ersten Stories schon an User verteilt. 
+
 == 25.10.2016
 === Dropbox hinzufügen
 Den Dropbox Account fügen wir mit einer Helferklasse hinzu die wir mithilfe von Nuget herutergeladen haben. Das Nuget heisst OAuth und ist eine Schnitstelle für die Aplikation mit verschiedenen Services. Zum Beispiel DropBox, Facebook, etc. 
 
 Mithilfe der Helferklasse wird das oginfenster von Dropbox geöffnet und der User kann sich einlogen. Nachdem der User unsere App authentifiziert hat, bekommen wir einen AccessToken, dieser wird danach für jede Anfrage für den spezifischen User verwendet. 
+
+== 01.11.2016
+=== iOS und Android Bilder
+Ich habe heute herausgefunden wie Bilder in iOS und Android richtig eingebunden werden. Ich habe dafür im Internet nach einer Lösung gesucht und musste mühsam alle Bilder für unsere App anpassen. 
