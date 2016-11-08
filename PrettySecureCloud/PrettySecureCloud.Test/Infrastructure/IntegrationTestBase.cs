@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using PrettySecureCloud.Infrastructure;
 
 namespace PrettySecureCloud.Test.Infrastructure
 {
@@ -9,6 +10,8 @@ namespace PrettySecureCloud.Test.Infrastructure
 		[SetUp]
 		public void SetUp()
 		{
+			Session.Instance.CurrentUser = null;
+
 			DoSetup();
 		}
 
