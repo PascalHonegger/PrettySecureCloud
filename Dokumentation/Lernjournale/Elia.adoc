@@ -4,6 +4,12 @@ Elia Perenzin
 Version 1.0, 26.10.2016
 :toc:
 
+== XAMARIN
+Das Konzept von Xamarin ist sehr spannend. Denn man schreibt 80% des Codes nur einmal in der Sprache C# und definiert in Xamarin Forms mit Xaml ein GUI für alle Platformen. Cool ist dabei auch, dass sogar auf Mac Entwickelt werden kann, mit einer eigenen IDE namens Xamarin Studio. Das Problem in unserem Projekt war, dass die installation von Xamarin sich als sehr schweirig in der Schule erwies. 
+
+== MVVM 
+In C# hat sich das link:https://de.wikipedia.org/wiki/Model_View_ViewModel[MVVM-Entwurfsmuster] als Standard durchgesetzt. Der Vorteil dabei ist, das die Logik (ViewModel) die Darstellung (View) nicht kennt. Die Verbindung wird danach mit einem Binding gemacht, so dass die Daten im GUI angezeigt werden können. Der entscheidende Unterschied zu MVC ist offensichtlich das ViewModel. Im MVVM gibt es kein Controller wie im MVC.
+
 == 20.09.2016
 === Andoird Gerät mit VS
 Um ein Android gerät mit Visual Studio zu verbinden muss der Google USB Driver über den SDK Manager installiert worden sein. Wenn das Gerät immer noch nicht angezeigt wird, muss man über die LogCat Console adb -kill und adb -start eingeben um den Server neuzustarten. Wenn dies nicht hilft müssen die Gerätetreiber installiert werden. 
