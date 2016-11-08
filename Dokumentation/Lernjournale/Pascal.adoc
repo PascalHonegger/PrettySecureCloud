@@ -1,8 +1,44 @@
 Pascals Lernjournal
 ===================
 Pascal Honegger
-Version 1.2, 07.11.2016
+Version 1.3, 07.11.2016
 :toc:
+
+== Fortschrittsübersicht
+
+.Lernprozess
+[width="100%",options="header"]
+|====================
+| Datum | Lerneffekt
+| 27.09.2016 | Einführung in Xamarin durch Luca Marti
+| 04.10.2016 | Favour Composition over Inheritance (FCoI)
+| 11.10.2016 | AES Verschlüsslungsalgorithmus anwenden (Verschlüsselung Key & File)
+| 11.10.2016 | Memory leak => Events immer deabonnieren
+| 01.11.2016 | Berechtigungen iOS, Android & Xamarin Forms
+| 01.11.2016 | Async Upload & Download ohne UI-Thread zu blockieren
+| 08.11.2016 | Statische Code-Analyse
+|====================
+
+.Entwicklungsprozess
+[width="100%",options="header"]
+|====================
+| Sprint | Artefakt | Beteiligung
+| 1 | Xamarin-Projekt aufgesetzt | Unterstützt
+| 1 | Erste default-page | Unterstützt
+| 1 | Github und Azure aufgesetzt | Aufgesetzt
+| 2 | Laufende Solution inklusive Continous Build | Implementiert
+| 2 | Login und Register Page | Implementiert
+| 2 | Settings inklusive Logout und Passwort ändern | Implementiert
+| 2 | Dropbox-Daten vom Server laden | Implementiert
+| 2 | Verschlüsselung nach TDD implementiert | Unterstützt
+| 2 | Server-Schnittstelle aufgesetzt und implementiert | Unterstützt
+| 2 | Dienst hinzufügen temporär implementiert | Unterstützt
+| 3 | Dienst hinzufügen finalisiert | Implementiert
+| 3 | Dateien darstellen | Erweitert
+| 3 | Code-Metriken | Aufgesetzt
+| 3 | Berechtigungen | Implementiert
+| 3 | Dienst bearbeiten | Implementiert
+|====================
 
 == 27.09.2016
 === Xamarin
