@@ -18,7 +18,15 @@ Das Live-Meeting verlief recht gut. Im Vergliech zu einem normalen Meeting sind 
 Alternativ Zur VM kann man  bei android die APP auch direkt auf dem Handy laufen lassen. Das geht über ADB dem Android Debugging tool. Somit kann man das Programm auf dem Handy laufen lassen, und auf dem PC den debugger laufen lassen. Ein weiterer Vorteil ist, dass die App auf den Handy schneller laauft als auf der VM.
 
 == Unterschiede Android-IOS
-Im Projekt war ich unter anderem für die Icons zuständig. Es fiel mir auf, dass die Icons im Android viel geordneter im Directory eingebunden sind. Es gibt mehrere ordner, welche die Icons in den verschiedenen grössen enthält. Bei IOS sind jedoch alle in einem Ordner, zur unterscheidung haben sie andere suffixe. 
+Im Projekt war ich unter anderem für die Icons zuständig. Es fiel mir auf, dass die Icons im Android viel geordneter im Directory eingebunden sind. Es gibt mehrere ordner, welche die Icons in den verschiedenen grössen enthält. Bei IOS sind jedoch alle in einem Ordner, zur unterscheidung haben sie andere suffixe.
+Auch beim Speichern eines Bildes gibt es Unterschiede in der Implementation für IOS und Android. Da wir bis jetzt den ganzen code im allgemeinen Projekt geschriben haben, mussten wir herausfinden wie man Plattformspezifischen code schreiben kann. Pascal und ich haben uns um Andorid gekümmert und Elia für IOS. Damit es möglich ist Plattformspezifischen Code aufzurufen braucht man den DependencyManager. Dieser Kompiliert bei .Droid projekt den Android code und beim .IOS den IOS Code. Die Klassen mit dem Code müssen dan im Plattform eigenen Projekt sein und über 
+[source, C#]
+----
+
+----[assembly: Dependency(typeof(PictureDroid))]
+
+----
+gekennzeichnet werden. SOmit weiss der DependencyManager dass es sich herbei um die Klasse "PictureDroid" handelt. Diese Klasse kann man nun über den DependenyManager im allgemeinen Code aufrufen, und wird beim Kompilieren automatisch der richtigen Plattform zugewiesen.
 
 == Serverprobleme
 Unsere Serverappliaktion und Datenbank lauft auf einem Azureserver. Somit kann ich mit meinem Android-Phone von überall unsere Appliaktion nutzen. Als mich Pascal bat die Appliaktion zu testen konnte ich mich nicht mehr einloggen. Der Fehler war, dass die Verbindungen zur Datenbank nach dem schliessen des Apps nie richtig gschlossen wurden. Das heisst, dass obwohl niemand die App zurzeit braucht, immernoch verbindungen zur Datenbank aktiv sind. Das Problem konnte durch ein Using behoben werden. Bei einem Using wird eine gewisse Komponente nur in diesem Teil gebraucht. Nach dem Schliessen des Usings wird auch die Komponente geschlossen, in usnerem Falle die Datenbankverbindung.
