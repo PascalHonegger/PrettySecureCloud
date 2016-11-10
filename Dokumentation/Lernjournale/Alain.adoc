@@ -19,3 +19,6 @@ Alternativ Zur VM kann man  bei android die APP auch direkt auf dem Handy laufen
 
 == Unterschiede Android-IOS
 Im Projekt war ich unter anderem für die Icons zuständig. Es fiel mir auf, dass die Icons im Android viel geordneter im Directory eingebunden sind. Es gibt mehrere ordner, welche die Icons in den verschiedenen grössen enthält. Bei IOS sind jedoch alle in einem Ordner, zur unterscheidung haben sie andere suffixe. 
+
+== Serverprobleme
+Unsere Serverappliaktion und Datenbank lauft auf einem Azureserver. Somit kann ich mit meinem Android-Phone von überall unsere Appliaktion nutzen. Als mich Pascal bat die Appliaktion zu testen konnte ich mich nicht mehr einloggen. Der Fehler war, dass die Verbindungen zur Datenbank nach dem schliessen des Apps nie richtig gschlossen wurden. Das heisst, dass obwohl niemand die App zurzeit braucht, immernoch verbindungen zur Datenbank aktiv sind. Das Problem konnte durch ein Using behoben werden. Bei einem Using wird eine gewisse Komponente nur in diesem Teil gebraucht. Nach dem Schliessen des Usings wird auch die Komponente geschlossen, in usnerem Falle die Datenbankverbindung.
