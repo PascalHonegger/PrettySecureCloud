@@ -77,12 +77,21 @@ wir uns mit dem Meeting ein bisschen beeilen.
 Ich war dann um 11 in der Schule und konnte nicht mehr viel am Projekt arbeiten. 
 
 > **Was habe ich gelernt**
-> Wir müssen uns viel mehr Zeit nehmen für die Meetings. Da die Meetings sehr viel Zeit benötigen, müssen wir intensiver an unserem Projekt arbeiten
+> Wir müssen uns viel mehr Zeit nehmen für die Meetings. Da die Meetings sehr viel Zeit benötigen, müssen wir intensiver an unserem Projekt arbeiten.
 
 
 
 ### 25.10.2016
+Heute habe ich mit Luca Marti zusammengearbeitet. Wir haben überall ein wenig geholfen. Da Lucas Surface kapput gegangen ist und meine Umgebung zum Arbeiten nicht funktionieren wollte. Wir haben überall geholfen, wo Hilfe benötigt wurde. Dies war auch der Grund, wieso ich so wenig Commits habe. 
+Ich habe dann andere Dinge für das Team erledigt. Allerlei Dinge, für die ich die Umgebung zum Entwickeln nicht brauchte. 
+
+> **Was habe ich gelernt** 
+> Es ist wichtig, dass man als Informatiker immer eine Lauffähige Umgebung hat. Denn sonst kann man nicht arbeiten und dem Team nicht gross helfen. Ich konnte trotzdem gut helfen
 
 
 
-### 31.10.2016
+### 01.11.2016
+Heute habe ich erneut versucht Xamarin neu zu installieren. Aber leider funktionierte das Wlan wieder super. Ich hatte lange um Xamarin neu zu installieren. Ich habe dann zusammen mit Luca Marti die Dokumentation geschrieben und anderen beim Coden geholfen. Ich finde es jedoch schade, dass man an einer TECHNISCHEN BERUFSSCHULE so lange hat um ein Programm herunterzuladen. 
+
+> **Was ich gelernt habe**
+> Ich darf nichts mehr in der Schule herunterladen. Denn dies braucht viel zu lange
