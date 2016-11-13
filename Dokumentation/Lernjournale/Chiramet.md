@@ -31,9 +31,7 @@ dass wir durch das Skype Meeting viel Zeit verloren. Die Idee an einem
 Skype-Meeting ist aber, dass man nicht viel Zeit verliert mit Sitzungsräume.
 
 ## 25.10.2016
-
-
-## 01.11.2016
+Heute habe ich versucht das GUI ein bisschen zu verschönern. Anhand von der Dokumentation habe ich versucht einen Floating Action Button zu erstellen. Schon das Suchen alleine war schwierig, da es viele Arten von Xamarin gibt. Viele waren für Android und waren in Java geschrieben, darauf habe ich mir Hilfe von Luca Marti geholt. Zusammen haben wir es jedoch auch nicht geschafft es hinzukriegen. Deshalb habe ich es aufgegeben und ein «Workaround» gemacht.
 
 
 
