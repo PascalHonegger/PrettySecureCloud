@@ -1,0 +1,41 @@
+= Lernjournal Seraphin Rihm
+
+== Scrum
+Scrum ist ein Vorgehensmodel für IT-Projekte, ähnlich wie Iperka aber mit grundlegenden Unterschieden. Während das Iperkasystem eine einmalige Planungsfahse gefolgt von der Umsetzung vorsieht, steht bei Scrum das Produkt und die Interaktion mit dem Kunden in den Vordergrund. Man Plant immer nur eine bestimmte definierte Zeitspannne im Voraus, nach dieser Zeitspanne sollte dann auch eine funktionierende Version des Produkt fertig sein, so dass der Kunde immer weiss in welchem Stadium sich sein Produkt befindet. Dies hat den Vorteil, dass der Kunde bereits während des Entwicklungsprozesses änderungen und weitere Funktionen einbringen kann. Aus diesem Grund ist Scrum auch agil.
+
+Um das Konzept von Scrum umzusetzen gibt es viele Verschiedene Regeln und Funktionen welche in Form von Personen ausgefüllt werden. Man hat zum einen das Team, welches das Produkt entwickelt, der Scrum-Master welcher sich um das Team kümmert und den Product-Owner welcher die Vision des Kunden in der Firma vertritt. All diese Personen haben natürlich noch weitere Kompetenzen auf die ich hier aber nicht eingehen möchte. In Scrum gibt es auch unterschiedliche Objekte wie Sprints, eine Zeitspanne in der das geplante umgesetzt wirt (meist um die 2 Wochen), dann hat man Stories, eine Aufgabe oder Funktion des Produkt welche man einem Sprint zuweist. Stories sind wiederum in verschiedene kleine Tasks unterteilt. Es werden auch regelmässig diverse Meetings abgehalten in denen z.B. besprochen wirt wie man sich als Team verbessern kann usw.
+
+*Mir gefällt dieses Konzept sehr gut da es nicht die Dokumentation in den Vordergrund stellt sondern das Produkt und dies ist ja schliesslich das wichtigste. Auch gefällt mir, dass man sich meistens eine Arbeit aussuchen kann auf die man Lust hat/einem interessiert. Es ist auch nachgewiesen, dass ein Team welches sich selbst organisiert effizienter arbeitet als ein Team welches immer vom Chef auf die Finger bekommt. Da wir im Betrieb auch mit Scrum arbeiten (Teilweise) bringt mich dieses Wissen auch dort weiter.*
+
+== Xamarin
+Unser PO hatte die Vision einer Applikation über welche man einen beliebigen Clouddienst einbinden kann und dann über die Applikation verschlüsselte Dateien hochladen kann und diese dann natürlich wieder entschlüsseln kann. Dies hat den Vorteil, dass man im Netz nicht mehr so "Nackt" da steht.
+
+Wir haben uns als Team das Ziel gesetzt eine Mobile-Applikation für Android und IOs zu entwickeln, darum haben wir uns für Xamarin entschieden. Ein Framework für Mobile-Applikationen mit C#, dies hat den Vorteil, dass man nur eine Applikation entwickeln muss welche dann von Xamarin auf die beiden Platformen portiert wird. So spart man einigen Programmieraufwand.
+
+*So die Theorie aber leider brauchten wir ganze Zwei Wochen um Xamarin bei allen Teammitglieder vollumfänglich zum laufen zu bringen was unsere Produktivität nachhaltig einschränkte, ich konnte zum glück am Server arbeiten und die Logginfunktion implementieren. Mir ist aber aufgefallen wie wichtig es ist das alle Teammitglieder eine funktionierendes Arbeitsumfeld haben, da man sich sonst nur gegenseitig aufhält.*
+
+== AES verschlüsselung (Story)
+Da es unser Ziel war Dateien beider Teams (C# und Java) verschlüsseln und entschlüsseln zu können, habe ich ein Verschlüsslungsalgorithmus gesucht der sowol in C# und Java nativ unterstützt wirt. Dabei bin ich auf die AES-Verschlüsselung gestossen.
+
+AES ist eine Symetrische Verschlüsselungsmethode, das heisst es gibt nur ein Private-Key mit welchem man sowohl verschlüsselt und entschlüsselt. Dieser Key wird bei uns vom Server beim erstellen des Users generiert und diesem zugewiesen. Dieser Key ist dann diesem Account zugewiesen und wird immer zum ver/entschlüsseln verwendet. Das Problem war, dass auf Client-Side die C# AES Klasse nicht supportet wirt wegen Xamarin. Ich steiss jedoch schnell auf ein NuGet Package welches mir diese Funktionen zur verfügung stellt.
+
+*Diese Story war für mich sehr interessant zum ausführen da ich zum einen mit dem anderen Team interagieren musste und mich mit ihnen auf eine Methode einigen musste. Zuerst muss man einmal eine einfache Methode für beide Teams eine Option ist. Zuerst wollten wir PGP-Verschlüsselung anwenden haben uns dann aber auf eine aber auf eine symetrische Version umentschieden. Auch konnte Ich sehen, dass solche Cross-Platform-Frameworks auch ihre Tücken haben. Es ist zwar schön den Code nur einmal zu schreiben aber man muss dafür aber auch immer wieder auf Umwege ausweichen da gewisse dinge nicht unterstützt werden*
+
+== Patterns
+Ein Pattern ist ein Entwurfsmusster welchs mann in der Softwareentwicklung einsetzt um für generelle Probleme, welche schon viele Entwickler hatten, ein erpro Lösungsmuster zu bieten. Es gibt sehr viele Patterns (z.B. (Faktory-Pattern, Chain of Responsability Pattern, Singelton Pattern und Strategy Pattern). Man sollte es aber nicht übertreiben, da sonst eine unnötige Komplexität entsteht. So können auch sogenannte Anti-Paterns entstehen
+
+*In unserem Projekt haben wir das Singelton-Patern angewendet welches besagt, dass ein Objekt nur eine Instanz hat. In unserem Fall ist dies die Session. Dort werden nach dem einloggen die Userdaten welche im ganzen Programm verfügbar sein müssen gespeichert. Da nur ein User angemeldet sein kann ist die Klasse ein Singelton. Ansonsten haben wir keine Patterns Angewant, da unser Code keine Komplexität besitz.*
+
+----
+Entwicklungsprozess
+----
+|==========================
+|Sprint 1 |Sprint 2|Sprint 3
+|Serverseitiges-Logging       |verschlüsselugn und entschlüsselung Client-Side (AES)|Unit Tests
+|Xamarin aufsetzen (echt schwierig :) )||Komentierung des Codes (Summarys)
+|==========================
+----
+
+    
+
+
